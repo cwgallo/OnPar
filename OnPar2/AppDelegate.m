@@ -19,9 +19,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    /* OVERIDE THIS TO FIX setManagedObjectContextError
     MainViewController *controller = (MainViewController *)self.window.rootViewController;
     controller.managedObjectContext = self.managedObjectContext;
     return YES;
+    
+    REPLACED WITH FOLLOWING CODE FROM http://stackoverflow.com/questions/8884689/mainviewcontroller-storyboard-can-not-push-my-uitableviewcontroller
+    */
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    MainViewController *controller = (MainViewController *)navigationController.topViewController;
+    //MainViewController *controller = (MainViewController *)self.window.rootViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+    return YES;
+    
+    /* END REPLACEMENT CODE */
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
