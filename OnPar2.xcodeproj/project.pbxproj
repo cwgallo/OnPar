@@ -33,6 +33,53 @@
 		B61132BD16CD2F200032AD4B /* GolferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132BC16CD2F200032AD4B /* GolferVC.m */; };
 		B61132C116CD33120032AD4B /* Golfer_Add_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132C016CD33120032AD4B /* Golfer_Add_VC.m */; };
 		B61132C516CD83160032AD4B /* Golfer_Registration_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132C416CD83160032AD4B /* Golfer_Registration_VC.m */; };
+		B611333316CD92B90032AD4B /* Hole.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CA16CD92B90032AD4B /* Hole.m */; };
+		B611333416CD92B90032AD4B /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CC16CD92B90032AD4B /* Round.m */; };
+		B611333516CD92B90032AD4B /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CE16CD92B90032AD4B /* Shot.m */; };
+		B611333616CD92B90032AD4B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132D016CD92B90032AD4B /* User.m */; };
+		B611333716CD92B90032AD4B /* defines.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132D216CD92B90032AD4B /* defines.m */; };
+		B611333816CD92B90032AD4B /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132D516CD92B90032AD4B /* JASidePanelController.m */; };
+		B611333916CD92B90032AD4B /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132D716CD92B90032AD4B /* UIViewController+JASidePanel.m */; };
+		B611333A16CD92B90032AD4B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132DB16CD92B90032AD4B /* NSData+Base64.m */; };
+		B611333B16CD92B90032AD4B /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132DD16CD92B90032AD4B /* NSDictionary+QueryString.m */; };
+		B611333C16CD92B90032AD4B /* NSObject+SynchronousProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132DF16CD92B90032AD4B /* NSObject+SynchronousProxy.m */; };
+		B611333D16CD92B90032AD4B /* NSObject+Tap.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132E116CD92B90032AD4B /* NSObject+Tap.m */; };
+		B611333E16CD92B90032AD4B /* NSRunLoop+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132E316CD92B90032AD4B /* NSRunLoop+Additions.m */; };
+		B611333F16CD92B90032AD4B /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132E516CD92B90032AD4B /* NSString+QueryString.m */; };
+		B611334016CD92B90032AD4B /* NSURL+QueryInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132E716CD92B90032AD4B /* NSURL+QueryInspector.m */; };
+		B611334116CD92B90032AD4B /* LRResty.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132E916CD92B90032AD4B /* LRResty.m */; };
+		B611334216CD92B90032AD4B /* LRRestyClient+DELETE.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132EB16CD92B90032AD4B /* LRRestyClient+DELETE.m */; };
+		B611334316CD92B90032AD4B /* LRRestyClient+GET.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132ED16CD92B90032AD4B /* LRRestyClient+GET.m */; };
+		B611334416CD92B90032AD4B /* LRRestyClient+POST.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132EF16CD92B90032AD4B /* LRRestyClient+POST.m */; };
+		B611334516CD92B90032AD4B /* LRRestyClient+PUT.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132F116CD92B90032AD4B /* LRRestyClient+PUT.m */; };
+		B611334616CD92B90032AD4B /* LRRestyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132F316CD92B90032AD4B /* LRRestyClient.m */; };
+		B611334716CD92B90032AD4B /* LRRestyClientBlockDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132F516CD92B90032AD4B /* LRRestyClientBlockDelegate.m */; };
+		B611334816CD92B90032AD4B /* LRRestyClientProxyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132F816CD92B90032AD4B /* LRRestyClientProxyDelegate.m */; };
+		B611334916CD92B90032AD4B /* LRRestyClientStreamingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132FB16CD92B90032AD4B /* LRRestyClientStreamingDelegate.m */; };
+		B611334A16CD92B90032AD4B /* LRRestyHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132FD16CD92B90032AD4B /* LRRestyHTTPClient.m */; };
+		B611334B16CD92B90032AD4B /* LRRestyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132FF16CD92B90032AD4B /* LRRestyRequest.m */; };
+		B611334C16CD92B90032AD4B /* LRRestyRequestPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = B611330216CD92B90032AD4B /* LRRestyRequestPayload.m */; };
+		B611334D16CD92B90032AD4B /* LRRestyResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B611330416CD92B90032AD4B /* LRRestyResource.m */; };
+		B611334E16CD92B90032AD4B /* LRRestyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B611330816CD92B90032AD4B /* LRRestyResponse.m */; };
+		B611334F16CD92B90032AD4B /* LRSynchronousProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B611330B16CD92B90032AD4B /* LRSynchronousProxy.m */; };
+		B611335016CD92B90032AD4B /* LRURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B611330D16CD92B90032AD4B /* LRURLRequestOperation.m */; };
+		B611335116CD92B90032AD4B /* LLPair.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331016CD92B90032AD4B /* LLPair.m */; };
+		B611335216CD92B90032AD4B /* XYPair.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331216CD92B90032AD4B /* XYPair.m */; };
+		B611335316CD92B90032AD4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331516CD92B90032AD4B /* MBProgressHUD.m */; };
+		B611335416CD92B90032AD4B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331816CD92B90032AD4B /* Reachability.m */; };
+		B611335516CD92B90032AD4B /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331B16CD92B90032AD4B /* NSObject+SBJson.m */; };
+		B611335616CD92B90032AD4B /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B611331E16CD92B90032AD4B /* SBJsonParser.m */; };
+		B611335716CD92B90032AD4B /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332016CD92B90032AD4B /* SBJsonStreamParser.m */; };
+		B611335816CD92B90032AD4B /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332216CD92B90032AD4B /* SBJsonStreamParserAccumulator.m */; };
+		B611335916CD92B90032AD4B /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332416CD92B90032AD4B /* SBJsonStreamParserAdapter.m */; };
+		B611335A16CD92B90032AD4B /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332616CD92B90032AD4B /* SBJsonStreamParserState.m */; };
+		B611335B16CD92B90032AD4B /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332816CD92B90032AD4B /* SBJsonStreamWriter.m */; };
+		B611335C16CD92B90032AD4B /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332A16CD92B90032AD4B /* SBJsonStreamWriterAccumulator.m */; };
+		B611335D16CD92B90032AD4B /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332C16CD92B90032AD4B /* SBJsonStreamWriterState.m */; };
+		B611335E16CD92B90032AD4B /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = B611332E16CD92B90032AD4B /* SBJsonTokeniser.m */; };
+		B611335F16CD92B90032AD4B /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = B611333016CD92B90032AD4B /* SBJsonUTF8Stream.m */; };
+		B611336016CD92B90032AD4B /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B611333216CD92B90032AD4B /* SBJsonWriter.m */; };
+		B611336216CD92D40032AD4B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611336116CD92D40032AD4B /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +127,107 @@
 		B61132C016CD33120032AD4B /* Golfer_Add_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Golfer_Add_VC.m; sourceTree = "<group>"; };
 		B61132C316CD83160032AD4B /* Golfer_Registration_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Golfer_Registration_VC.h; sourceTree = "<group>"; };
 		B61132C416CD83160032AD4B /* Golfer_Registration_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Golfer_Registration_VC.m; sourceTree = "<group>"; };
+		B61132C716CD92B90032AD4B /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		B61132C916CD92B90032AD4B /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
+		B61132CA16CD92B90032AD4B /* Hole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hole.m; sourceTree = "<group>"; };
+		B61132CB16CD92B90032AD4B /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
+		B61132CC16CD92B90032AD4B /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
+		B61132CD16CD92B90032AD4B /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
+		B61132CE16CD92B90032AD4B /* Shot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shot.m; sourceTree = "<group>"; };
+		B61132CF16CD92B90032AD4B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B61132D016CD92B90032AD4B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		B61132D116CD92B90032AD4B /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
+		B61132D216CD92B90032AD4B /* defines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = defines.m; sourceTree = "<group>"; };
+		B61132D416CD92B90032AD4B /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
+		B61132D516CD92B90032AD4B /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
+		B61132D616CD92B90032AD4B /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
+		B61132D716CD92B90032AD4B /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
+		B61132DA16CD92B90032AD4B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		B61132DB16CD92B90032AD4B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		B61132DC16CD92B90032AD4B /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QueryString.h"; sourceTree = "<group>"; };
+		B61132DD16CD92B90032AD4B /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QueryString.m"; sourceTree = "<group>"; };
+		B61132DE16CD92B90032AD4B /* NSObject+SynchronousProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SynchronousProxy.h"; sourceTree = "<group>"; };
+		B61132DF16CD92B90032AD4B /* NSObject+SynchronousProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SynchronousProxy.m"; sourceTree = "<group>"; };
+		B61132E016CD92B90032AD4B /* NSObject+Tap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Tap.h"; sourceTree = "<group>"; };
+		B61132E116CD92B90032AD4B /* NSObject+Tap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Tap.m"; sourceTree = "<group>"; };
+		B61132E216CD92B90032AD4B /* NSRunLoop+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+Additions.h"; sourceTree = "<group>"; };
+		B61132E316CD92B90032AD4B /* NSRunLoop+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+Additions.m"; sourceTree = "<group>"; };
+		B61132E416CD92B90032AD4B /* NSString+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QueryString.h"; sourceTree = "<group>"; };
+		B61132E516CD92B90032AD4B /* NSString+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QueryString.m"; sourceTree = "<group>"; };
+		B61132E616CD92B90032AD4B /* NSURL+QueryInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryInspector.h"; sourceTree = "<group>"; };
+		B61132E716CD92B90032AD4B /* NSURL+QueryInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryInspector.m"; sourceTree = "<group>"; };
+		B61132E816CD92B90032AD4B /* LRResty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResty.h; sourceTree = "<group>"; };
+		B61132E916CD92B90032AD4B /* LRResty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResty.m; sourceTree = "<group>"; };
+		B61132EA16CD92B90032AD4B /* LRRestyClient+DELETE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+DELETE.h"; sourceTree = "<group>"; };
+		B61132EB16CD92B90032AD4B /* LRRestyClient+DELETE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+DELETE.m"; sourceTree = "<group>"; };
+		B61132EC16CD92B90032AD4B /* LRRestyClient+GET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+GET.h"; sourceTree = "<group>"; };
+		B61132ED16CD92B90032AD4B /* LRRestyClient+GET.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+GET.m"; sourceTree = "<group>"; };
+		B61132EE16CD92B90032AD4B /* LRRestyClient+POST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+POST.h"; sourceTree = "<group>"; };
+		B61132EF16CD92B90032AD4B /* LRRestyClient+POST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+POST.m"; sourceTree = "<group>"; };
+		B61132F016CD92B90032AD4B /* LRRestyClient+PUT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+PUT.h"; sourceTree = "<group>"; };
+		B61132F116CD92B90032AD4B /* LRRestyClient+PUT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+PUT.m"; sourceTree = "<group>"; };
+		B61132F216CD92B90032AD4B /* LRRestyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClient.h; sourceTree = "<group>"; };
+		B61132F316CD92B90032AD4B /* LRRestyClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClient.m; sourceTree = "<group>"; };
+		B61132F416CD92B90032AD4B /* LRRestyClientBlockDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientBlockDelegate.h; sourceTree = "<group>"; };
+		B61132F516CD92B90032AD4B /* LRRestyClientBlockDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientBlockDelegate.m; sourceTree = "<group>"; };
+		B61132F616CD92B90032AD4B /* LRRestyClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientDelegate.h; sourceTree = "<group>"; };
+		B61132F716CD92B90032AD4B /* LRRestyClientProxyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientProxyDelegate.h; sourceTree = "<group>"; };
+		B61132F816CD92B90032AD4B /* LRRestyClientProxyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientProxyDelegate.m; sourceTree = "<group>"; };
+		B61132F916CD92B90032AD4B /* LRRestyClientResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientResponseDelegate.h; sourceTree = "<group>"; };
+		B61132FA16CD92B90032AD4B /* LRRestyClientStreamingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientStreamingDelegate.h; sourceTree = "<group>"; };
+		B61132FB16CD92B90032AD4B /* LRRestyClientStreamingDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientStreamingDelegate.m; sourceTree = "<group>"; };
+		B61132FC16CD92B90032AD4B /* LRRestyHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyHTTPClient.h; sourceTree = "<group>"; };
+		B61132FD16CD92B90032AD4B /* LRRestyHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyHTTPClient.m; sourceTree = "<group>"; };
+		B61132FE16CD92B90032AD4B /* LRRestyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequest.h; sourceTree = "<group>"; };
+		B61132FF16CD92B90032AD4B /* LRRestyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyRequest.m; sourceTree = "<group>"; };
+		B611330016CD92B90032AD4B /* LRRestyRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequestDelegate.h; sourceTree = "<group>"; };
+		B611330116CD92B90032AD4B /* LRRestyRequestPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequestPayload.h; sourceTree = "<group>"; };
+		B611330216CD92B90032AD4B /* LRRestyRequestPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyRequestPayload.m; sourceTree = "<group>"; };
+		B611330316CD92B90032AD4B /* LRRestyResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResource.h; sourceTree = "<group>"; };
+		B611330416CD92B90032AD4B /* LRRestyResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyResource.m; sourceTree = "<group>"; };
+		B611330516CD92B90032AD4B /* LRRestyResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResourceDelegate.h; sourceTree = "<group>"; };
+		B611330616CD92B90032AD4B /* LRRestyResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyResponse+Internal.h"; sourceTree = "<group>"; };
+		B611330716CD92B90032AD4B /* LRRestyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResponse.h; sourceTree = "<group>"; };
+		B611330816CD92B90032AD4B /* LRRestyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyResponse.m; sourceTree = "<group>"; };
+		B611330916CD92B90032AD4B /* LRRestyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyTypes.h; sourceTree = "<group>"; };
+		B611330A16CD92B90032AD4B /* LRSynchronousProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSynchronousProxy.h; sourceTree = "<group>"; };
+		B611330B16CD92B90032AD4B /* LRSynchronousProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSynchronousProxy.m; sourceTree = "<group>"; };
+		B611330C16CD92B90032AD4B /* LRURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRURLRequestOperation.h; sourceTree = "<group>"; };
+		B611330D16CD92B90032AD4B /* LRURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRURLRequestOperation.m; sourceTree = "<group>"; };
+		B611330F16CD92B90032AD4B /* LLPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLPair.h; sourceTree = "<group>"; };
+		B611331016CD92B90032AD4B /* LLPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLPair.m; sourceTree = "<group>"; };
+		B611331116CD92B90032AD4B /* XYPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPair.h; sourceTree = "<group>"; };
+		B611331216CD92B90032AD4B /* XYPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPair.m; sourceTree = "<group>"; };
+		B611331416CD92B90032AD4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B611331516CD92B90032AD4B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B611331716CD92B90032AD4B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B611331816CD92B90032AD4B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		B611331A16CD92B90032AD4B /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		B611331B16CD92B90032AD4B /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		B611331C16CD92B90032AD4B /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		B611331D16CD92B90032AD4B /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		B611331E16CD92B90032AD4B /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		B611331F16CD92B90032AD4B /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		B611332016CD92B90032AD4B /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		B611332116CD92B90032AD4B /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		B611332216CD92B90032AD4B /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		B611332316CD92B90032AD4B /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		B611332416CD92B90032AD4B /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		B611332516CD92B90032AD4B /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		B611332616CD92B90032AD4B /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		B611332716CD92B90032AD4B /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		B611332816CD92B90032AD4B /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		B611332916CD92B90032AD4B /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		B611332A16CD92B90032AD4B /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		B611332B16CD92B90032AD4B /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		B611332C16CD92B90032AD4B /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		B611332D16CD92B90032AD4B /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		B611332E16CD92B90032AD4B /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		B611332F16CD92B90032AD4B /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		B611333016CD92B90032AD4B /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		B611333116CD92B90032AD4B /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		B611333216CD92B90032AD4B /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		B611336116CD92D40032AD4B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B611336216CD92D40032AD4B /* SystemConfiguration.framework in Frameworks */,
 				B61132BA16CD2EF40032AD4B /* AudioToolbox.framework in Frameworks */,
 				B61132B816CD2EEB0032AD4B /* QuartzCore.framework in Frameworks */,
 				B611325516CB0F670032AD4B /* UIKit.framework in Frameworks */,
@@ -132,6 +281,7 @@
 		B611325316CB0F670032AD4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B611336116CD92D40032AD4B /* SystemConfiguration.framework */,
 				B61132B916CD2EF40032AD4B /* AudioToolbox.framework */,
 				B61132B716CD2EEB0032AD4B /* QuartzCore.framework */,
 				B611325416CB0F670032AD4B /* UIKit.framework */,
@@ -146,6 +296,7 @@
 		B611325C16CB0F670032AD4B /* OnPar2 */ = {
 			isa = PBXGroup;
 			children = (
+				B61132C616CD92B90032AD4B /* classes */,
 				B61132C216CD406F0032AD4B /* Storyboards */,
 				B61132BE16CD2F290032AD4B /* ViewControllers */,
 				B611326516CB0F670032AD4B /* AppDelegate.h */,
@@ -220,6 +371,177 @@
 				B611327116CB0F670032AD4B /* MainStoryboard_iPad.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B61132C616CD92B90032AD4B /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				B61132C716CD92B90032AD4B /* Config.h */,
+				B61132C816CD92B90032AD4B /* CoreDataObjects */,
+				B61132D116CD92B90032AD4B /* defines.h */,
+				B61132D216CD92B90032AD4B /* defines.m */,
+				B61132D316CD92B90032AD4B /* JASidePanels */,
+				B61132D816CD92B90032AD4B /* LRResty */,
+				B611330E16CD92B90032AD4B /* Math */,
+				B611331316CD92B90032AD4B /* MBProgressHUD */,
+				B611331616CD92B90032AD4B /* Reachability */,
+				B611331916CD92B90032AD4B /* SBjson */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		B61132C816CD92B90032AD4B /* CoreDataObjects */ = {
+			isa = PBXGroup;
+			children = (
+				B61132C916CD92B90032AD4B /* Hole.h */,
+				B61132CA16CD92B90032AD4B /* Hole.m */,
+				B61132CB16CD92B90032AD4B /* Round.h */,
+				B61132CC16CD92B90032AD4B /* Round.m */,
+				B61132CD16CD92B90032AD4B /* Shot.h */,
+				B61132CE16CD92B90032AD4B /* Shot.m */,
+				B61132CF16CD92B90032AD4B /* User.h */,
+				B61132D016CD92B90032AD4B /* User.m */,
+			);
+			path = CoreDataObjects;
+			sourceTree = "<group>";
+		};
+		B61132D316CD92B90032AD4B /* JASidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				B61132D416CD92B90032AD4B /* JASidePanelController.h */,
+				B61132D516CD92B90032AD4B /* JASidePanelController.m */,
+				B61132D616CD92B90032AD4B /* UIViewController+JASidePanel.h */,
+				B61132D716CD92B90032AD4B /* UIViewController+JASidePanel.m */,
+			);
+			path = JASidePanels;
+			sourceTree = "<group>";
+		};
+		B61132D816CD92B90032AD4B /* LRResty */ = {
+			isa = PBXGroup;
+			children = (
+				B61132D916CD92B90032AD4B /* Categories */,
+				B61132E816CD92B90032AD4B /* LRResty.h */,
+				B61132E916CD92B90032AD4B /* LRResty.m */,
+				B61132EA16CD92B90032AD4B /* LRRestyClient+DELETE.h */,
+				B61132EB16CD92B90032AD4B /* LRRestyClient+DELETE.m */,
+				B61132EC16CD92B90032AD4B /* LRRestyClient+GET.h */,
+				B61132ED16CD92B90032AD4B /* LRRestyClient+GET.m */,
+				B61132EE16CD92B90032AD4B /* LRRestyClient+POST.h */,
+				B61132EF16CD92B90032AD4B /* LRRestyClient+POST.m */,
+				B61132F016CD92B90032AD4B /* LRRestyClient+PUT.h */,
+				B61132F116CD92B90032AD4B /* LRRestyClient+PUT.m */,
+				B61132F216CD92B90032AD4B /* LRRestyClient.h */,
+				B61132F316CD92B90032AD4B /* LRRestyClient.m */,
+				B61132F416CD92B90032AD4B /* LRRestyClientBlockDelegate.h */,
+				B61132F516CD92B90032AD4B /* LRRestyClientBlockDelegate.m */,
+				B61132F616CD92B90032AD4B /* LRRestyClientDelegate.h */,
+				B61132F716CD92B90032AD4B /* LRRestyClientProxyDelegate.h */,
+				B61132F816CD92B90032AD4B /* LRRestyClientProxyDelegate.m */,
+				B61132F916CD92B90032AD4B /* LRRestyClientResponseDelegate.h */,
+				B61132FA16CD92B90032AD4B /* LRRestyClientStreamingDelegate.h */,
+				B61132FB16CD92B90032AD4B /* LRRestyClientStreamingDelegate.m */,
+				B61132FC16CD92B90032AD4B /* LRRestyHTTPClient.h */,
+				B61132FD16CD92B90032AD4B /* LRRestyHTTPClient.m */,
+				B61132FE16CD92B90032AD4B /* LRRestyRequest.h */,
+				B61132FF16CD92B90032AD4B /* LRRestyRequest.m */,
+				B611330016CD92B90032AD4B /* LRRestyRequestDelegate.h */,
+				B611330116CD92B90032AD4B /* LRRestyRequestPayload.h */,
+				B611330216CD92B90032AD4B /* LRRestyRequestPayload.m */,
+				B611330316CD92B90032AD4B /* LRRestyResource.h */,
+				B611330416CD92B90032AD4B /* LRRestyResource.m */,
+				B611330516CD92B90032AD4B /* LRRestyResourceDelegate.h */,
+				B611330616CD92B90032AD4B /* LRRestyResponse+Internal.h */,
+				B611330716CD92B90032AD4B /* LRRestyResponse.h */,
+				B611330816CD92B90032AD4B /* LRRestyResponse.m */,
+				B611330916CD92B90032AD4B /* LRRestyTypes.h */,
+				B611330A16CD92B90032AD4B /* LRSynchronousProxy.h */,
+				B611330B16CD92B90032AD4B /* LRSynchronousProxy.m */,
+				B611330C16CD92B90032AD4B /* LRURLRequestOperation.h */,
+				B611330D16CD92B90032AD4B /* LRURLRequestOperation.m */,
+			);
+			path = LRResty;
+			sourceTree = "<group>";
+		};
+		B61132D916CD92B90032AD4B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B61132DA16CD92B90032AD4B /* NSData+Base64.h */,
+				B61132DB16CD92B90032AD4B /* NSData+Base64.m */,
+				B61132DC16CD92B90032AD4B /* NSDictionary+QueryString.h */,
+				B61132DD16CD92B90032AD4B /* NSDictionary+QueryString.m */,
+				B61132DE16CD92B90032AD4B /* NSObject+SynchronousProxy.h */,
+				B61132DF16CD92B90032AD4B /* NSObject+SynchronousProxy.m */,
+				B61132E016CD92B90032AD4B /* NSObject+Tap.h */,
+				B61132E116CD92B90032AD4B /* NSObject+Tap.m */,
+				B61132E216CD92B90032AD4B /* NSRunLoop+Additions.h */,
+				B61132E316CD92B90032AD4B /* NSRunLoop+Additions.m */,
+				B61132E416CD92B90032AD4B /* NSString+QueryString.h */,
+				B61132E516CD92B90032AD4B /* NSString+QueryString.m */,
+				B61132E616CD92B90032AD4B /* NSURL+QueryInspector.h */,
+				B61132E716CD92B90032AD4B /* NSURL+QueryInspector.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		B611330E16CD92B90032AD4B /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				B611330F16CD92B90032AD4B /* LLPair.h */,
+				B611331016CD92B90032AD4B /* LLPair.m */,
+				B611331116CD92B90032AD4B /* XYPair.h */,
+				B611331216CD92B90032AD4B /* XYPair.m */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
+		B611331316CD92B90032AD4B /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B611331416CD92B90032AD4B /* MBProgressHUD.h */,
+				B611331516CD92B90032AD4B /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		B611331616CD92B90032AD4B /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B611331716CD92B90032AD4B /* Reachability.h */,
+				B611331816CD92B90032AD4B /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		B611331916CD92B90032AD4B /* SBjson */ = {
+			isa = PBXGroup;
+			children = (
+				B611331A16CD92B90032AD4B /* NSObject+SBJson.h */,
+				B611331B16CD92B90032AD4B /* NSObject+SBJson.m */,
+				B611331C16CD92B90032AD4B /* SBJson.h */,
+				B611331D16CD92B90032AD4B /* SBJsonParser.h */,
+				B611331E16CD92B90032AD4B /* SBJsonParser.m */,
+				B611331F16CD92B90032AD4B /* SBJsonStreamParser.h */,
+				B611332016CD92B90032AD4B /* SBJsonStreamParser.m */,
+				B611332116CD92B90032AD4B /* SBJsonStreamParserAccumulator.h */,
+				B611332216CD92B90032AD4B /* SBJsonStreamParserAccumulator.m */,
+				B611332316CD92B90032AD4B /* SBJsonStreamParserAdapter.h */,
+				B611332416CD92B90032AD4B /* SBJsonStreamParserAdapter.m */,
+				B611332516CD92B90032AD4B /* SBJsonStreamParserState.h */,
+				B611332616CD92B90032AD4B /* SBJsonStreamParserState.m */,
+				B611332716CD92B90032AD4B /* SBJsonStreamWriter.h */,
+				B611332816CD92B90032AD4B /* SBJsonStreamWriter.m */,
+				B611332916CD92B90032AD4B /* SBJsonStreamWriterAccumulator.h */,
+				B611332A16CD92B90032AD4B /* SBJsonStreamWriterAccumulator.m */,
+				B611332B16CD92B90032AD4B /* SBJsonStreamWriterState.h */,
+				B611332C16CD92B90032AD4B /* SBJsonStreamWriterState.m */,
+				B611332D16CD92B90032AD4B /* SBJsonTokeniser.h */,
+				B611332E16CD92B90032AD4B /* SBJsonTokeniser.m */,
+				B611332F16CD92B90032AD4B /* SBJsonUTF8Stream.h */,
+				B611333016CD92B90032AD4B /* SBJsonUTF8Stream.m */,
+				B611333116CD92B90032AD4B /* SBJsonWriter.h */,
+				B611333216CD92B90032AD4B /* SBJsonWriter.m */,
+			);
+			path = SBjson;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +663,52 @@
 				B61132BD16CD2F200032AD4B /* GolferVC.m in Sources */,
 				B61132C116CD33120032AD4B /* Golfer_Add_VC.m in Sources */,
 				B61132C516CD83160032AD4B /* Golfer_Registration_VC.m in Sources */,
+				B611333316CD92B90032AD4B /* Hole.m in Sources */,
+				B611333416CD92B90032AD4B /* Round.m in Sources */,
+				B611333516CD92B90032AD4B /* Shot.m in Sources */,
+				B611333616CD92B90032AD4B /* User.m in Sources */,
+				B611333716CD92B90032AD4B /* defines.m in Sources */,
+				B611333816CD92B90032AD4B /* JASidePanelController.m in Sources */,
+				B611333916CD92B90032AD4B /* UIViewController+JASidePanel.m in Sources */,
+				B611333A16CD92B90032AD4B /* NSData+Base64.m in Sources */,
+				B611333B16CD92B90032AD4B /* NSDictionary+QueryString.m in Sources */,
+				B611333C16CD92B90032AD4B /* NSObject+SynchronousProxy.m in Sources */,
+				B611333D16CD92B90032AD4B /* NSObject+Tap.m in Sources */,
+				B611333E16CD92B90032AD4B /* NSRunLoop+Additions.m in Sources */,
+				B611333F16CD92B90032AD4B /* NSString+QueryString.m in Sources */,
+				B611334016CD92B90032AD4B /* NSURL+QueryInspector.m in Sources */,
+				B611334116CD92B90032AD4B /* LRResty.m in Sources */,
+				B611334216CD92B90032AD4B /* LRRestyClient+DELETE.m in Sources */,
+				B611334316CD92B90032AD4B /* LRRestyClient+GET.m in Sources */,
+				B611334416CD92B90032AD4B /* LRRestyClient+POST.m in Sources */,
+				B611334516CD92B90032AD4B /* LRRestyClient+PUT.m in Sources */,
+				B611334616CD92B90032AD4B /* LRRestyClient.m in Sources */,
+				B611334716CD92B90032AD4B /* LRRestyClientBlockDelegate.m in Sources */,
+				B611334816CD92B90032AD4B /* LRRestyClientProxyDelegate.m in Sources */,
+				B611334916CD92B90032AD4B /* LRRestyClientStreamingDelegate.m in Sources */,
+				B611334A16CD92B90032AD4B /* LRRestyHTTPClient.m in Sources */,
+				B611334B16CD92B90032AD4B /* LRRestyRequest.m in Sources */,
+				B611334C16CD92B90032AD4B /* LRRestyRequestPayload.m in Sources */,
+				B611334D16CD92B90032AD4B /* LRRestyResource.m in Sources */,
+				B611334E16CD92B90032AD4B /* LRRestyResponse.m in Sources */,
+				B611334F16CD92B90032AD4B /* LRSynchronousProxy.m in Sources */,
+				B611335016CD92B90032AD4B /* LRURLRequestOperation.m in Sources */,
+				B611335116CD92B90032AD4B /* LLPair.m in Sources */,
+				B611335216CD92B90032AD4B /* XYPair.m in Sources */,
+				B611335316CD92B90032AD4B /* MBProgressHUD.m in Sources */,
+				B611335416CD92B90032AD4B /* Reachability.m in Sources */,
+				B611335516CD92B90032AD4B /* NSObject+SBJson.m in Sources */,
+				B611335616CD92B90032AD4B /* SBJsonParser.m in Sources */,
+				B611335716CD92B90032AD4B /* SBJsonStreamParser.m in Sources */,
+				B611335816CD92B90032AD4B /* SBJsonStreamParserAccumulator.m in Sources */,
+				B611335916CD92B90032AD4B /* SBJsonStreamParserAdapter.m in Sources */,
+				B611335A16CD92B90032AD4B /* SBJsonStreamParserState.m in Sources */,
+				B611335B16CD92B90032AD4B /* SBJsonStreamWriter.m in Sources */,
+				B611335C16CD92B90032AD4B /* SBJsonStreamWriterAccumulator.m in Sources */,
+				B611335D16CD92B90032AD4B /* SBJsonStreamWriterState.m in Sources */,
+				B611335E16CD92B90032AD4B /* SBJsonTokeniser.m in Sources */,
+				B611335F16CD92B90032AD4B /* SBJsonUTF8Stream.m in Sources */,
+				B611336016CD92B90032AD4B /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
