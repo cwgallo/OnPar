@@ -27,7 +27,7 @@
 }
 
 #pragma mark - Flipside View Controller
-
+/*
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -65,5 +65,6 @@
         [self performSegueWithIdentifier:@"showAlternate" sender:sender];
     }
 }
+ */
 
 @end

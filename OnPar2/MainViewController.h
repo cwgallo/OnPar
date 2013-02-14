@@ -6,9 +6,7 @@
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
-#import "FlipsideViewController.h"
-
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+@interface MainViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
