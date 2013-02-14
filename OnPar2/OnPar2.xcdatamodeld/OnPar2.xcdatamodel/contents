@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C2034" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Hole" representedClassName="Hole" syncable="YES">
+        <attribute name="fairway_in_reg" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="green_in_reg" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="holeNumber" attributeType="Integer 32" minValueString="1" maxValueString="18" syncable="YES"/>
+        <attribute name="holeScore" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="putts" optional="YES" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <relationship name="round" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Round" inverseName="holes" inverseEntity="Round" syncable="YES"/>
+        <relationship name="shots" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Shot" inverseName="hole" inverseEntity="Shot" syncable="YES"/>
+    </entity>
+    <entity name="Round" representedClassName="Round" syncable="YES">
+        <attribute name="courseID" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="startTime" attributeType="String" syncable="YES"/>
+        <attribute name="teeID" attributeType="Integer 32" minValueString="1" maxValueString="4" syncable="YES"/>
+        <attribute name="totalScore" optional="YES" attributeType="Integer 64" minValueString="1" syncable="YES"/>
+        <attribute name="userID" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <relationship name="holes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Hole" inverseName="round" inverseEntity="Hole" syncable="YES"/>
+    </entity>
+    <entity name="Shot" representedClassName="Shot" syncable="YES">
+        <attribute name="aimLatitude" attributeType="Double" syncable="YES"/>
+        <attribute name="aimLongitude" attributeType="Double" syncable="YES"/>
+        <attribute name="club" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="endLatitude" attributeType="Double" syncable="YES"/>
+        <attribute name="endLongitude" attributeType="Double" syncable="YES"/>
+        <attribute name="shotNumber" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="startLatitude" attributeType="Double" syncable="YES"/>
+        <attribute name="startLongitude" attributeType="Integer 32" syncable="YES"/>
+        <relationship name="hole" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Hole" inverseName="shots" inverseEntity="Hole" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="memberID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
+        <element name="Hole" positionX="-6779" positionY="-7047" width="128" height="148"/>
+        <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
+        <element name="User" positionX="-7056" positionY="-6840" width="128" height="118"/>
+    </elements>
 </model>
