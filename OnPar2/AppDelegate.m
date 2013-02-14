@@ -30,7 +30,6 @@
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     MainViewController *controller = (MainViewController *)navigationController.topViewController;
-    //MainViewController *controller = (MainViewController *)self.window.rootViewController;
     controller.managedObjectContext = self.managedObjectContext;
     return YES;
     
