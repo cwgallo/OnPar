@@ -173,17 +173,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDP-U3-m7u">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="xxy-Ip-1jo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="xxy-Ip-1jo">
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="byN-mx-NfB"/>
@@ -223,31 +213,52 @@
                                     <outlet property="delegate" destination="pcM-K4-Mbb" id="0b0-BL-fAj"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDP-U3-m7u">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mUU-xj-eJn" kind="modal" modalTransitionStyle="flipHorizontal" id="VaM-Kq-ivi"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Starting Hole Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQa-UO-DaE">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="50z-Jy-kre">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-d9-lkJ"/>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-d9-lkJ">
+                                <connections>
+                                    <action selector="valueChanged:" destination="pcM-K4-Mbb" eventType="valueChanged" id="lhi-rR-zOS"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSX-3x-YgY">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Hh0-tW-cvN"/>
+                                    <constraint firstAttribute="height" constant="41" id="rwl-dl-Obf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xxy-Ip-1jo" firstAttribute="top" secondItem="8bl-QM-Xi8" secondAttribute="top" constant="26" id="1Xq-H0-eTi"/>
-                            <constraint firstAttribute="bottom" secondItem="50z-Jy-kre" secondAttribute="bottom" constant="66" id="9vw-4W-zbL"/>
+                            <constraint firstItem="cSX-3x-YgY" firstAttribute="centerX" secondItem="Qwr-d9-lkJ" secondAttribute="centerX" type="default" id="2T3-mw-PON"/>
+                            <constraint firstItem="iDP-U3-m7u" firstAttribute="trailing" secondItem="Qwr-d9-lkJ" secondAttribute="trailing" type="default" id="7Bo-c3-b1d"/>
+                            <constraint firstAttribute="trailing" secondItem="iDP-U3-m7u" secondAttribute="trailing" constant="25" id="ARD-f9-Tjm"/>
                             <constraint firstItem="OQa-UO-DaE" firstAttribute="leading" secondItem="8bl-QM-Xi8" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BGA-eK-b29"/>
-                            <constraint firstAttribute="trailing" secondItem="Qwr-d9-lkJ" secondAttribute="trailing" constant="25" id="CBk-0X-eHM"/>
                             <constraint firstItem="xxy-Ip-1jo" firstAttribute="leading" secondItem="8bl-QM-Xi8" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="F0Z-ga-kui"/>
+                            <constraint firstItem="xxy-Ip-1jo" firstAttribute="top" secondItem="8bl-QM-Xi8" secondAttribute="top" constant="20" symbolic="YES" type="default" id="TiX-V0-FGY"/>
+                            <constraint firstAttribute="bottom" secondItem="cSX-3x-YgY" secondAttribute="bottom" constant="65" id="bWd-VM-Pf2"/>
                             <constraint firstAttribute="trailing" secondItem="xxy-Ip-1jo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ful-8h-sBJ"/>
-                            <constraint firstItem="50z-Jy-kre" firstAttribute="top" secondItem="OQa-UO-DaE" secondAttribute="top" type="default" id="gRp-Wb-LrQ"/>
-                            <constraint firstItem="Qwr-d9-lkJ" firstAttribute="centerX" secondItem="50z-Jy-kre" secondAttribute="centerX" type="default" id="j0J-3a-AXi"/>
-                            <constraint firstAttribute="trailing" secondItem="50z-Jy-kre" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qcO-pA-Ha0"/>
+                            <constraint firstItem="OQa-UO-DaE" firstAttribute="centerY" secondItem="cSX-3x-YgY" secondAttribute="centerY" type="default" id="gl2-Gi-gO1"/>
+                            <constraint firstItem="iDP-U3-m7u" firstAttribute="top" secondItem="8bl-QM-Xi8" secondAttribute="top" constant="20" symbolic="YES" type="default" id="nM7-Yn-wWt"/>
                             <constraint firstAttribute="bottom" secondItem="Qwr-d9-lkJ" secondAttribute="bottom" constant="26" id="s2O-AZ-oYh"/>
-                            <constraint firstAttribute="trailing" secondItem="iDP-U3-m7u" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uZt-r7-YiR"/>
-                            <constraint firstItem="iDP-U3-m7u" firstAttribute="top" secondItem="8bl-QM-Xi8" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zmr-81-tXB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Round Options" id="cza-we-SLa">
@@ -255,6 +266,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="golferTableView" destination="xxy-Ip-1jo" id="NLC-hV-1mv"/>
+                        <outlet property="holeNumberLabel" destination="cSX-3x-YgY" id="wWX-Vi-3gP"/>
+                        <outlet property="holeStepper" destination="Qwr-d9-lkJ" id="AXr-8f-9QO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHf-JE-6Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,7 +394,10 @@
         <class className="GolferVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
             <relationships>
+                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
             </relationships>
         </class>
         <class className="Golfer_Add_VC" superclassName="UIViewController">

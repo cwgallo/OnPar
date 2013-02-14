@@ -13,6 +13,20 @@
 }
 
 @synthesize golferTableView;
+@synthesize holeStepper;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.holeStepper.minimumValue = 1;
+    self.holeStepper.maximumValue = 18;
+    self.holeStepper.stepValue = 1;
+    self.holeStepper.wraps = YES;
+    self.holeStepper.autorepeat = YES;
+    self.holeStepper.continuous = YES;
+    self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", holeStepper.value];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -61,39 +75,21 @@
 
 #pragma  mark - Custom Header methods
 
-/*
+
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView* myHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0f,-50.0f, tableView.contentSize.width,70.0f)];
     myHeaderView.backgroundColor = [UIColor clearColor];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 3, tableView.bounds.size.width - 10, 18)];
-    label.text = @"Golfers";
+    label.text = @"Golfers:";
     label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.75];
     label.backgroundColor = [UIColor clearColor];
     [myHeaderView addSubview:label];
     
     return myHeaderView;
 }
-*/
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    // create the parent view that will hold header Label
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 44.0)];
-    
-    // create the button object
-    UIButton * headerBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-    headerBtn.backgroundColor = [UIColor clearColor];
-    headerBtn.opaque = NO;
-    headerBtn.frame = CGRectMake(10.0, 0.0, 100.0, 30.0);
-    [headerBtn setTitle:@"<Put here whatever you want to display>" forState:UIControlEventTouchUpInside];
-    [headerBtn addTarget:self action:@selector(ActionEventForButton:) forControlEvents:UIControlEventTouchUpInside];
-    [customView addSubview:headerBtn];
-    
-    return customView;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 30.0;
@@ -121,4 +117,8 @@
     return 30.0;
 }
 
+- (IBAction)valueChanged:(id)sender {
+    double stepperValue = holeStepper.value;
+    self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", stepperValue];
+}
 @end
