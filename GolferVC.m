@@ -18,18 +18,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self showNavBar];
     [self stepperInitialization];
     
     self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", holeStepper.value];
 }
 
-
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     
-    // retrieve golfers
-    NSString *golfer1 = @"Chad";
-    NSString *golfer2 = @"Kevin";
-    
+    [self showNavBar];
 }
 
 #pragma mark - TableView methods
@@ -116,6 +113,11 @@
 - (IBAction)valueChanged:(id)sender {
     double stepperValue = holeStepper.value;
     self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", stepperValue];
+}
+
+- (void)showNavBar
+{
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)stepperInitialization

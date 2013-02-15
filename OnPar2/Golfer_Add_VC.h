@@ -11,6 +11,8 @@
 
 @interface Golfer_Add_VC : UIViewController
 
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *emailAddressTextField;
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 

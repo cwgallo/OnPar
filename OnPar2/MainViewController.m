@@ -18,6 +18,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self hideNavBar];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self hideNavBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,5 +73,11 @@
     }
 }
  */
+
+- (void)hideNavBar
+{
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 
 @end

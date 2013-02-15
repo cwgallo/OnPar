@@ -15,6 +15,11 @@
 
 @implementation Golfer_Registration_VC
 
+@synthesize firstNameTextField, lastNameTextField;
+@synthesize emailAddressTextField;
+@synthesize membershipNumberTextField;
+@synthesize nicknameTextField;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,17 +47,7 @@
 
 - (IBAction)done:(id)sender {
     // do stuff with info here
-    
-    [self goBackTwoViews];
-    
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)goBackTwoViews
-{
-    NSLog(@"Here");
-    int count = [[self.navigationController viewControllers] count];
-    NSLog(@"Count is %i", count);
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:count-2] animated:YES];
-}
 @end

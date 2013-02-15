@@ -11,6 +11,12 @@
 
 @interface Golfer_Registration_VC : UIViewController
 
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *firstNameTextField;
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *lastNameTextField;
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *emailAddressTextField;
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *membershipNumberTextField;
+@property (strong, nonatomic) IBOutlet SLGlowingTextField *nicknameTextField;
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 
