@@ -33,12 +33,14 @@
         <attribute name="memberID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" attributeType="Integer 32" minValueString="1" maxValueString="4" syncable="YES"/>
+        <attribute name="tee" attributeType="Integer 32" minValueString="1" maxValueString="4" syncable="YES"/>
         <attribute name="userID" attributeType="Integer 32" minValueString="1" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Hole" positionX="-6779" positionY="-7047" width="128" height="148"/>
+        <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
-        <element name="User" positionX="-7056" positionY="-6840" width="128" height="118"/>
+        <element name="User" positionX="-7056" positionY="-6840" width="128" height="148"/>
     </elements>
 </model>

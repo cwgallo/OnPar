@@ -17,5 +17,7 @@
 @property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSNumber * tee;
+@property (nonatomic, retain) NSNumber * order;
 
 @end

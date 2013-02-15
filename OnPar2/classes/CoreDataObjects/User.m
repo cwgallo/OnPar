@@ -16,5 +16,7 @@
 @dynamic nickname;
 @dynamic name;
 @dynamic email;
+@dynamic tee;
+@dynamic order;
 
 @end
