@@ -80,6 +80,10 @@
 		B611335F16CD92B90032AD4B /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = B611333016CD92B90032AD4B /* SBJsonUTF8Stream.m */; };
 		B611336016CD92B90032AD4B /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B611333216CD92B90032AD4B /* SBJsonWriter.m */; };
 		B611336216CD92D40032AD4B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611336116CD92D40032AD4B /* SystemConfiguration.framework */; };
+		B611336516CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B611336416CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m */; };
+		B611336916CDB06E0032AD4B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B611336816CDB06E0032AD4B /* SLGlowingTextField.m */; };
+		B611336A16CDB06E0032AD4B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B611336816CDB06E0032AD4B /* SLGlowingTextField.m */; };
+		B611336C16CDB61B0032AD4B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611326E16CB0F670032AD4B /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +232,10 @@
 		B611333116CD92B90032AD4B /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		B611333216CD92B90032AD4B /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		B611336116CD92D40032AD4B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B611336316CDAB590032AD4B /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		B611336416CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		B611336716CDB06E0032AD4B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
+		B611336816CDB06E0032AD4B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,9 +385,11 @@
 			isa = PBXGroup;
 			children = (
 				B61132C716CD92B90032AD4B /* Config.h */,
-				B61132C816CD92B90032AD4B /* CoreDataObjects */,
 				B61132D116CD92B90032AD4B /* defines.h */,
 				B61132D216CD92B90032AD4B /* defines.m */,
+				B611336B16CDB0730032AD4B /* SLGlowingTextField */,
+				B61132C816CD92B90032AD4B /* CoreDataObjects */,
+				B611336616CDAB600032AD4B /* TPKeyboardAvoiding */,
 				B61132D316CD92B90032AD4B /* JASidePanels */,
 				B61132D816CD92B90032AD4B /* LRResty */,
 				B611330E16CD92B90032AD4B /* Math */,
@@ -544,6 +554,24 @@
 			path = SBjson;
 			sourceTree = "<group>";
 		};
+		B611336616CDAB600032AD4B /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				B611336316CDAB590032AD4B /* TPKeyboardAvoidingScrollView.h */,
+				B611336416CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m */,
+			);
+			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		B611336B16CDB0730032AD4B /* SLGlowingTextField */ = {
+			isa = PBXGroup;
+			children = (
+				B611336716CDB06E0032AD4B /* SLGlowingTextField.h */,
+				B611336816CDB06E0032AD4B /* SLGlowingTextField.m */,
+			);
+			name = SLGlowingTextField;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -630,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B611328F16CB0F680032AD4B /* InfoPlist.strings in Resources */,
+				B611336C16CDB61B0032AD4B /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +738,8 @@
 				B611335E16CD92B90032AD4B /* SBJsonTokeniser.m in Sources */,
 				B611335F16CD92B90032AD4B /* SBJsonUTF8Stream.m in Sources */,
 				B611336016CD92B90032AD4B /* SBJsonWriter.m in Sources */,
+				B611336516CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m in Sources */,
+				B611336916CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B611329216CB0F680032AD4B /* OnPar2Tests.m in Sources */,
+				B611336A16CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

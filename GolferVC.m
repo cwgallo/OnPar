@@ -18,12 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.holeStepper.minimumValue = 1;
-    self.holeStepper.maximumValue = 18;
-    self.holeStepper.stepValue = 1;
-    self.holeStepper.wraps = YES;
-    self.holeStepper.autorepeat = YES;
-    self.holeStepper.continuous = YES;
+    [self stepperInitialization];
+    
     self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", holeStepper.value];
 }
 
@@ -121,4 +117,16 @@
     double stepperValue = holeStepper.value;
     self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", stepperValue];
 }
+
+- (void)stepperInitialization
+{
+    // Hole Stepper Setup
+    self.holeStepper.minimumValue = 1;
+    self.holeStepper.maximumValue = 18;
+    self.holeStepper.stepValue = 1;
+    self.holeStepper.wraps = YES;
+    self.holeStepper.autorepeat = YES;
+    self.holeStepper.continuous = YES;
+}
+
 @end

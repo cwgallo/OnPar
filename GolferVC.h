@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Config.h"
 
 @interface GolferVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 

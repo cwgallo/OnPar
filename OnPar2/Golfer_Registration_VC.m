@@ -7,6 +7,7 @@
 //
 
 #import "Golfer_Registration_VC.h"
+#import "GolferVC.h"
 
 @interface Golfer_Registration_VC ()
 
@@ -42,6 +43,16 @@
 - (IBAction)done:(id)sender {
     // do stuff with info here
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self goBackTwoViews];
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)goBackTwoViews
+{
+    NSLog(@"Here");
+    int count = [[self.navigationController viewControllers] count];
+    NSLog(@"Count is %i", count);
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:count-2] animated:YES];
 }
 @end

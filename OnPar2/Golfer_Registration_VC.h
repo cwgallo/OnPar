@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Config.h"
 
 @interface Golfer_Registration_VC : UIViewController
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+
+-(void)goBackTwoViews;
 
 @end
