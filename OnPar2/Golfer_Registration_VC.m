@@ -102,6 +102,20 @@
                      // obtain the appDelegate to get the managedObjectContext
                      id appDelegate = (id)[[UIApplication sharedApplication] delegate];
                      
+                     // create an error object
+                     NSError *error;
+                     
+                     NSMutableArray *golfers = [[NSMutableArray alloc] init];
+                     
+                     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                     NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
+                                                               inManagedObjectContext: [appDelegate managedObjectContext]];
+                     [fetchRequest setEntity: entity];
+                     NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
+                     for (User *u in fetchedObjects) {
+                         [golfers addObject: u];
+                     }
+                     
                      // set up the DB
                      User *u = [NSEntityDescription
                                     insertNewObjectForEntityForName: @"User"
@@ -123,8 +137,8 @@
                      // set the tee
                      // TODO - change
                      u.tee = @3;
+                     u.order = [NSNumber numberWithInt: [golfers count] + 1];
                      
-                     NSError *error;
                      if (![[appDelegate managedObjectContext] save: &error]) {
                          NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                      }

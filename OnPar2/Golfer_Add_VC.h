@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Config.h"
 
-@interface Golfer_Add_VC : UIViewController
+@interface Golfer_Add_VC : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet SLGlowingTextField *emailAddressTextField;
 

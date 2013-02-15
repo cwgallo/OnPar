@@ -81,39 +81,76 @@
                      // create an error object
                      NSError *error;
                      
-                     // create a new User
-                     User *u = [NSEntityDescription
-                                insertNewObjectForEntityForName: @"User"
-                                inManagedObjectContext: [appDelegate managedObjectContext]];
-                         
-                     // required fields
-                     u.userID =    [[NSNumber alloc] initWithInt: [[user valueForKey: @"id"] intValue]];
-                     u.name =      [user valueForKey: @"name"];
-                     u.email =     [user valueForKey: @"email"];
-                         
-                     // optional fields
-                     if ([user valueForKey: @"memberID"] != [NSNull null]) {
-                         u.memberID =  [user valueForKey: @"memberID"];
+                     NSMutableArray *golfers = [[NSMutableArray alloc] init];
+                     
+                     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                     NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
+                                                               inManagedObjectContext: [appDelegate managedObjectContext]];
+                     [fetchRequest setEntity: entity];
+                     NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
+                     for (User *u in fetchedObjects) {
+                         [golfers addObject: u];
                      }
-                     if ([user valueForKey: @"nickname"] != [NSNull null]) {
-                         u.nickname =  [user valueForKey: @"nickname"];
+                     
+                     if ([golfers count] == 4) {
+                         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                           message:@"No more golfers can be added."
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil];
+                         [message show];
+                     } else {
+                         BOOL exists = NO;
+                         for (User *uCheck in golfers) {
+                             if (uCheck.userID == [[NSNumber alloc] initWithInt: [[user valueForKey: @"id"] intValue]]) {
+                                 exists = YES;
+                                 UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                   message:@"This golfer is already playing."
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"OK"
+                                                                         otherButtonTitles:nil];
+                                 [message show];
+                                 break;
+                             }
+                         }
+                         
+                         if (!exists) {
+                             // create a new User
+                             User *u = [NSEntityDescription
+                                        insertNewObjectForEntityForName: @"User"
+                                        inManagedObjectContext: [appDelegate managedObjectContext]];
+                             
+                             // required fields
+                             u.userID =    [[NSNumber alloc] initWithInt: [[user valueForKey: @"id"] intValue]];
+                             u.name =      [user valueForKey: @"name"];
+                             u.email =     [user valueForKey: @"email"];
+                             
+                             // optional fields
+                             if ([user valueForKey: @"memberID"] != [NSNull null]) {
+                                 u.memberID =  [user valueForKey: @"memberID"];
+                             }
+                             if ([user valueForKey: @"nickname"] != [NSNull null]) {
+                                 u.nickname =  [user valueForKey: @"nickname"];
+                             }
+                             
+                             // set the tee
+                             // TODO - change
+                             u.tee = @3;
+                             u.order = [NSNumber numberWithInt: [golfers count] + 1];
+                             
+                             if (![[appDelegate managedObjectContext] save: &error]) {
+                                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                             }
+                         }
+                         
+                         [self dismissViewControllerAnimated:YES completion:nil];
                      }
-                         
-                     // set the tee
-                     // TODO - change
-                     u.tee = @3;
-                         
-                     if (![[appDelegate managedObjectContext] save: &error]) {
-                         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                     }
-                         
-                     [self dismissViewControllerAnimated:YES completion:nil];
                  } else if (r.status == 204) {
                      UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
                                                                        message:@"This User email does not exist."
-                                                                      delegate:nil
+                                                                      delegate:self
                                                              cancelButtonTitle:@"OK"
-                                                             otherButtonTitles:nil];
+                                                             otherButtonTitles:@"Register", nil];
                      [message show];
                  }
              }
@@ -141,4 +178,17 @@
         [message show];
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Register"])
+    {
+        NSLog(@"Register was selected.");
+        // Find out how to segue to registration page
+        // and dynamically fill in the email field
+        
+    }
+}
+
 @end
