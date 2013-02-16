@@ -196,7 +196,7 @@
                                  }
                              }
                              
-                             [self dismissViewControllerAnimated:YES completion:nil];
+                         [[self navigationController] popViewControllerAnimated:YES];
                          }
                      } else if (r.status == 204) {
                          // email validation failed

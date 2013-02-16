@@ -116,6 +116,20 @@
 		B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419116D02F2B00D9CA97 /* Play_VC.m */; };
 		B6E2419616D035BB00D9CA97 /* UserStageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419516D035BB00D9CA97 /* UserStageInfo.m */; };
 		B6E2419716D035BB00D9CA97 /* UserStageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419516D035BB00D9CA97 /* UserStageInfo.m */; };
+		B6E241A716D03FB900D9CA97 /* ZAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419A16D03FB900D9CA97 /* ZAction.m */; };
+		B6E241A816D03FB900D9CA97 /* ZAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419A16D03FB900D9CA97 /* ZAction.m */; };
+		B6E241A916D03FB900D9CA97 /* ZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419C16D03FB900D9CA97 /* ZActionSheet.m */; };
+		B6E241AA16D03FB900D9CA97 /* ZActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419C16D03FB900D9CA97 /* ZActionSheet.m */; };
+		B6E241AB16D03FB900D9CA97 /* ZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419E16D03FB900D9CA97 /* ZAlertView.m */; };
+		B6E241AC16D03FB900D9CA97 /* ZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419E16D03FB900D9CA97 /* ZAlertView.m */; };
+		B6E241AD16D03FB900D9CA97 /* ZFloatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A016D03FB900D9CA97 /* ZFloatingManager.m */; };
+		B6E241AE16D03FB900D9CA97 /* ZFloatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A016D03FB900D9CA97 /* ZFloatingManager.m */; };
+		B6E241AF16D03FB900D9CA97 /* ZFloatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A216D03FB900D9CA97 /* ZFloatingObject.m */; };
+		B6E241B016D03FB900D9CA97 /* ZFloatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A216D03FB900D9CA97 /* ZFloatingObject.m */; };
+		B6E241B116D03FB900D9CA97 /* ZFloatingRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A416D03FB900D9CA97 /* ZFloatingRepresentative.m */; };
+		B6E241B216D03FB900D9CA97 /* ZFloatingRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A416D03FB900D9CA97 /* ZFloatingRepresentative.m */; };
+		B6E241B316D03FB900D9CA97 /* ZPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A616D03FB900D9CA97 /* ZPopoverController.m */; };
+		B6E241B416D03FB900D9CA97 /* ZPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E241A616D03FB900D9CA97 /* ZPopoverController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,8 +300,22 @@
 		B6E2418B16D02C7D00D9CA97 /* hole1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole1.PNG; sourceTree = "<group>"; };
 		B6E2419016D02F2B00D9CA97 /* Play_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play_VC.h; sourceTree = "<group>"; };
 		B6E2419116D02F2B00D9CA97 /* Play_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play_VC.m; sourceTree = "<group>"; };
-		B6E2419416D035BB00D9CA97 /* UserStageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserStageInfo.h; path = OnPar2/classes/CoreDataObjects/UserStageInfo.h; sourceTree = "<group>"; };
-		B6E2419516D035BB00D9CA97 /* UserStageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserStageInfo.m; path = OnPar2/classes/CoreDataObjects/UserStageInfo.m; sourceTree = "<group>"; };
+		B6E2419416D035BB00D9CA97 /* UserStageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStageInfo.h; sourceTree = "<group>"; };
+		B6E2419516D035BB00D9CA97 /* UserStageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStageInfo.m; sourceTree = "<group>"; };
+		B6E2419916D03FB900D9CA97 /* ZAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAction.h; sourceTree = "<group>"; };
+		B6E2419A16D03FB900D9CA97 /* ZAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAction.m; sourceTree = "<group>"; };
+		B6E2419B16D03FB900D9CA97 /* ZActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZActionSheet.h; sourceTree = "<group>"; };
+		B6E2419C16D03FB900D9CA97 /* ZActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZActionSheet.m; sourceTree = "<group>"; };
+		B6E2419D16D03FB900D9CA97 /* ZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAlertView.h; sourceTree = "<group>"; };
+		B6E2419E16D03FB900D9CA97 /* ZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAlertView.m; sourceTree = "<group>"; };
+		B6E2419F16D03FB900D9CA97 /* ZFloatingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFloatingManager.h; sourceTree = "<group>"; };
+		B6E241A016D03FB900D9CA97 /* ZFloatingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFloatingManager.m; sourceTree = "<group>"; };
+		B6E241A116D03FB900D9CA97 /* ZFloatingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFloatingObject.h; sourceTree = "<group>"; };
+		B6E241A216D03FB900D9CA97 /* ZFloatingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFloatingObject.m; sourceTree = "<group>"; };
+		B6E241A316D03FB900D9CA97 /* ZFloatingRepresentative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFloatingRepresentative.h; sourceTree = "<group>"; };
+		B6E241A416D03FB900D9CA97 /* ZFloatingRepresentative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFloatingRepresentative.m; sourceTree = "<group>"; };
+		B6E241A516D03FB900D9CA97 /* ZPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPopoverController.h; sourceTree = "<group>"; };
+		B6E241A616D03FB900D9CA97 /* ZPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPopoverController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,8 +350,6 @@
 		B611324816CB0F670032AD4B = {
 			isa = PBXGroup;
 			children = (
-				B6E2419416D035BB00D9CA97 /* UserStageInfo.h */,
-				B6E2419516D035BB00D9CA97 /* UserStageInfo.m */,
 				B611325C16CB0F670032AD4B /* OnPar2 */,
 				B611328A16CB0F680032AD4B /* OnPar2Tests */,
 				B611325316CB0F670032AD4B /* Frameworks */,
@@ -445,6 +471,7 @@
 				B61132C716CD92B90032AD4B /* Config.h */,
 				B61132D116CD92B90032AD4B /* defines.h */,
 				B61132D216CD92B90032AD4B /* defines.m */,
+				B6E2419816D03FB900D9CA97 /* ZPopoverController */,
 				B6E2416716CFF82100D9CA97 /* AHAlertView */,
 				B611336B16CDB0730032AD4B /* SLGlowingTextField */,
 				B61132C816CD92B90032AD4B /* CoreDataObjects */,
@@ -462,6 +489,8 @@
 		B61132C816CD92B90032AD4B /* CoreDataObjects */ = {
 			isa = PBXGroup;
 			children = (
+				B6E2419416D035BB00D9CA97 /* UserStageInfo.h */,
+				B6E2419516D035BB00D9CA97 /* UserStageInfo.m */,
 				B61132C916CD92B90032AD4B /* Hole.h */,
 				B61132CA16CD92B90032AD4B /* Hole.m */,
 				B61132CB16CD92B90032AD4B /* Round.h */,
@@ -676,6 +705,27 @@
 			name = Holes;
 			sourceTree = "<group>";
 		};
+		B6E2419816D03FB900D9CA97 /* ZPopoverController */ = {
+			isa = PBXGroup;
+			children = (
+				B6E2419916D03FB900D9CA97 /* ZAction.h */,
+				B6E2419A16D03FB900D9CA97 /* ZAction.m */,
+				B6E2419B16D03FB900D9CA97 /* ZActionSheet.h */,
+				B6E2419C16D03FB900D9CA97 /* ZActionSheet.m */,
+				B6E2419D16D03FB900D9CA97 /* ZAlertView.h */,
+				B6E2419E16D03FB900D9CA97 /* ZAlertView.m */,
+				B6E2419F16D03FB900D9CA97 /* ZFloatingManager.h */,
+				B6E241A016D03FB900D9CA97 /* ZFloatingManager.m */,
+				B6E241A116D03FB900D9CA97 /* ZFloatingObject.h */,
+				B6E241A216D03FB900D9CA97 /* ZFloatingObject.m */,
+				B6E241A316D03FB900D9CA97 /* ZFloatingRepresentative.h */,
+				B6E241A416D03FB900D9CA97 /* ZFloatingRepresentative.m */,
+				B6E241A516D03FB900D9CA97 /* ZPopoverController.h */,
+				B6E241A616D03FB900D9CA97 /* ZPopoverController.m */,
+			);
+			path = ZPopoverController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -872,6 +922,13 @@
 				B6E2416A16CFF82100D9CA97 /* AHAlertView.m in Sources */,
 				B6E2419216D02F2B00D9CA97 /* Play_VC.m in Sources */,
 				B6E2419616D035BB00D9CA97 /* UserStageInfo.m in Sources */,
+				B6E241A716D03FB900D9CA97 /* ZAction.m in Sources */,
+				B6E241A916D03FB900D9CA97 /* ZActionSheet.m in Sources */,
+				B6E241AB16D03FB900D9CA97 /* ZAlertView.m in Sources */,
+				B6E241AD16D03FB900D9CA97 /* ZFloatingManager.m in Sources */,
+				B6E241AF16D03FB900D9CA97 /* ZFloatingObject.m in Sources */,
+				B6E241B116D03FB900D9CA97 /* ZFloatingRepresentative.m in Sources */,
+				B6E241B316D03FB900D9CA97 /* ZPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,6 +942,13 @@
 				B6E2416B16CFF82100D9CA97 /* AHAlertView.m in Sources */,
 				B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */,
 				B6E2419716D035BB00D9CA97 /* UserStageInfo.m in Sources */,
+				B6E241A816D03FB900D9CA97 /* ZAction.m in Sources */,
+				B6E241AA16D03FB900D9CA97 /* ZActionSheet.m in Sources */,
+				B6E241AC16D03FB900D9CA97 /* ZAlertView.m in Sources */,
+				B6E241AE16D03FB900D9CA97 /* ZFloatingManager.m in Sources */,
+				B6E241B016D03FB900D9CA97 /* ZFloatingObject.m in Sources */,
+				B6E241B216D03FB900D9CA97 /* ZFloatingRepresentative.m in Sources */,
+				B6E241B416D03FB900D9CA97 /* ZPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

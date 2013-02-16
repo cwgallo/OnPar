@@ -47,5 +47,14 @@
 // TPKeyboardAvoiding
 #import "TPKeyboardAvoidingScrollView.h"
 
+// ZPopoverController
+#import "ZAction.h"
+#import "ZActionSheet.h"
+#import "ZAlertView.h"
+#import "ZFloatingManager.h"
+#import "ZFloatingObject.h"
+#import "ZFloatingRepresentative.h"
+#import "ZPopoverController.h"
+
 
 #endif

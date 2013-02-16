@@ -394,7 +394,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Golfer Name" id="5nO-NK-CUY">
                         <barButtonItem key="leftBarButtonItem" title="End" id="6mi-9a-KDq"/>
-                        <barButtonItem key="rightBarButtonItem" title="Golfers" id="SDi-bm-Y8X"/>
+                        <barButtonItem key="rightBarButtonItem" title="Golfers" id="SDi-bm-Y8X">
+                            <connections>
+                                <action selector="selectGolfer:" destination="Bch-5h-vqj" id="M0D-uT-U8F"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myImageView" destination="fR4-6i-HLQ" id="3LP-HK-ckZ"/>
@@ -567,69 +571,6 @@
         <image name="hole1.PNG" width="350" height="800"/>
         <image name="logo2.png" width="497" height="203"/>
     </resources>
-    <classes>
-        <class className="GolferVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
-            <relationships>
-                <relationship kind="action" name="startRound:"/>
-                <relationship kind="action" name="valueChanged:"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
-            </relationships>
-        </class>
-        <class className="Golfer_Add_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Add_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="teeChanged:"/>
-                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="Golfer_Registration_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Registration_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="teeChanged:"/>
-                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="membershipNumberTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="nicknameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startButton:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="Play_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Play_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="endShot:"/>
-                <relationship kind="action" name="finishHole:"/>
-                <relationship kind="action" name="skipHole:"/>
-                <relationship kind="action" name="startShot:"/>
-                <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="myScrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SLGlowingTextField" superclassName="UITextField">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
