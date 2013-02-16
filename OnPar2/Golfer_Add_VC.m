@@ -128,23 +128,28 @@
                          }
                          
                          if ([golfers count] == 4) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                               message:@"No more golfers can be added."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"No more golfers can be added."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
+                             
                          } else {
                              BOOL exists = NO;
                              for (User *uCheck in golfers) {
                                  if (uCheck.userID == [[NSNumber alloc] initWithInt: [[user valueForKey: @"id"] intValue]]) {
                                      exists = YES;
-                                     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                       message:@"This golfer is already playing."
-                                                                                      delegate:nil
-                                                                             cancelButtonTitle:@"OK"
-                                                                             otherButtonTitles:nil];
-                                     [message show];
+                                     
+                                     AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"This golfer is already playing."];
+                                     [alert applyCustomAlertAppearance];
+                                     __weak AHAlertView *weakAlert = alert;
+                                     [alert addButtonWithTitle:@"OK" block:^{
+                                         weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                                     }];
+                                     [alert show];
+                                     
                                      break;
                                  }
                              }
@@ -173,6 +178,19 @@
                                  u.tee = [NSNumber numberWithInt: tee];
                                  u.order = [NSNumber numberWithInt: [golfers count] + 1];
                                  
+                                 // create a new info entity
+                                 UserStageInfo *info = [NSEntityDescription
+                                                        insertNewObjectForEntityForName: @"UserStageInfo"
+                                                        inManagedObjectContext: [appDelegate managedObjectContext]];
+                                 
+                                 info.stage = [NSNumber numberWithInt: STAGE_AIM];
+                                 info.holeNumber = @1;
+                                 info.shotNumber = @1;
+                                 
+                                 // set relationships
+                                 info.user = u;
+                                 u.stageInfo = info;
+                                 
                                  if (![[appDelegate managedObjectContext] save: &error]) {
                                      NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                                  }
@@ -181,42 +199,60 @@
                              [self dismissViewControllerAnimated:YES completion:nil];
                          }
                      } else if (r.status == 204) {
-                         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
-                                                                           message:@"This User email does not exist."
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"OK"
-                                                                 otherButtonTitles:@"Register", nil];
-                         [message show];
+                         // email validation failed
+                         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"User Error" message:@"This User email does not exist."];
+                         [alert applyCustomAlertAppearance];
+                         __weak AHAlertView *weakAlert = alert;
+                         [alert setCancelButtonTitle:@"Cancel" block:^{
+                             weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                         }];
+                         [alert addButtonWithTitle:@"Register" block:^{
+                             // segue to register page with email filled in
+                             weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                         }];
+                         [alert show];
+                     } else if (r.status >= 500) {
+                         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Server Error" message:@"The server is experiencing problems. Please try again later."];
+                         [alert applyCustomAlertAppearance];
+                         __weak AHAlertView *weakAlert = alert;
+                         [alert addButtonWithTitle:@"OK" block:^{
+                             weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                         }];
+                         [alert show];
                      }
                  }
                  ];
                 
             } else {
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Connection Error"
-                                                                  message:@"You must be connected to the Wi-Fi at the club house for this action."
-                                                                 delegate:nil
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles:nil];
-                [message show];
+                // email validation failed
+                AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];
+                [alert applyCustomAlertAppearance];
+                __weak AHAlertView *weakAlert = alert;
+                [alert addButtonWithTitle:@"OK" block:^{
+                    weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                }];
+                [alert show];
             }
         } else {
             // email validation failed
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Invalid Input"
-                                                              message:@"The email you entered is not a valid email address. Please try again."
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
-            [message show];
+            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Invalid Input" message:@"The email you entered is not a valid email address. Please try again."];
+            [alert applyCustomAlertAppearance];
+            __weak AHAlertView *weakAlert = alert;
+            [alert addButtonWithTitle:@"OK" block:^{
+                weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+            }];
+            [alert show];
         }
     } else {
         // required fields failed
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                          message:@"Please fill out all required fields."
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"Please fille out all required fields."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+                                    weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                                }];
+        [alert show];
     }
 }
 

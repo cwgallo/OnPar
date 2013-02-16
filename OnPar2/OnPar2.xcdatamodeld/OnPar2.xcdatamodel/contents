@@ -18,14 +18,14 @@
         <relationship name="holes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Hole" inverseName="round" inverseEntity="Hole" syncable="YES"/>
     </entity>
     <entity name="Shot" representedClassName="Shot" syncable="YES">
-        <attribute name="aimLatitude" attributeType="Double" syncable="YES"/>
-        <attribute name="aimLongitude" attributeType="Double" syncable="YES"/>
-        <attribute name="club" attributeType="Integer 32" minValueString="1" syncable="YES"/>
-        <attribute name="endLatitude" attributeType="Double" syncable="YES"/>
-        <attribute name="endLongitude" attributeType="Double" syncable="YES"/>
-        <attribute name="shotNumber" attributeType="Integer 32" minValueString="1" syncable="YES"/>
-        <attribute name="startLatitude" attributeType="Double" syncable="YES"/>
-        <attribute name="startLongitude" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="aimLatitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="aimLongitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="club" optional="YES" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="endLatitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="endLongitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="shotNumber" optional="YES" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="startLatitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="startLongitude" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <relationship name="hole" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Hole" inverseName="shots" inverseEntity="Hole" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -36,11 +36,19 @@
         <attribute name="order" attributeType="Integer 32" minValueString="1" maxValueString="4" syncable="YES"/>
         <attribute name="tee" attributeType="Integer 32" minValueString="1" maxValueString="4" syncable="YES"/>
         <attribute name="userID" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <relationship name="stageInfo" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="UserStageInfo" inverseName="user" inverseEntity="UserStageInfo" syncable="YES"/>
+    </entity>
+    <entity name="UserStageInfo" representedClassName="UserStageInfo" syncable="YES">
+        <attribute name="holeNumber" attributeType="Integer 32" minValueString="1" maxValueString="18" defaultValueString="1" syncable="YES"/>
+        <attribute name="shotNumber" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="stage" attributeType="Integer 32" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="stageInfo" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
         <element name="Hole" positionX="-6779" positionY="-7047" width="128" height="148"/>
         <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
-        <element name="User" positionX="-7056" positionY="-6840" width="128" height="148"/>
+        <element name="User" positionX="-7056" positionY="-6840" width="128" height="163"/>
+        <element name="UserStageInfo" positionX="-6813" positionY="-6840" width="128" height="103"/>
     </elements>
 </model>
