@@ -2,7 +2,7 @@
 //  User.m
 //  OnPar2
 //
-//  Created by Kevin R Benton on 2/14/13.
+//  Created by Kevin R Benton on 2/16/13.
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
@@ -11,12 +11,13 @@
 
 @implementation User
 
-@dynamic userID;
-@dynamic memberID;
-@dynamic nickname;
-@dynamic name;
 @dynamic email;
-@dynamic tee;
+@dynamic memberID;
+@dynamic name;
+@dynamic nickname;
 @dynamic order;
+@dynamic tee;
+@dynamic userID;
+@dynamic stageInfo;
 
 @end

@@ -57,6 +57,11 @@ int const BULLDOGS  = 4;
 
 double const EARTH_RADIUS_IN_YARDS = 13950131.0/2;
 
+int const STAGE_AIM           = 0;
+int const STAGE_CLUB_SELECT   = 1;
+int const STAGE_START         = 2;
+int const STAGE_END           = 3;
+
 NSString *const BASE_URL = @"http://shadowrealm.cse.msstate.edu/gsas/API/";
 
 @end

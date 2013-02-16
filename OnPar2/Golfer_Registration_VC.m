@@ -163,6 +163,19 @@
                          u.tee = @3;
                          u.order = [NSNumber numberWithInt: [golfers count] + 1];
                          
+                         // create a new info entity
+                         UserStageInfo *info = [NSEntityDescription
+                                                insertNewObjectForEntityForName: @"UserStageInfo"
+                                                inManagedObjectContext: [appDelegate managedObjectContext]];
+                         
+                         info.stage = [NSNumber numberWithInt: STAGE_AIM];
+                         info.holeNumber = @1;
+                         info.shotNumber = @1;
+                         
+                         // set relationships
+                         info.user = u;
+                         u.stageInfo = info;
+                         
                          if (![[appDelegate managedObjectContext] save: &error]) {
                              NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                          }
