@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "GolferVC.h"
 
 @interface MainViewController ()
 
@@ -14,10 +15,13 @@
 
 @implementation MainViewController
 
+@synthesize managedObjectContext = _managedObjectContext;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
     [self hideNavBar];
 
 }
