@@ -31,6 +31,11 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -45,7 +50,7 @@
     // make sure the User is connected to the club house's WiFi
     Reachability *reach = [Reachability reachabilityWithHostname: BASE_URL];
     
-    if ([reach isReachable]) {
+    if (1){//[reach isReachable]) {
         
         // display progress spinner
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo: self.view animated: YES];

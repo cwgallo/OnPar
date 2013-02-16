@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "GolferVC.h"
+#import "Config.h"
 
 @interface MainViewController ()
 
@@ -83,5 +84,18 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
+
+- (IBAction)startButton:(id)sender {
+    
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Are you sure you are ready to start?" message:@"Click OK to get started!"];
+    [alert applyCustomAlertAppearance];
+    __weak AHAlertView *weakAlert = alert;
+    [alert setCancelButtonTitle:@"Cancel"
+                          block:^{
+                                    weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                          }];
+    [alert addButtonWithTitle:@"OK" block:^{[self performSegueWithIdentifier:@"main2options" sender:self];}];
+    [alert show];
+}
 
 @end

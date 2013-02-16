@@ -143,7 +143,9 @@
                          NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                      }
                      
-                     [self dismissViewControllerAnimated:YES completion:nil];
+                     NSLog(@"User registered, ready to return to add user");
+                     
+                     //[self dismissViewControllerAnimated:YES completion:nil];
                  } else {
                      if (r.status >= 500) {
                          UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Server Error"

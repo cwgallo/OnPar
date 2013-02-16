@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
+- (IBAction)startButton:(id)sender;
 
 @end

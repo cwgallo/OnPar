@@ -18,6 +18,9 @@
 #import "Hole.h"
 #import "Shot.h"
 
+// AHAlertView
+#import "AHAlertView.h"
+
 // JASidePanels
 #import "JASidePanelController.h"
 

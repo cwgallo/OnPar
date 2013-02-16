@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1g-9j-D3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-568" y="182"/>
+            <point key="canvasLocation" x="-1056" y="182"/>
         </scene>
         <!--Main View Controller - Main-->
         <scene sceneID="5">
@@ -42,7 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="pcM-K4-Mbb" kind="push" id="htn-Jy-mfr"/>
+                                    <action selector="startButton:" destination="2" eventType="touchUpInside" id="HWK-pc-ovW"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="xeB-vK-bKF">
@@ -65,10 +65,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="vdv-iI-uXf"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="pcM-K4-Mbb" kind="push" identifier="main2options" id="DHK-2M-Sst"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-89" y="182"/>
+            <point key="canvasLocation" x="-577" y="182"/>
         </scene>
         <!--Golfer AddVC-->
         <scene sceneID="8CB-aH-FvN">
@@ -455,6 +458,58 @@
         <image name="MSState.png" width="339" height="86"/>
         <image name="logo2.png" width="497" height="203"/>
     </resources>
+    <classes>
+        <class className="GolferVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
+            <relationships>
+                <relationship kind="action" name="valueChanged:"/>
+                <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Add_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Add_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Registration_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Registration_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="membershipNumberTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="nicknameTextField" candidateClass="SLGlowingTextField"/>
+            </relationships>
+        </class>
+        <class className="JASidePanelController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JASidePanelController.h"/>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="startButton:"/>
+            </relationships>
+        </class>
+        <class className="MySidePanelController" superclassName="JASidePanelController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MySidePanelController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SLGlowingTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

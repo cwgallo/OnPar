@@ -18,15 +18,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self showNavBar];
+    //[self showNavBar];
     [self stepperInitialization];
     
     self.holeNumberLabel.text = [NSString stringWithFormat:@"%.f", holeStepper.value];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     
     [self showNavBar];
+    [golferTableView reloadData];    
 }
 
 #pragma mark - TableView methods
