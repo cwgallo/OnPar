@@ -27,6 +27,23 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [self showNavBar];
+    
+    golfers = [[NSMutableArray alloc] init];
+    
+    // load golfers that are in database
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
+                                              inManagedObjectContext: [appDelegate managedObjectContext]];
+    [fetchRequest setEntity: entity];
+    NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
+    for (User *u in fetchedObjects) {
+        [golfers addObject: u];
+    }
+    
     [golferTableView reloadData];    
 }
 
@@ -53,17 +70,29 @@
     static NSString *MyIdentifier = @"golfer";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    /*
-     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier]];
-    }
-     */
     
-
-    NSString *g = [golfers objectAtIndex:indexPath.row];
-
-    cell.textLabel.text = g;
-//    cell.detailTextLabel.text = @"123456789";
+    User *u = [golfers objectAtIndex: indexPath.row];
+    
+    // if they have a nickname, display the username
+    // else display the full name
+    // for the details, display what tee they are using.
+    
+    if (u.nickname) {
+        cell.textLabel.text = u.nickname;
+    } else {
+        cell.textLabel.text = u.name;
+    }
+    
+    if (u.tee == [NSNumber numberWithInt: AGGIES]) {
+        cell.detailTextLabel.text = @"Aggies";
+    } else if (u.tee == [NSNumber numberWithInt: COWBELLS]) {
+        cell.detailTextLabel.text = @"Cowbells";
+    } else if (u.tee == [NSNumber numberWithInt: MAROONS]) {
+        cell.detailTextLabel.text = @"Maroons";
+    } else {
+        cell.detailTextLabel.text = @"Bulldogs";
+    }
+    
     return cell;
 }
 
