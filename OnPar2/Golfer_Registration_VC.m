@@ -170,79 +170,89 @@
                          [self dismissViewControllerAnimated:YES completion:nil];
                      } else {
                          if (r.status >= 500) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                                               message:@"The server is experiencing problems. Please try again later."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Server Error" message:@"The server is experiencing problems. Please try again later."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
                          } else if (r.status == 400) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
-                                                                               message:@"Please insert all required information."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"User Error" message:@"Please insert all required information."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
                          } else if (r.status == 412) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
-                                                                               message:@"MemberID and email already taken."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"User Error" message:@"MemberID and email already taken."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
                          } else if (r.status == 406) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
-                                                                               message:@"MemberID already taken."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"User Error" message:@"MemberID already taken."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
                          } else if (r.status == 409) {
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"User Error"
-                                                                               message:@"Email already taken."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"User Error" message:@"Email already taken."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
                          } else {
                              // handle this error better
-                             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Unknown Error"
-                                                                               message:@"Something went terribly wrong."
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil];
-                             [message show];
+                             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Unknown Error" message:@"Something went terribly wrong."];
+                             [alert applyCustomAlertAppearance];
+                             __weak AHAlertView *weakAlert = alert;
+                             [alert addButtonWithTitle:@"OK" block:^{
+                                 weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             }];
+                             [alert show];
+                             
                          }
                      }
                  }
                  ];
                 
             } else {
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Connection Error"
-                                                                  message:@"You must be connected to the Wi-Fi at the club house for this action."
-                                                                 delegate:nil
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles:nil];
-                [message show];
+                AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];
+                [alert applyCustomAlertAppearance];
+                __weak AHAlertView *weakAlert = alert;
+                [alert addButtonWithTitle:@"OK" block:^{
+                    weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                }];
+                [alert show];
             }
         } else {
             // email validation failed
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Invalid Input"
-                                                              message:@"The email you entered is not a valid email address. Please try again."
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
-            [message show];
+            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Invalid Input" message:@"The email you entered is not a valid email address. Please try again."];
+            [alert applyCustomAlertAppearance];
+            __weak AHAlertView *weakAlert = alert;
+            [alert addButtonWithTitle:@"OK" block:^{
+                weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+            }];
+            [alert show];
         }
     } else {
         // required fields failed
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                          message:@"Please fill out all required fields."
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"Please fille out all required fields."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
     }
 }
 
