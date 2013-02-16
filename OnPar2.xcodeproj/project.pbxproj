@@ -114,6 +114,8 @@
 		B6E2418D16D02C7D00D9CA97 /* hole1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6E2418B16D02C7D00D9CA97 /* hole1.PNG */; };
 		B6E2419216D02F2B00D9CA97 /* Play_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419116D02F2B00D9CA97 /* Play_VC.m */; };
 		B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419116D02F2B00D9CA97 /* Play_VC.m */; };
+		B6E2419616D035BB00D9CA97 /* UserStageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419516D035BB00D9CA97 /* UserStageInfo.m */; };
+		B6E2419716D035BB00D9CA97 /* UserStageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419516D035BB00D9CA97 /* UserStageInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +286,8 @@
 		B6E2418B16D02C7D00D9CA97 /* hole1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole1.PNG; sourceTree = "<group>"; };
 		B6E2419016D02F2B00D9CA97 /* Play_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play_VC.h; sourceTree = "<group>"; };
 		B6E2419116D02F2B00D9CA97 /* Play_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play_VC.m; sourceTree = "<group>"; };
+		B6E2419416D035BB00D9CA97 /* UserStageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserStageInfo.h; path = OnPar2/classes/CoreDataObjects/UserStageInfo.h; sourceTree = "<group>"; };
+		B6E2419516D035BB00D9CA97 /* UserStageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserStageInfo.m; path = OnPar2/classes/CoreDataObjects/UserStageInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +322,8 @@
 		B611324816CB0F670032AD4B = {
 			isa = PBXGroup;
 			children = (
+				B6E2419416D035BB00D9CA97 /* UserStageInfo.h */,
+				B6E2419516D035BB00D9CA97 /* UserStageInfo.m */,
 				B611325C16CB0F670032AD4B /* OnPar2 */,
 				B611328A16CB0F680032AD4B /* OnPar2Tests */,
 				B611325316CB0F670032AD4B /* Frameworks */,
@@ -865,6 +871,7 @@
 				B611337216CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 				B6E2416A16CFF82100D9CA97 /* AHAlertView.m in Sources */,
 				B6E2419216D02F2B00D9CA97 /* Play_VC.m in Sources */,
+				B6E2419616D035BB00D9CA97 /* UserStageInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +884,7 @@
 				B611337316CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 				B6E2416B16CFF82100D9CA97 /* AHAlertView.m in Sources */,
 				B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */,
+				B6E2419716D035BB00D9CA97 /* UserStageInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
