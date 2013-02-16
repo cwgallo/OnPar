@@ -110,6 +110,10 @@
 		B6E2418816CFFEA100D9CA97 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6E2417516CFFEA100D9CA97 /* Icon.png */; };
 		B6E2418916CFFEA100D9CA97 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6E2417616CFFEA100D9CA97 /* Icon@2x.png */; };
 		B6E2418A16CFFEA100D9CA97 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6E2417616CFFEA100D9CA97 /* Icon@2x.png */; };
+		B6E2418C16D02C7D00D9CA97 /* hole1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6E2418B16D02C7D00D9CA97 /* hole1.PNG */; };
+		B6E2418D16D02C7D00D9CA97 /* hole1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6E2418B16D02C7D00D9CA97 /* hole1.PNG */; };
+		B6E2419216D02F2B00D9CA97 /* Play_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419116D02F2B00D9CA97 /* Play_VC.m */; };
+		B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2419116D02F2B00D9CA97 /* Play_VC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +281,9 @@
 		B6E2417416CFFEA100D9CA97 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		B6E2417516CFFEA100D9CA97 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B6E2417616CFFEA100D9CA97 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B6E2418B16D02C7D00D9CA97 /* hole1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole1.PNG; sourceTree = "<group>"; };
+		B6E2419016D02F2B00D9CA97 /* Play_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play_VC.h; sourceTree = "<group>"; };
+		B6E2419116D02F2B00D9CA97 /* Play_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play_VC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +391,7 @@
 		B611328B16CB0F680032AD4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6E2418E16D02C8100D9CA97 /* Images */,
 				B611328C16CB0F680032AD4B /* OnPar2Tests-Info.plist */,
 				B611328D16CB0F680032AD4B /* InfoPlist.strings */,
 			);
@@ -402,6 +410,8 @@
 		B61132BE16CD2F290032AD4B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6E2419016D02F2B00D9CA97 /* Play_VC.h */,
+				B6E2419116D02F2B00D9CA97 /* Play_VC.m */,
 				B611327716CB0F670032AD4B /* MainViewController.h */,
 				B611327816CB0F670032AD4B /* MainViewController.m */,
 				B61132BB16CD2F200032AD4B /* GolferVC.h */,
@@ -644,6 +654,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B6E2418E16D02C8100D9CA97 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B6E2418F16D02C8600D9CA97 /* Holes */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		B6E2418F16D02C8600D9CA97 /* Holes */ = {
+			isa = PBXGroup;
+			children = (
+				B6E2418B16D02C7D00D9CA97 /* hole1.PNG */,
+			);
+			name = Holes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -733,6 +759,7 @@
 				B6E2418516CFFEA100D9CA97 /* Icon-72.png in Resources */,
 				B6E2418716CFFEA100D9CA97 /* Icon.png in Resources */,
 				B6E2418916CFFEA100D9CA97 /* Icon@2x.png in Resources */,
+				B6E2418C16D02C7D00D9CA97 /* hole1.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +780,7 @@
 				B6E2418616CFFEA100D9CA97 /* Icon-72.png in Resources */,
 				B6E2418816CFFEA100D9CA97 /* Icon.png in Resources */,
 				B6E2418A16CFFEA100D9CA97 /* Icon@2x.png in Resources */,
+				B6E2418D16D02C7D00D9CA97 /* hole1.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +864,7 @@
 				B611336916CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
 				B611337216CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 				B6E2416A16CFF82100D9CA97 /* AHAlertView.m in Sources */,
+				B6E2419216D02F2B00D9CA97 /* Play_VC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +876,7 @@
 				B611336A16CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
 				B611337316CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 				B6E2416B16CFF82100D9CA97 /* AHAlertView.m in Sources */,
+				B6E2419316D02F2B00D9CA97 /* Play_VC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,8 +16,10 @@
 @property (strong, nonatomic) IBOutlet SLGlowingTextField *emailAddressTextField;
 @property (strong, nonatomic) IBOutlet SLGlowingTextField *membershipNumberTextField;
 @property (strong, nonatomic) IBOutlet SLGlowingTextField *nicknameTextField;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *teeSegment;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)teeChanged:(id)sender;
 
 @end

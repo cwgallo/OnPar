@@ -11,10 +11,12 @@
 
 @interface GolferVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UITableView *golferTableView;
 @property (strong, nonatomic) IBOutlet UIStepper *holeStepper;
 @property (strong, nonatomic) IBOutlet UILabel *holeNumberLabel;
 
+- (IBAction)startRound:(id)sender;
 - (IBAction)valueChanged:(id)sender;
 
 @end

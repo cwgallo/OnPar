@@ -14,6 +14,7 @@
 
 @synthesize golferTableView;
 @synthesize holeStepper;
+@synthesize addButton;
 
 - (void)viewDidLoad
 {
@@ -44,7 +45,14 @@
         [golfers addObject: u];
     }
     
-    [golferTableView reloadData];    
+    [golferTableView reloadData];
+    
+    
+    if (golfers.count == 4)
+    {
+        addButton.hidden = YES;
+    }
+    
 }
 
 #pragma mark - TableView methods
@@ -138,6 +146,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 30.0;
+}
+
+- (IBAction)startRound:(id)sender {
+    
+    // create round
+    
+    // transition
+    [self performSegueWithIdentifier:@"settings2play" sender:self];
+    
 }
 
 - (IBAction)valueChanged:(id)sender {

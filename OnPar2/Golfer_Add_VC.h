@@ -12,8 +12,10 @@
 @interface Golfer_Add_VC : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet SLGlowingTextField *emailAddressTextField;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *teeSegment;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)teeChanged:(id)sender;
 
 @end

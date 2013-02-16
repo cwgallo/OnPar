@@ -12,9 +12,12 @@
 
 @end
 
-@implementation Golfer_Add_VC
+@implementation Golfer_Add_VC{
+    int tee;
+}
 
 @synthesize emailAddressTextField;
+@synthesize teeSegment;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -167,7 +170,7 @@
                                  
                                  // set the tee
                                  // TODO - change
-                                 u.tee = @3;
+                                 u.tee = [NSNumber numberWithInt: tee];
                                  u.order = [NSNumber numberWithInt: [golfers count] + 1];
                                  
                                  if (![[appDelegate managedObjectContext] save: &error]) {
@@ -216,6 +219,32 @@
         [message show];
     }
 }
+
+
+- (IBAction)teeChanged:(id)sender {
+    
+    switch (self.teeSegment.selectedSegmentIndex) {
+        case 0:
+            tee = AGGIES;
+            NSLog(@"aggies");
+            break;
+        case 1:
+            tee = MAROONS;
+            NSLog(@"maroons");
+            break;
+        case 2:
+            tee = COWBELLS;
+            NSLog(@"cowbells");
+            break;
+        case 3:
+            tee = BULLDOGS;
+            NSLog(@"bulldogs");
+            break;
+        default:
+            break;
+    }
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

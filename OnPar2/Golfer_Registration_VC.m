@@ -13,12 +13,15 @@
 
 @end
 
-@implementation Golfer_Registration_VC
+@implementation Golfer_Registration_VC{
+    int tee;
+}
 
 @synthesize firstNameTextField, lastNameTextField;
 @synthesize emailAddressTextField;
 @synthesize membershipNumberTextField;
 @synthesize nicknameTextField;
+@synthesize teeSegment;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,15 +167,16 @@
                          }
                          
                          // set the tee
-                         // TODO - change
-                         u.tee = @3;
+                         u.tee = [NSNumber numberWithInt:tee];
                          u.order = [NSNumber numberWithInt: [golfers count] + 1];
                          
                          if (![[appDelegate managedObjectContext] save: &error]) {
                              NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                          }
-                         
-                         [self dismissViewControllerAnimated:YES completion:nil];
+                
+                 // go back 2 view controllers
+                 [[self navigationController] popToViewController:[[[self navigationController] viewControllers] objectAtIndex: [[[self navigationController] viewControllers] count] - 3]animated:YES];
+                     
                      } else {
                          if (r.status >= 500) {
                              UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Server Error"
@@ -244,6 +253,30 @@
                                                 otherButtonTitles:nil];
         [message show];
     }
+}
+
+- (IBAction)teeChanged:(id)sender {
+    
+    switch (self.teeSegment.selectedSegmentIndex) {
+            case 0:
+                tee = AGGIES;
+                NSLog(@"aggies");
+                break;
+            case 1:
+                tee = MAROONS;
+                NSLog(@"maroons");
+                break;
+            case 2:
+                tee = COWBELLS;
+                NSLog(@"cowbells");
+                break;
+            case 3:
+                tee = BULLDOGS;
+                NSLog(@"bulldogs");
+                break;
+            default:
+                break;
+        }
 }
 
 @end
