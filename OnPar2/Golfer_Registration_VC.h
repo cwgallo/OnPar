@@ -20,6 +20,4 @@
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 
--(void)goBackTwoViews;
-
 @end

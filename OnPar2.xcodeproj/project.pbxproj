@@ -84,6 +84,10 @@
 		B611336916CDB06E0032AD4B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B611336816CDB06E0032AD4B /* SLGlowingTextField.m */; };
 		B611336A16CDB06E0032AD4B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B611336816CDB06E0032AD4B /* SLGlowingTextField.m */; };
 		B611336C16CDB61B0032AD4B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611326E16CB0F670032AD4B /* MainStoryboard_iPhone.storyboard */; };
+		B611336E16CDEBE40032AD4B /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = B611336D16CDEBE40032AD4B /* logo2.png */; };
+		B611336F16CDEBE40032AD4B /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = B611336D16CDEBE40032AD4B /* logo2.png */; };
+		B611337216CDEF0A0032AD4B /* MySidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611337116CDEF0A0032AD4B /* MySidePanelController.m */; };
+		B611337316CDEF0A0032AD4B /* MySidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611337116CDEF0A0032AD4B /* MySidePanelController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +240,9 @@
 		B611336416CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		B611336716CDB06E0032AD4B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
 		B611336816CDB06E0032AD4B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
+		B611336D16CDEBE40032AD4B /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
+		B611337016CDEF0A0032AD4B /* MySidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MySidePanelController.h; path = ../../MySidePanelController.h; sourceTree = "<group>"; };
+		B611337116CDEF0A0032AD4B /* MySidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MySidePanelController.m; path = ../../MySidePanelController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +359,7 @@
 		B611329B16CD27090032AD4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B611336D16CDEBE40032AD4B /* logo2.png */,
 				B611329C16CD272A0032AD4B /* MSState.png */,
 			);
 			name = Images;
@@ -418,6 +426,8 @@
 		B61132D316CD92B90032AD4B /* JASidePanels */ = {
 			isa = PBXGroup;
 			children = (
+				B611337016CDEF0A0032AD4B /* MySidePanelController.h */,
+				B611337116CDEF0A0032AD4B /* MySidePanelController.m */,
 				B61132D416CD92B90032AD4B /* JASidePanelController.h */,
 				B61132D516CD92B90032AD4B /* JASidePanelController.m */,
 				B61132D616CD92B90032AD4B /* UIViewController+JASidePanel.h */,
@@ -650,6 +660,7 @@
 				B611327016CB0F670032AD4B /* MainStoryboard_iPhone.storyboard in Resources */,
 				B611327316CB0F670032AD4B /* MainStoryboard_iPad.storyboard in Resources */,
 				B611329D16CD272A0032AD4B /* MSState.png in Resources */,
+				B611336E16CDEBE40032AD4B /* logo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +670,7 @@
 			files = (
 				B611328F16CB0F680032AD4B /* InfoPlist.strings in Resources */,
 				B611336C16CDB61B0032AD4B /* MainStoryboard_iPhone.storyboard in Resources */,
+				B611336F16CDEBE40032AD4B /* logo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +752,7 @@
 				B611336016CD92B90032AD4B /* SBJsonWriter.m in Sources */,
 				B611336516CDAB590032AD4B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				B611336916CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
+				B611337216CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +762,7 @@
 			files = (
 				B611329216CB0F680032AD4B /* OnPar2Tests.m in Sources */,
 				B611336A16CDB06E0032AD4B /* SLGlowingTextField.m in Sources */,
+				B611337316CDEF0A0032AD4B /* MySidePanelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
