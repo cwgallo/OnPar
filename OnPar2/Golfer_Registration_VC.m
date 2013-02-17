@@ -179,7 +179,7 @@
                                                 insertNewObjectForEntityForName: @"UserStageInfo"
                                                 inManagedObjectContext: [appDelegate managedObjectContext]];
                          
-                         info.stage = [NSNumber numberWithInt: STAGE_AIM];
+                         info.stage = [NSNumber numberWithInt: STAGE_START];
                          info.holeNumber = @1;
                          info.shotNumber = @1;
                          
