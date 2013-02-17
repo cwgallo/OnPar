@@ -2,7 +2,7 @@
 //  UserStageInfo.m
 //  OnPar2
 //
-//  Created by Kevin R Benton on 2/16/13.
+//  Created by Kevin R Benton on 2/17/13.
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
@@ -12,9 +12,10 @@
 
 @implementation UserStageInfo
 
-@dynamic stage;
 @dynamic holeNumber;
 @dynamic shotNumber;
+@dynamic stage;
+@dynamic currentGolfer;
 @dynamic user;
 
 @end

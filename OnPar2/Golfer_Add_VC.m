@@ -196,6 +196,13 @@
                                  info.user = u;
                                  u.stageInfo = info;
                                  
+                                 if (golfers.count == 0) {
+                                     // set currentGolfer to YES because this is the first golfer added
+                                     info.currentGolfer = [NSNumber numberWithBool: YES];
+                                 } else {
+                                     info.currentGolfer = [NSNumber numberWithBool: NO];
+                                 }
+                                 
                                  if (![[appDelegate managedObjectContext] save: &error]) {
                                      NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                                  }

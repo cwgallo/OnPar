@@ -183,6 +183,13 @@
                          info.holeNumber = @1;
                          info.shotNumber = @1;
                          
+                         if (golfers.count == 0) {
+                             // set currentGolfer to YES because this is the first golfer added
+                             info.currentGolfer = [NSNumber numberWithBool: YES];
+                         } else {
+                             info.currentGolfer = [NSNumber numberWithBool: NO];
+                         }
+                         
                          // set relationships
                          info.user = u;
                          u.stageInfo = info;

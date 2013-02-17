@@ -16,15 +16,24 @@
 @end
 
 @implementation Play_VC{
-    NSMutableArray *golfers;
-    NSMutableArray *rounds;
+    NSMutableDictionary *golfers;
+    NSMutableDictionary *rounds;
     
-    // current golfer should be the index for both user in the golfers array
-    // and the round in the round array
-    int currentGolfer;
+    // for the club selection
+    NSArray *types;
+    NSArray *woods;
+    NSArray *hybrids;
+    NSArray *irons;
+    NSArray *wedges;
+    
+    User *currentGolfer;
 }
 
 @synthesize myImageView, myScrollView, navBar;
+@synthesize startButton, endButton, finishButton, skipButton;
+
+@synthesize locationMgr = _locationMgr;
+@synthesize lastLocation = _lastLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,17 +44,24 @@
     return self;
 }
 
+#pragma mark - View Loads
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view
+	// Do any additional setup after loading the view.
+    
+    // location manager
+    self.locationMgr = [[CLLocationManager alloc] init];
+    self.locationMgr.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationMgr.delegate = self;
+    
+    // just constantly track satelite location
+    [self.locationMgr startUpdatingLocation];
     
     // should only have to retrieve the golfers once
-    golfers = [[NSMutableArray alloc] init];
-    rounds = [[NSMutableArray alloc] init];
-    
-    // initialize current golfer to golfer 1
-    currentGolfer = 0;
+    golfers = [[NSMutableDictionary alloc] init];
+    rounds = [[NSMutableDictionary alloc] init];
     
     // load golfers that are in database
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
@@ -54,86 +70,135 @@
     
     NSFetchRequest *userFetch = [[NSFetchRequest alloc] init];
     NSEntityDescription *user = [NSEntityDescription entityForName: @"User"
-                                              inManagedObjectContext: [appDelegate managedObjectContext]];
+                                            inManagedObjectContext: [appDelegate managedObjectContext]];
     [userFetch setEntity: user];
     NSArray *users = [[appDelegate managedObjectContext] executeFetchRequest: userFetch error: &error];
-    for (User *u in users) {
-        [golfers addObject: u];
-        
-        // create a round for each user and store it in the same location
-        Round *r = [NSEntityDescription
-                   insertNewObjectForEntityForName: @"Round"
-                   inManagedObjectContext: [appDelegate managedObjectContext]];
-        
-        // the course ID can maybe change at a later time
-        r.courseID = @1;
-        r.userID = u.userID;
-        r.teeID = u.tee;
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
-        
-        NSString *dateString = [formatter stringFromDate: [NSDate date]];
-        
-        r.startTime  = dateString;
-        
-        // create the first hole for every golfer
-        Hole *h = [NSEntityDescription
-                    insertNewObjectForEntityForName: @"Hole"
-                    inManagedObjectContext: [appDelegate managedObjectContext]];
-        
-        h.holeNumber = @1;
-        
-        // set relationships
-        h.round = r;
-        [r addHolesObject: h];
-        
-        // save the round and hole
-        if (![[appDelegate managedObjectContext] save: &error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        } else {
-            // add the object to the rounds array
-            [rounds addObject: r];
-        }
-    }
     
-    /*NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
+    // load the rounds from the database to see if there are any
+    // if some exists, do not create new rounds, just use the ones already in the DB
+    NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
     NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
-                                            inManagedObjectContext: [appDelegate managedObjectContext]];
+                                             inManagedObjectContext: [appDelegate managedObjectContext]];
     [roundFetch setEntity: round];
     NSArray *DBrounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
     
-    for (Round *r in DBrounds) {
-        NSLog(@"%@", r);
-    }*/
+    if (DBrounds.count != 0) {
+        for (Round *r in DBrounds) {
+            [rounds setObject: r forKey: r.userID];
+        }
+    }
     
-    
-    // get current golfer info
-    User *u = [golfers objectAtIndex:currentGolfer];
-    
-    NSLog(@"Hole number: %@", u.stageInfo.holeNumber);
+    for (User *u in users) {
+        [golfers setObject: u forKey: u.userID];
+        
+        // check to see if this is the current golfer
+        if ([u.stageInfo.currentGolfer isEqualToNumber: [NSNumber numberWithBool: YES]]) {
+            NSLog(@"The current golfer is: %@", u.name);
+            currentGolfer = u;
+        }
+        
+        if ([rounds count] == 0) {
+            // create a round for each user and store it in the same location
+            Round *r = [NSEntityDescription
+                        insertNewObjectForEntityForName: @"Round"
+                        inManagedObjectContext: [appDelegate managedObjectContext]];
+            
+            // the course ID can maybe change at a later time
+            r.courseID = @1;
+            r.userID = u.userID;
+            r.teeID = u.tee;
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+            
+            NSString *dateString = [formatter stringFromDate: [NSDate date]];
+            
+            r.startTime  = dateString;
+            
+            // create the first hole for every golfer
+            Hole *h = [NSEntityDescription
+                       insertNewObjectForEntityForName: @"Hole"
+                       inManagedObjectContext: [appDelegate managedObjectContext]];
+            
+            h.holeNumber = @1;
+            
+            // set relationships
+            h.round = r;
+            [r addHolesObject: h];
+            
+            // save the round and hole
+            if (![[appDelegate managedObjectContext] save: &error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            } else {
+                // add the object to the rounds array
+                [rounds setObject: r forKey: u.userID];
+            }
+        }
+    }
     
     // set correct hole image
-    if (u.nickname != nil)
-        [navBar setTitle:u.nickname];
+    if (currentGolfer.nickname != nil)
+        [navBar setTitle:currentGolfer.nickname];
     else
-        [navBar setTitle:u.name];
+        [navBar setTitle:currentGolfer.name];
     
-    [self setHoleImageForUser:u];
-    
-    /*
-    myScrollView.contentSize = myImageView.bounds.size;
-    [myScrollView setDelegate:self];
-    [myScrollView setScrollEnabled:YES];
-     */
-    
-    
+    //[self setHoleImageForUser: currentGolfer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // take the current golfer and display only the proper buttons
+    // set the picture for the golfer
+    [self setHoleImageForUser: currentGolfer];
     
+    // check to see what hole the golfer is on
+    // if 18, hide the skip button
+    if ([currentGolfer.stageInfo.holeNumber isEqualToNumber: [NSNumber numberWithInt: 18]]) {
+        skipButton.hidden = YES;
+    } else {
+        skipButton.hidden = NO;
+    }
+    
+    
+    if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
+        NSLog(@"Stage START for golfer: %@", currentGolfer.name);
+        // hide end button and show start
+        endButton.hidden = YES;
+        startButton.hidden = NO;
+        
+        // should still show finish unless they are in the middle of a shot
+        finishButton.hidden = NO;
+    } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_CLUB_SELECT]]) {
+        NSLog(@"Stage CLUB_SELECT for golfer: %@", currentGolfer.name);
+        // there won't be any real change here since it's just another alert
+        // hide end button and start
+        endButton.hidden = YES;
+        startButton.hidden = YES;
+        
+        // should still show finish unless they are in the middle of a shot
+        finishButton.hidden = NO;
+        
+        // manually call club select function
+        [self selectClub];
+        
+    } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_AIM]]) {
+        NSLog(@"Stage AIM for golfer: %@", currentGolfer.name);
+        // hide end button and start button
+        endButton.hidden = YES;
+        startButton.hidden = YES;
+        
+        // hide the finish button
+        // can't finish the hole with half a shot
+        finishButton.hidden = YES;
+    } else {
+        NSLog(@"Stage END for golfer: %@", currentGolfer.name);
+        // stage STAGE_END
+        // show end button and hide start button
+        endButton.hidden = NO;
+        startButton.hidden = YES;
+        
+        // still hide finish
+        finishButton.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,24 +212,24 @@
 
 - (IBAction)skipHole:(id)sender
 {
+    // if there is a current shot, discard it
     // update the holeNumber and stage of the User's stage info
-    User *u = [golfers objectAtIndex: currentGolfer];
-    u.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
     
-    int hole = [u.stageInfo.holeNumber intValue];
-    u.stageInfo.holeNumber = [NSNumber numberWithInt: hole + 1];
+    int hole = [currentGolfer.stageInfo.holeNumber intValue];
+    currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: hole + 1];
     
     // create a new hole to add to the hole object with the updated hole number
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     
-    Round *r = [rounds objectAtIndex: currentGolfer];
+    Round *r = [rounds objectForKey: currentGolfer.userID];
     
     // create the first hole for every golfer
     Hole *h = [NSEntityDescription
                insertNewObjectForEntityForName: @"Hole"
                inManagedObjectContext: [appDelegate managedObjectContext]];
     
-    h.holeNumber = u.stageInfo.holeNumber;
+    h.holeNumber = currentGolfer.stageInfo.holeNumber;
     
     // set relationships
     h.round = r;
@@ -176,12 +241,53 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     
-    NSLog(@"Current hole: %@", h);
+    [self viewWillAppear: NO];
 }
 
 - (IBAction)finishHole:(id)sender
 {
+    // make sure the current shot is finished
+    // save the hole to the database
+    // update the User's holeNumber in the User's stageInfo
     
+    if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
+        int holeNumber = [currentGolfer.stageInfo.holeNumber intValue];
+        currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
+        
+        // create a new hole to add to the hole object with the updated hole number
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        
+        Round *r = [rounds objectForKey: currentGolfer.userID];
+        
+        // create the first hole for every golfer
+        Hole *h = [NSEntityDescription
+                   insertNewObjectForEntityForName: @"Hole"
+                   inManagedObjectContext: [appDelegate managedObjectContext]];
+        
+        h.holeNumber = currentGolfer.stageInfo.holeNumber;
+        
+        // set relationships
+        h.round = r;
+        [r addHolesObject: h];
+        
+        NSError *error;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+        
+    } else {
+        // tell the User to finish the hole
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"You must finish the current shot before ending the hole."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
+    }
+    
+    [self viewWillAppear: NO];
 }
 
 
@@ -194,8 +300,39 @@
     [alert applyCustomAlertAppearance];
     __weak AHAlertView *weakAlert = alert;
     [alert addButtonWithTitle:@"OK" block:^{
+        Round *r = [rounds objectForKey: currentGolfer.userID];
         
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
+        Shot *s = [NSEntityDescription
+                   insertNewObjectForEntityForName: @"Shot"
+                   inManagedObjectContext: [appDelegate managedObjectContext]];
+        
+        s.startLatitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.latitude];
+        s.startLongitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.longitude];
+        
+        s.shotNumber = currentGolfer.stageInfo.shotNumber;
+        
+        for (Hole *h in r.holes) {
+            if ([h.holeNumber isEqualToNumber: currentGolfer.stageInfo.holeNumber]) {
+                s.hole = h;
+                [h addShotsObject: s];
+            }
+        }
+        
+        // update the user's stage info to be at STAGE_CLUB_SELECT
+        currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_CLUB_SELECT];
+        
+        // save to core data
+        
+        NSError *error;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+        
+        // calling view will appear will make club selection alert come up
+        [self viewWillAppear: NO];
         
         weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
     }];
@@ -204,7 +341,7 @@
 
 - (IBAction)endShot:(id)sender
 {
-    
+    [self viewWillAppear: NO];
 }
 
 
@@ -272,25 +409,15 @@
         NSMutableArray *options = [[NSMutableArray alloc] init];
         
         int counter = 1;
-        for (User *u in golfers) {
-            NSNumber *current;
-            
-            if (counter == 1) {
-                current = [NSNumber numberWithInt: 0];
-            } else if (counter == 2) {
-                current = [NSNumber numberWithInt: 1];
-            } else if (counter == 3) {
-                current = [NSNumber numberWithInt: 2];
-            } else {
-                current = [NSNumber numberWithInt: 3];
-            }
-            
+        for (NSNumber *key in golfers) {
             ZAction *option;
             
+            User *u = [golfers objectForKey: key];
+            
             if (u.nickname != nil)
-                option = [ZAction actionWithTitle: u.nickname  target:self action:@selector(changeGolfer:) object:current];
+                option = [ZAction actionWithTitle: u.nickname  target:self action:@selector(changeGolfer:) object: u];
             else
-                option = [ZAction actionWithTitle: u.name  target:self action:@selector(changeGolfer:) object:current];
+                option = [ZAction actionWithTitle: u.name  target:self action:@selector(changeGolfer:) object: u];
             
             [options addObject: option];
             
@@ -308,23 +435,44 @@
 - (void)changeGolfer:(id)object
 {
     // Make golfer change here
-    NSLog(@"Change golfer");
-    currentGolfer = [object intValue];
+    NSLog(@"Change golfer to %@", object);
+    currentGolfer = object;
     
-    // Get new golfer's information
-    User *u = [golfers objectAtIndex:currentGolfer];
+    for (NSNumber *key in golfers) {
+        User *u = [golfers objectForKey: key];
+        
+        if ([u.userID isEqualToNumber: currentGolfer.userID]) {
+            u.stageInfo.currentGolfer = [NSNumber numberWithBool: YES];
+        } else {
+            u.stageInfo.currentGolfer = [NSNumber numberWithBool: NO];
+        }
+    }
+    
+    // save the user's stage to the DB
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
     
     // Set nav bar title
-    self.navBar.title = [[NSString alloc] initWithFormat:@"%@", u.name];
+    if (currentGolfer.nickname != nil) {
+        self.navBar.title = [[NSString alloc] initWithFormat:@"%@", currentGolfer.nickname];
+    } else {
+        self.navBar.title = [[NSString alloc] initWithFormat:@"%@", currentGolfer.name];
+    }
     
-    // Use stage number to set up screen for new golfer
-    //u.stageInfo.stage
+    [self viewWillAppear: NO];
 }
 
 
+#pragma mark - helper functions
+
 - (void)setHoleImageForUser: (User *)u
 {
-    NSNumber *hole = @1;//u.stageInfo.holeNumber;
+    NSNumber *hole = u.stageInfo.holeNumber;
     
     NSString *filename = [NSString stringWithFormat:@"%@%@%@", @"hole", hole, @".png"];
     
@@ -333,6 +481,59 @@
     UIImage *image = [UIImage imageNamed:filename];
     
     [myImageView setImage: image];
+}
+
+- (void) selectClub
+{
+    Round *r = [rounds objectForKey: currentGolfer.userID];
+    
+    for (Hole *h in r.holes) {
+        if ([h.holeNumber isEqualToNumber: currentGolfer.stageInfo.holeNumber]) {
+            for (Shot *s in h.shots) {
+                if ([s.shotNumber isEqualToNumber: currentGolfer.stageInfo.shotNumber]) {
+                    // set club here
+                    s.club = [NSNumber numberWithInt: DRIVER];
+                    
+                    // set User's stage to STAGE_AIM
+                    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+                    
+                    // save the club selection and user's stage to the DB
+                    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+                    
+                    NSError *error;
+                    
+                    if (![[appDelegate managedObjectContext] save: &error]) {
+                        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                    }
+                    
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    
+    [self viewWillAppear: NO];
+}
+
+#pragma mark - core location
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    if (!self.lastLocation) {
+        self.lastLocation = newLocation;
+    }
+    
+    if (newLocation.coordinate.latitude != self.lastLocation.coordinate.latitude &&
+        newLocation.coordinate.longitude != self.lastLocation.coordinate.longitude) {
+        self.lastLocation = newLocation;
+        NSLog(@"New location: %f, %f",
+              self.lastLocation.coordinate.latitude,
+              self.lastLocation.coordinate.longitude);
+        [self.locationMgr stopUpdatingLocation];
+    }
 }
 
 #pragma mark - Gestures

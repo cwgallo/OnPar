@@ -39,6 +39,7 @@
         <relationship name="stageInfo" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="UserStageInfo" inverseName="user" inverseEntity="UserStageInfo" syncable="YES"/>
     </entity>
     <entity name="UserStageInfo" representedClassName="UserStageInfo" syncable="YES">
+        <attribute name="currentGolfer" attributeType="Boolean" syncable="YES"/>
         <attribute name="holeNumber" attributeType="Integer 32" minValueString="1" maxValueString="18" defaultValueString="1" syncable="YES"/>
         <attribute name="shotNumber" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
         <attribute name="stage" attributeType="Integer 32" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
@@ -49,6 +50,6 @@
         <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
         <element name="User" positionX="-7056" positionY="-6840" width="128" height="163"/>
-        <element name="UserStageInfo" positionX="-6813" positionY="-6840" width="128" height="103"/>
+        <element name="UserStageInfo" positionX="-6813" positionY="-6840" width="128" height="118"/>
     </elements>
 </model>

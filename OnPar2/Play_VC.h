@@ -10,7 +10,7 @@
 #import "Config.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface Play_VC : UIViewController <UIScrollViewDelegate>
+@interface Play_VC : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *myImageView;
@@ -23,6 +23,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *finishButton;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
+
+#pragma mark - core location
+
+@property (nonatomic, retain) CLLocationManager *locationMgr;
+@property (nonatomic, retain) CLLocation *lastLocation;
 
 
 #pragma mark - Actions
