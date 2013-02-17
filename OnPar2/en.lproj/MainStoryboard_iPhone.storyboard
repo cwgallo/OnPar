@@ -29,7 +29,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MSState.png" translatesAutoresizingMaskIntoConstraints="NO" id="TSH-EP-zF0">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="wxZ-47-aRR"/>
+                                    <constraint firstAttribute="height" constant="82" id="HRc-0g-42r"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4p-xP-ubp">
@@ -299,8 +299,12 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q43-nh-Ztt">
                                 <subviews>
-                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="hole1.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-6i-HLQ">
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="hole1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-6i-HLQ">
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="4mL-3p-HpE"/>
+                                            <constraint firstAttribute="height" constant="400" id="foS-gt-R4a"/>
+                                        </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="lZx-ls-2pY" appends="YES" id="GY7-UH-BoU"/>
                                         </connections>
@@ -367,25 +371,21 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3Ef-8c-Icp"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" type="default" id="3Xr-M2-Sgy"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="5zu-Md-F6J"/>
                                     <constraint firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="6cA-ts-nd5"/>
                                     <constraint firstAttribute="bottom" secondItem="RMs-du-XdE" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="7Td-dX-2zN"/>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="trailing" secondItem="TLe-Ir-McU" secondAttribute="trailing" type="default" id="7p6-Md-5Ji"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="bottom" secondItem="TLe-Ir-McU" secondAttribute="bottom" type="default" id="9Hf-Vq-KFL"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ABj-n6-eaA"/>
+                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="CYV-mm-OYO"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="Yqu-ki-FBe" secondAttribute="leading" type="default" id="Jma-w9-Kaw"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="top" secondItem="RMs-du-XdE" secondAttribute="top" type="default" id="Kaw-Qs-rHS"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="Sc5-kQ-Gws"/>
-                                    <constraint firstItem="TLe-Ir-McU" firstAttribute="baseline" secondItem="Yqu-ki-FBe" secondAttribute="baseline" type="default" id="WZn-Xv-i3Q"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="XqW-Rc-mT9"/>
-                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="baseline" secondItem="RMs-du-XdE" secondAttribute="baseline" type="default" id="aVc-Jg-jox"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" type="default" id="bXI-Bv-I1b"/>
+                                    <constraint firstItem="Yqu-ki-FBe" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="231" id="ZI0-qR-cgl"/>
                                     <constraint firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cmn-GX-yn5"/>
                                     <constraint firstAttribute="trailing" secondItem="Yqu-ki-FBe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fM6-AC-Bjy"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="trailing" secondItem="Q43-nh-Ztt" secondAttribute="trailing" type="default" id="m77-hr-THV"/>
+                                    <constraint firstItem="RMs-du-XdE" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="i8D-IH-gjG"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qgR-tm-5aT"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="bottom" secondItem="Q43-nh-Ztt" secondAttribute="bottom" type="default" id="qjs-yf-xHz"/>
+                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="vZd-xi-Mwm"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -421,7 +421,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtX-t6-36F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="lZx-ls-2pY"/>
+                <tapGestureRecognizer id="lZx-ls-2pY">
+                    <connections>
+                        <action selector="handleTap:" destination="Bch-5h-vqj" id="XEl-mJ-BPV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="947" y="182"/>
         </scene>
@@ -599,9 +603,80 @@
     </scenes>
     <resources>
         <image name="MSState.png" width="339" height="86"/>
-        <image name="hole1.PNG" width="350" height="800"/>
+        <image name="hole1.png" width="350" height="800"/>
         <image name="logo2.png" width="497" height="203"/>
     </resources>
+    <classes>
+        <class className="GolferVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
+            <relationships>
+                <relationship kind="action" name="startRound:"/>
+                <relationship kind="action" name="valueChanged:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Add_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Add_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="teeChanged:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Registration_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Registration_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="teeChanged:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="membershipNumberTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="nicknameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="startButton:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="Play_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Play_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="endGame:"/>
+                <relationship kind="action" name="endShot:"/>
+                <relationship kind="action" name="finishHole:"/>
+                <relationship kind="action" name="handleTap:" candidateClass="UIGestureRecognizer"/>
+                <relationship kind="action" name="selectGolfer:"/>
+                <relationship kind="action" name="skipHole:"/>
+                <relationship kind="action" name="startShot:"/>
+                <relationship kind="outlet" name="endButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="myScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="skipButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SLGlowingTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -29,6 +29,7 @@
 #import "LRResty.h"
 
 // Math trig
+#import "Math.h"
 #import "LLPair.h"
 #import "XYPair.h"
 
@@ -43,6 +44,9 @@
 
 // SLGlowingTextField
 #import "SLGlowingTextField.h"
+
+// SSCheckBoxView
+#import "SSCheckBoxView.h"
 
 // TPKeyboardAvoiding
 #import "TPKeyboardAvoidingScrollView.h"

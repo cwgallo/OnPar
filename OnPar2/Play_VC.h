@@ -35,4 +35,7 @@
 - (IBAction)endShot:(id)sender;
 
 
+#pragma mark - Gesture
+- (IBAction)handleTap: (UIGestureRecognizer *)recognizer;
+
 @end
