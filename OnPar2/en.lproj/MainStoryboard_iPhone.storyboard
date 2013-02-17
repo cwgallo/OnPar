@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1g-9j-D3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1056" y="182"/>
+            <point key="canvasLocation" x="-566" y="182"/>
         </scene>
         <!--Main View Controller - Main-->
         <scene sceneID="5">
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-577" y="182"/>
+            <point key="canvasLocation" x="-87" y="182"/>
         </scene>
         <!--Golfer AddVC - Add Golfer-->
         <scene sceneID="8CB-aH-FvN">
@@ -429,16 +429,136 @@
             </objects>
             <point key="canvasLocation" x="947" y="182"/>
         </scene>
-        <!--View Controller - Upload Results-->
+        <!--Upload Results - Upload Results-->
         <scene sceneID="B7O-hY-Yjg">
             <objects>
-                <viewController id="YBu-hs-YqR" sceneMemberID="viewController">
+                <viewController id="YBu-hs-YqR" customClass="Upload_Results" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oP3-Ig-f40">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Would you like an email of your scorecard?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-Pq-1wX">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="2dk-UR-gmW"/>
+                                    <constraint firstAttribute="width" constant="195" id="TXo-Qh-UMI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="chad45@gmail.com" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="197" translatesAutoresizingMaskIntoConstraints="NO" id="w5U-jM-mQS">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QnH-7i-Ozq"/>
+                                    <constraint firstAttribute="width" constant="197" id="dLT-9d-a6t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLp-v7-Iyr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="krb224@msstate.edu" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="197" translatesAutoresizingMaskIntoConstraints="NO" id="f88-oZ-TZ2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ji1-qB-d8s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I@haveareallyreallyreallylongemailaddress.com" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="197" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-lg-I7N">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Cg4-A0-4VT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="cwg27@cse.msstate.edu" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="SB5-1t-LvH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="6Ms-zR-h4G"/>
+                                    <constraint firstAttribute="height" constant="50" id="D8v-yH-Elc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaE-8J-6fu">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Upload Now!">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadResults:" destination="YBu-hs-YqR" eventType="touchUpInside" id="7BO-IW-2T2"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k32-x0-2WV" customClass="DCRoundSwitch">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0Y-in-pyK" customClass="DCRoundSwitch">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhH-K3-Fen" customClass="DCRoundSwitch">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilg-2V-F8s" customClass="DCRoundSwitch">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f88-oZ-TZ2" firstAttribute="top" secondItem="w5U-jM-mQS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0Tw-i7-2XT"/>
+                            <constraint firstItem="K3K-lg-I7N" firstAttribute="top" secondItem="f88-oZ-TZ2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0cN-E6-z6h"/>
+                            <constraint firstAttribute="bottom" secondItem="PhH-K3-Fen" secondAttribute="bottom" constant="282" id="11B-dF-ckj"/>
+                            <constraint firstItem="Ilg-2V-F8s" firstAttribute="leading" secondItem="k32-x0-2WV" secondAttribute="leading" type="default" id="1bN-2g-H4p"/>
+                            <constraint firstAttribute="bottom" secondItem="k32-x0-2WV" secondAttribute="bottom" constant="166" id="1eM-k0-HbF"/>
+                            <constraint firstItem="Ilg-2V-F8s" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="281" id="6RG-k8-kHJ"/>
+                            <constraint firstItem="fDr-Pq-1wX" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="20" symbolic="YES" type="default" id="6nq-fz-UOZ"/>
+                            <constraint firstItem="k32-x0-2WV" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="223" id="ASM-h7-eND"/>
+                            <constraint firstItem="PhH-K3-Fen" firstAttribute="top" secondItem="tLp-v7-Iyr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DWa-UF-Cl9"/>
+                            <constraint firstItem="LaE-8J-6fu" firstAttribute="centerX" secondItem="fDr-Pq-1wX" secondAttribute="centerX" type="default" id="I8f-Eu-7eC"/>
+                            <constraint firstAttribute="bottom" secondItem="Ilg-2V-F8s" secondAttribute="bottom" constant="108" id="S1b-Q3-uy4"/>
+                            <constraint firstAttribute="trailing" secondItem="PhH-K3-Fen" secondAttribute="trailing" constant="19" id="UUC-p4-xwC"/>
+                            <constraint firstItem="K3K-lg-I7N" firstAttribute="trailing" secondItem="f88-oZ-TZ2" secondAttribute="trailing" type="default" id="UnO-1T-G0E"/>
+                            <constraint firstItem="K3K-lg-I7N" firstAttribute="leading" secondItem="oP3-Ig-f40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WxK-eR-fsp"/>
+                            <constraint firstItem="SB5-1t-LvH" firstAttribute="top" secondItem="K3K-lg-I7N" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Zc0-zg-wrm"/>
+                            <constraint firstItem="SB5-1t-LvH" firstAttribute="leading" secondItem="oP3-Ig-f40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aBZ-5J-8gQ"/>
+                            <constraint firstItem="B0Y-in-pyK" firstAttribute="trailing" secondItem="PhH-K3-Fen" secondAttribute="trailing" type="default" id="aJp-dH-M8s"/>
+                            <constraint firstAttribute="bottom" secondItem="B0Y-in-pyK" secondAttribute="bottom" constant="224" id="cjS-yP-ezm"/>
+                            <constraint firstItem="w5U-jM-mQS" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="96" id="cvu-8Z-r9J"/>
+                            <constraint firstItem="PhH-K3-Fen" firstAttribute="leading" secondItem="B0Y-in-pyK" secondAttribute="leading" type="default" id="dIr-yX-M3v"/>
+                            <constraint firstItem="Ilg-2V-F8s" firstAttribute="trailing" secondItem="k32-x0-2WV" secondAttribute="trailing" type="default" id="eEb-bz-do8"/>
+                            <constraint firstItem="tLp-v7-Iyr" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="99" id="fDJ-hZ-Ip1"/>
+                            <constraint firstItem="f88-oZ-TZ2" firstAttribute="trailing" secondItem="w5U-jM-mQS" secondAttribute="trailing" type="default" id="j7N-d7-Ekg"/>
+                            <constraint firstAttribute="trailing" secondItem="tLp-v7-Iyr" secondAttribute="trailing" constant="81" id="oSk-Fj-YN1"/>
+                            <constraint firstItem="B0Y-in-pyK" firstAttribute="top" secondItem="oP3-Ig-f40" secondAttribute="top" constant="165" id="p00-UK-y5h"/>
+                            <constraint firstItem="B0Y-in-pyK" firstAttribute="leading" secondItem="k32-x0-2WV" secondAttribute="leading" type="default" id="psq-Yd-dah"/>
+                            <constraint firstItem="B0Y-in-pyK" firstAttribute="trailing" secondItem="k32-x0-2WV" secondAttribute="trailing" type="default" id="qa4-N2-rMQ"/>
+                            <constraint firstAttribute="bottom" secondItem="LaE-8J-6fu" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="r3u-S3-oVz"/>
+                            <constraint firstItem="f88-oZ-TZ2" firstAttribute="leading" secondItem="oP3-Ig-f40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uDt-QU-Prg"/>
+                            <constraint firstItem="PhH-K3-Fen" firstAttribute="leading" secondItem="oP3-Ig-f40" secondAttribute="leading" constant="224" id="vf2-uB-2MC"/>
+                            <constraint firstItem="LaE-8J-6fu" firstAttribute="centerX" secondItem="oP3-Ig-f40" secondAttribute="centerX" type="default" id="vy9-x6-PGv"/>
+                            <constraint firstItem="w5U-jM-mQS" firstAttribute="leading" secondItem="oP3-Ig-f40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="zHp-bn-H2c"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Upload Results" id="hYW-TZ-SQ9"/>
+                    <connections>
+                        <outlet property="golfer1Label" destination="w5U-jM-mQS" id="Bfg-Av-LuR"/>
+                        <outlet property="golfer1Switch" destination="PhH-K3-Fen" id="I3u-KH-vaJ"/>
+                        <outlet property="golfer2Label" destination="f88-oZ-TZ2" id="rXt-DW-zuJ"/>
+                        <outlet property="golfer2Switch" destination="B0Y-in-pyK" id="8rJ-gh-Kwd"/>
+                        <outlet property="golfer3Label" destination="K3K-lg-I7N" id="vcv-WR-mXI"/>
+                        <outlet property="golfer3Switch" destination="k32-x0-2WV" id="UbD-Yx-PWC"/>
+                        <outlet property="golfer4Label" destination="SB5-1t-LvH" id="RBI-Jz-rsC"/>
+                        <outlet property="golfer4Switch" destination="Ilg-2V-F8s" id="D6d-Yx-Rbr"/>
+                        <outlet property="navBar" destination="hYW-TZ-SQ9" id="hEs-3r-R0b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vx-yD-doz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -607,6 +727,9 @@
         <image name="logo2.png" width="497" height="203"/>
     </resources>
     <classes>
+        <class className="DCRoundSwitch" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCRoundSwitch.h"/>
+        </class>
         <class className="GolferVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
             <relationships>
@@ -675,6 +798,21 @@
         </class>
         <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="Upload_Results" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Upload_Results.h"/>
+            <relationships>
+                <relationship kind="action" name="uploadResults:"/>
+                <relationship kind="outlet" name="golfer1Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer1Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer2Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer2Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer3Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer3Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer4Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer4Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

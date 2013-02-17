@@ -22,6 +22,9 @@
 // AHAlertView
 #import "AHAlertView.h"
 
+// DCRoundSwitch
+#import "DCRoundSwitch.h"
+
 // JASidePanels
 #import "JASidePanelController.h"
 
