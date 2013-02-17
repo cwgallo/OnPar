@@ -13,7 +13,14 @@
 
 @end
 
-@implementation Play_VC
+@implementation Play_VC{
+    NSMutableArray *golfers;
+    NSMutableArray *rounds;
+    
+    // current golfer should be the index for both user in the golfers array
+    // and the round in the round array
+    int currentGolfer;
+}
 
 @synthesize myImageView, myScrollView;
 
@@ -31,9 +38,81 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // should only have to retrieve the golfers once
+    golfers = [[NSMutableArray alloc] init];
+    rounds = [[NSMutableArray alloc] init];
+    
+    // initialize current golfer to golfer 1
+    currentGolfer = 0;
+    
+    // load golfers that are in database
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    NSFetchRequest *userFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *user = [NSEntityDescription entityForName: @"User"
+                                              inManagedObjectContext: [appDelegate managedObjectContext]];
+    [userFetch setEntity: user];
+    NSArray *users = [[appDelegate managedObjectContext] executeFetchRequest: userFetch error: &error];
+    for (User *u in users) {
+        [golfers addObject: u];
+        
+        // create a round for each user and store it in the same location
+        Round *r = [NSEntityDescription
+                   insertNewObjectForEntityForName: @"Round"
+                   inManagedObjectContext: [appDelegate managedObjectContext]];
+        
+        // the course ID can maybe change at a later time
+        r.courseID = @1;
+        r.userID = u.userID;
+        r.teeID = u.tee;
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+        
+        NSString *dateString = [formatter stringFromDate: [NSDate date]];
+        
+        r.startTime  = dateString;
+        
+        // create the first hole for every golfer
+        Hole *h = [NSEntityDescription
+                    insertNewObjectForEntityForName: @"Hole"
+                    inManagedObjectContext: [appDelegate managedObjectContext]];
+        
+        h.holeNumber = @1;
+        
+        // set relationships
+        h.round = r;
+        [r addHolesObject: h];
+        
+        // save the round and hole
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        } else {
+            // add the object to the rounds array
+            [rounds addObject: r];
+        }
+    }
+    
+    /*NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
+                                            inManagedObjectContext: [appDelegate managedObjectContext]];
+    [roundFetch setEntity: round];
+    NSArray *DBrounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
+    
+    for (Round *r in DBrounds) {
+        NSLog(@"%@", r);
+    }*/
+    
     myScrollView.contentSize = myImageView.bounds.size;
     [myScrollView setDelegate:self];
     [myScrollView setScrollEnabled:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // take the current golfer and display only the proper buttons
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,74 +121,106 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)skipHole:(id)sender {
+- (IBAction)skipHole:(id)sender
+{
+    // update the holeNumber and stage of the User's stage info
+    User *u = [golfers objectAtIndex: currentGolfer];
+    u.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+    
+    int hole = [u.stageInfo.holeNumber intValue];
+    u.stageInfo.holeNumber = [NSNumber numberWithInt: hole + 1];
+    
+    // create a new hole to add to the hole object with the updated hole number
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    Round *r = [rounds objectAtIndex: currentGolfer];
+    
+    // create the first hole for every golfer
+    Hole *h = [NSEntityDescription
+               insertNewObjectForEntityForName: @"Hole"
+               inManagedObjectContext: [appDelegate managedObjectContext]];
+    
+    h.holeNumber = u.stageInfo.holeNumber;
+    
+    // set relationships
+    h.round = r;
+    [r addHolesObject: h];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    NSLog(@"Current hole: %@", h);
 }
 
-- (IBAction)finishHole:(id)sender {
+- (IBAction)finishHole:(id)sender
+{
+    
 }
 
-- (IBAction)startShot:(id)sender {
+- (IBAction)startShot:(id)sender
+{
+    // alert to tell them to press OK at the location of the ball
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Start Shot" message:@"Press OK when at the ball's location for the start of the shot."];
+    [alert applyCustomAlertAppearance];
+    __weak AHAlertView *weakAlert = alert;
+    [alert addButtonWithTitle:@"OK" block:^{
+        
+        
+        
+        weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+    }];
+    [alert show];
 }
 
-- (IBAction)endShot:(id)sender {
+- (IBAction)endShot:(id)sender
+{
+    
 }
 
-- (IBAction)selectGolfer:(id)sender
+- (IBAction)selectGolfer:(id)sender;
 {
     
     if ([ZFloatingManager shouldFloatingWithIdentifierAppear:@"Golfers"])
     {
+        
+        ZAction *cancel = [ZAction actionWithTitle:@"Cancel" target:self action:nil object:nil];
+        
+        ZActionSheet *sheet;
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        
+        int counter = 1;
+        for (User *u in golfers) {
+            UIColor *color;
             
-            ZAction *cancel = [ZAction actionWithTitle:@"Cancel" target:self action:nil object:nil];
+            if (counter == 1) {
+                color = [UIColor blueColor];
+            } else if (counter == 2) {
+                color = [UIColor redColor];
+            } else if (counter == 3) {
+                color = [UIColor greenColor];
+            } else {
+                color = [UIColor orangeColor];
+            }
             
-            // GET ARRAY OF GOLFERS
-            NSMutableArray *golfers = [[NSMutableArray alloc] init];
+            ZAction *option = [ZAction actionWithTitle: u.name  target:self action:@selector(colorAction:) object:color];
+            
+            [options addObject: option];
+            
+            counter++;
+        }
         
-            // load golfers that are in database
-            id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        // Reverse array so options are in correct order
+        NSArray* reversedArray = [[options reverseObjectEnumerator] allObjects];
         
-            NSError *error;
+        sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:reversedArray];
+        [sheet setTitle:@"Select A Golfer"];
+        [sheet setCancelAction:cancel];
+        sheet.identifier = @"Golfers";
+        [sheet showFromBarButtonItem:sender animated:YES];
         
-            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-            NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
-                                                  inManagedObjectContext: [appDelegate managedObjectContext]];
-            [fetchRequest setEntity: entity];
-            NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
-            for (User *u in fetchedObjects)
-            {
-                [golfers addObject: u];
-            }
-
-        
-            ZAction *option1, *option2, *option3, *option4;
-            ZActionSheet *sheet;
-            NSMutableArray *options = [[NSMutableArray alloc] init];
-        
-            // DETERMINE HOW TO DISPLAY THEM
-            switch (golfers.count)
-            {
-                case 4:
-                    option4 = [ZAction actionWithTitle:@"Orange"/*golfers name*/ target:self action:@selector(colorAction:) object:[UIColor orangeColor]];
-                    [options addObject:option4];
-                case 3:
-                    option3 = [ZAction actionWithTitle:@"Green"/*golfers name*/ target:self action:@selector(colorAction:) object:[UIColor greenColor]];
-                    [options addObject:option3];
-                case 2:
-                    option2 = [ZAction actionWithTitle:@"Red"/*golfers name*/ target:self action:@selector(colorAction:) object:[UIColor redColor]];
-                    [options addObject:option2];
-                case 1:
-                    option1 = [ZAction actionWithTitle:@"Blue"/*golfers name*/ target:self action:@selector(colorAction:) object:[UIColor blueColor]];
-                    [options addObject:option1];
-                    
-                // Reverse array so options are in correct order
-                   NSArray* reversedArray = [[options reverseObjectEnumerator] allObjects];
-                    
-                         sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:reversedArray];
-                        [sheet setTitle:@"Select A Golfer"];
-                        [sheet setCancelAction:cancel];
-                        sheet.identifier = @"Golfers";
-                        [sheet showFromBarButtonItem:sender animated:YES];
-            }
     }
 }
 
@@ -122,6 +233,7 @@
 - (void)changeGolfer:(id)object
 {
     // Make golfer change here
+    NSLog(@"Change golfer");
 }
 
 @end

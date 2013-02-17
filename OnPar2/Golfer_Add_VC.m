@@ -31,12 +31,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
+    
+    // initialize tee to AGGIES so 0 will not get passed in
+    tee = AGGIES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    // initialize tee to AGGIES so 0 will not get passed in
+    tee = AGGIES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Config.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface Play_VC : UIViewController <UIScrollViewDelegate>
 
