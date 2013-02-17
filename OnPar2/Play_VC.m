@@ -193,19 +193,19 @@
         
         int counter = 1;
         for (User *u in golfers) {
-            UIColor *color;
+            NSNumber *current;
             
             if (counter == 1) {
-                color = [UIColor blueColor];
+                current = [NSNumber numberWithInt: 0];
             } else if (counter == 2) {
-                color = [UIColor redColor];
+                current = [NSNumber numberWithInt: 1];
             } else if (counter == 3) {
-                color = [UIColor greenColor];
+                current = [NSNumber numberWithInt: 2];
             } else {
-                color = [UIColor orangeColor];
+                current = [NSNumber numberWithInt: 3];
             }
             
-            ZAction *option = [ZAction actionWithTitle: u.name  target:self action:@selector(colorAction:) object:color];
+            ZAction *option = [ZAction actionWithTitle: u.name  target:self action:@selector(changeGolfer:) object:current];
             
             [options addObject: option];
             
@@ -234,6 +234,7 @@
 {
     // Make golfer change here
     NSLog(@"Change golfer");
+    currentGolfer = [object intValue];
 }
 
 @end

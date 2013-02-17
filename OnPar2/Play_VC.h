@@ -20,6 +20,5 @@
 - (IBAction)finishHole:(id)sender;
 - (IBAction)startShot:(id)sender;
 - (IBAction)endShot:(id)sender;
-- (IBAction)selectGolfer:(id)sender;
 
 @end
