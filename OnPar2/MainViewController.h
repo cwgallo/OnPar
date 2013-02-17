@@ -12,4 +12,6 @@
 
 - (IBAction)startButton:(id)sender;
 
+- (void)deleteEverything:(id)appDelegate;
+
 @end

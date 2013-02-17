@@ -7,6 +7,7 @@
 //
 
 #import "Play_VC.h"
+#import "MainViewController.h" // needed for deleteEverything
 #import "Config.h"
 
 @interface Play_VC ()
@@ -105,14 +106,31 @@
         NSLog(@"%@", r);
     }*/
     
+    
+    // get current golfer info
+    User *u = [golfers objectAtIndex:currentGolfer];
+    
+    NSLog(@"Hole number: %@", u.stageInfo.holeNumber);
+    
+    // set correct hole image
+    if (u.nickname != nil)
+        [navBar setTitle:u.nickname];
+    else
+        [navBar setTitle:u.name];
+    
+    [self setHoleImageForUser:u];
+    
+    /*
     myScrollView.contentSize = myImageView.bounds.size;
     [myScrollView setDelegate:self];
     [myScrollView setScrollEnabled:YES];
+     */
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     // take the current golfer and display only the proper buttons
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,15 +198,64 @@
     
 }
 
-- (IBAction)selectGolfer:(id)sender;
+
+- (IBAction)endGame:(id)sender
 {
-    
     if ([ZFloatingManager shouldFloatingWithIdentifierAppear:@"Golfers"])
     {
         
         ZAction *cancel = [ZAction actionWithTitle:@"Cancel" target:self action:nil object:nil];
         
-        ZActionSheet *sheet;
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+            
+        ZAction *option;
+        
+        option = [ZAction actionWithTitle: @"Upload Results" target:self action:@selector(uploadResults) object:nil];
+
+        [options addObject: option];
+        
+        option = [ZAction actionWithTitle: @"Discard Results"  target:self action:@selector(discardGame) object:nil];
+            
+        [options addObject: option];
+        
+        ZActionSheet *sheet = [[ZActionSheet alloc] initWithTitle:@"End Game?" cancelAction:cancel destructiveAction:nil otherActions: options];
+        sheet.identifier = @"End";
+        [sheet showFromBarButtonItem:sender animated:YES];
+    }
+}
+
+- (void)uploadResults
+{
+    // Check to see if all users have finished
+    
+    // Display alert if not all finished
+    
+    // Go to upload page
+    [self performSegueWithIdentifier: @"play2upload" sender:self];
+}
+
+- (void)discardGame
+{
+    // TODO - Display alert
+    
+    // TODO - Delete everything
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    MainViewController *mvc = [[MainViewController alloc] init];
+    [mvc deleteEverything:appDelegate];
+    
+    // Return to main page
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+}
+
+
+- (IBAction)selectGolfer:(id)sender;
+{
+    
+    if ([ZFloatingManager shouldFloatingWithIdentifierAppear:@"End"])
+    {
+        
+        ZAction *cancel = [ZAction actionWithTitle:@"Cancel" target:self action:nil object:nil];
+        
         NSMutableArray *options = [[NSMutableArray alloc] init];
         
         int counter = 1;
@@ -205,26 +272,24 @@
                 current = [NSNumber numberWithInt: 3];
             }
             
-            ZAction *option = [ZAction actionWithTitle: u.name  target:self action:@selector(changeGolfer:) object:current];
+            ZAction *option;
+            
+            if (u.nickname != nil)
+                option = [ZAction actionWithTitle: u.nickname  target:self action:@selector(changeGolfer:) object:current];
+            else
+                option = [ZAction actionWithTitle: u.name  target:self action:@selector(changeGolfer:) object:current];
             
             [options addObject: option];
             
             counter++;
         }
         
-        sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:options];
-        [sheet setTitle:@"Select A Golfer"];
-        [sheet setCancelAction:cancel];
+        ZActionSheet *sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:options];
+        
         sheet.identifier = @"Golfers";
         [sheet showFromBarButtonItem:sender animated:YES];
         
     }
-}
-
-- (void)colorAction:(id)object
-{
-	NSParameterAssert([object isKindOfClass:[UIColor class]]);
-	self.view.backgroundColor = object;
 }
 
 - (void)changeGolfer:(id)object
@@ -239,8 +304,22 @@
     // Set nav bar title
     self.navBar.title = [[NSString alloc] initWithFormat:@"%@", u.name];
     
-    // Use stage number to move set up screen
+    // Use stage number to set up screen for new golfer
     //u.stageInfo.stage
+}
+
+
+- (void)setHoleImageForUser: (User *)u
+{
+    NSNumber *hole = @2;//u.stageInfo.holeNumber;
+    
+    NSString *filename = [NSString stringWithFormat:@"%@%@%@", @"hole", hole, @".png"];
+    
+    NSLog(@"Loading file: %@", filename);
+    
+    UIImage *image = [UIImage imageNamed:filename];
+    
+    [myImageView setImage: image];
 }
 
 @end

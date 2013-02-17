@@ -17,9 +17,22 @@
 @property (strong, nonatomic) IBOutlet UINavigationItem *navBar;
 
 
+#pragma mark - Buttons
+
+@property (strong, nonatomic) IBOutlet UIButton *skipButton;
+@property (strong, nonatomic) IBOutlet UIButton *finishButton;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *endButton;
+
+
+#pragma mark - Actions
+
+- (IBAction)selectGolfer:(id)sender;
+- (IBAction)endGame:(id)sender;
 - (IBAction)skipHole:(id)sender;
 - (IBAction)finishHole:(id)sender;
 - (IBAction)startShot:(id)sender;
 - (IBAction)endShot:(id)sender;
+
 
 @end

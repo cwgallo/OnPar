@@ -270,7 +270,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Golfers" id="cza-we-SLa">
-                        <barButtonItem key="rightBarButtonItem" title="Start" id="mix-2V-2DS">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Start" id="mix-2V-2DS">
                             <connections>
                                 <action selector="startRound:" destination="pcM-K4-Mbb" id="Q6U-rr-T2S"/>
                             </connections>
@@ -299,7 +299,12 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q43-nh-Ztt">
                                 <subviews>
-                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="hole1.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-6i-HLQ"/>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="hole1.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-6i-HLQ">
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="lZx-ls-2pY" appends="YES" id="GY7-UH-BoU"/>
+                                        </connections>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLe-Ir-McU">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="69" id="P69-BN-cYf"/>
@@ -372,7 +377,9 @@
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="Yqu-ki-FBe" secondAttribute="leading" type="default" id="Jma-w9-Kaw"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="top" secondItem="RMs-du-XdE" secondAttribute="top" type="default" id="Kaw-Qs-rHS"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="Sc5-kQ-Gws"/>
+                                    <constraint firstItem="TLe-Ir-McU" firstAttribute="baseline" secondItem="Yqu-ki-FBe" secondAttribute="baseline" type="default" id="WZn-Xv-i3Q"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="XqW-Rc-mT9"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="baseline" secondItem="RMs-du-XdE" secondAttribute="baseline" type="default" id="aVc-Jg-jox"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" type="default" id="bXI-Bv-I1b"/>
                                     <constraint firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cmn-GX-yn5"/>
                                     <constraint firstAttribute="trailing" secondItem="Yqu-ki-FBe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fM6-AC-Bjy"/>
@@ -391,7 +398,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Golfer Name" id="5nO-NK-CUY">
-                        <barButtonItem key="leftBarButtonItem" title="End" id="6mi-9a-KDq"/>
+                        <barButtonItem key="leftBarButtonItem" title="End" id="6mi-9a-KDq">
+                            <connections>
+                                <action selector="endGame:" destination="Bch-5h-vqj" id="NSw-2X-Qf2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Golfers" id="SDi-bm-Y8X">
                             <connections>
                                 <action selector="selectGolfer:" destination="Bch-5h-vqj" id="M0D-uT-U8F"/>
@@ -399,14 +410,35 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="endButton" destination="cmj-ru-1ch" id="gmy-Wx-GXx"/>
+                        <outlet property="finishButton" destination="Yqu-ki-FBe" id="XTc-mc-jH0"/>
                         <outlet property="myImageView" destination="fR4-6i-HLQ" id="3LP-HK-ckZ"/>
                         <outlet property="myScrollView" destination="Q43-nh-Ztt" id="Bu3-fG-RHr"/>
                         <outlet property="navBar" destination="5nO-NK-CUY" id="lWX-qf-D2M"/>
+                        <outlet property="skipButton" destination="TLe-Ir-McU" id="0ck-LT-sKZ"/>
+                        <outlet property="startButton" destination="RMs-du-XdE" id="2cA-xW-l3V"/>
+                        <segue destination="YBu-hs-YqR" kind="push" identifier="play2upload" id="cYd-eY-i0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtX-t6-36F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lZx-ls-2pY"/>
             </objects>
-            <point key="canvasLocation" x="888" y="177"/>
+            <point key="canvasLocation" x="947" y="182"/>
+        </scene>
+        <!--View Controller - Upload Results-->
+        <scene sceneID="B7O-hY-Yjg">
+            <objects>
+                <viewController id="YBu-hs-YqR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oP3-Ig-f40">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Upload Results" id="hYW-TZ-SQ9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vx-yD-doz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1411" y="182"/>
         </scene>
         <!--Golfer RegistrationVC - Register-->
         <scene sceneID="fXh-dp-qn0">
@@ -570,71 +602,6 @@
         <image name="hole1.PNG" width="350" height="800"/>
         <image name="logo2.png" width="497" height="203"/>
     </resources>
-    <classes>
-        <class className="GolferVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
-            <relationships>
-                <relationship kind="action" name="startRound:"/>
-                <relationship kind="action" name="valueChanged:"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
-            </relationships>
-        </class>
-        <class className="Golfer_Add_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Add_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="teeChanged:"/>
-                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="Golfer_Registration_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Registration_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="teeChanged:"/>
-                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="membershipNumberTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="nicknameTextField" candidateClass="SLGlowingTextField"/>
-                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startButton:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="Play_VC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Play_VC.h"/>
-            <relationships>
-                <relationship kind="action" name="endShot:"/>
-                <relationship kind="action" name="finishHole:"/>
-                <relationship kind="action" name="selectGolfer:"/>
-                <relationship kind="action" name="skipHole:"/>
-                <relationship kind="action" name="startShot:"/>
-                <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="myScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
-            </relationships>
-        </class>
-        <class className="SLGlowingTextField" superclassName="UITextField">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

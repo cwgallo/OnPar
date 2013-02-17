@@ -1,5 +1,5 @@
 //
-//  GolferVC.h
+//  Golfer_VC.h
 //  OnPar2
 //
 //  Created by Chad Galloway on 2/14/13.

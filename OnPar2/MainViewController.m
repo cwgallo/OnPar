@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "GolferVC.h"
+#import "Golfer_VC.h"
 #import "Config.h"
 
 @interface MainViewController ()
@@ -111,27 +111,9 @@
         [alert applyCustomAlertAppearance];
         [alert setCancelButtonTitle:@"No"
                               block:^{
-                                  // clear the User Table
-                                  NSError *error;
-                                  
-                                  NSFetchRequest *userFetch = [[NSFetchRequest alloc] init];
-                                  NSEntityDescription *user = [NSEntityDescription entityForName: @"User"
-                                                                            inManagedObjectContext: [appDelegate managedObjectContext]];
-                                  [userFetch setEntity: user];
-                                  NSArray *users = [[appDelegate managedObjectContext] executeFetchRequest: userFetch error: &error];
-                                  for (User *u in users) {
-                                      [[appDelegate managedObjectContext] deleteObject: u];
-                                  }
-                                  
-                                  NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
-                                  NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
-                                                                            inManagedObjectContext: [appDelegate managedObjectContext]];
-                                  [roundFetch setEntity: round];
-                                  NSArray *rounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
-                                  for (Round *r in rounds) {
-                                      [[appDelegate managedObjectContext] deleteObject: r];
-                                  }
-                                  
+                                  // delete everything
+                                  [self deleteEverything: appDelegate];
+                                  // start new game
                                   [self performSegueWithIdentifier:@"main2options" sender:self];
                               }];
         [alert addButtonWithTitle:@"Yes" block:^{
@@ -152,6 +134,30 @@
         [alert show];
     } else {
         [self performSegueWithIdentifier:@"main2options" sender:self];
+    }
+}
+
+- (void)deleteEverything: (id)appDelegate
+{
+    // clear the User Table
+    NSError *error;
+    
+    NSFetchRequest *userFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *user = [NSEntityDescription entityForName: @"User"
+                                            inManagedObjectContext: [appDelegate managedObjectContext]];
+    [userFetch setEntity: user];
+    NSArray *users = [[appDelegate managedObjectContext] executeFetchRequest: userFetch error: &error];
+    for (User *u in users) {
+        [[appDelegate managedObjectContext] deleteObject: u];
+    }
+    
+    NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
+                                             inManagedObjectContext: [appDelegate managedObjectContext]];
+    [roundFetch setEntity: round];
+    NSArray *rounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
+    for (Round *r in rounds) {
+        [[appDelegate managedObjectContext] deleteObject: r];
     }
 }
 

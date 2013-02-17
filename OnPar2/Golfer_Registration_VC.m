@@ -7,7 +7,7 @@
 //
 
 #import "Golfer_Registration_VC.h"
-#import "GolferVC.h"
+#import "Golfer_VC.h"
 
 @interface Golfer_Registration_VC ()
 

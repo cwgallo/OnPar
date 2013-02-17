@@ -1,12 +1,12 @@
 //
-//  GolferVC.m
+//  Golfer_VC.m
 //  OnPar2
 //
 //  Created by Chad Galloway on 2/14/13.
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
-#import "GolferVC.h"
+#import "Golfer_VC.h"
 
 @implementation GolferVC{
     NSMutableArray *golfers;
@@ -26,6 +26,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
+    NSLog(@"Golfers_VC appeared");
     
     [self showNavBar];
     
@@ -50,12 +52,12 @@
     if (golfers.count == 0)
     {
         // disable start button
-        [[[[self navigationController] navigationItem] rightBarButtonItem]setEnabled:NO];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     else
     {
         // enable start button
-        [[[[self navigationController] navigationItem] rightBarButtonItem]setEnabled:YES];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     }
     
     if (golfers.count == 4)
@@ -63,7 +65,11 @@
         // hide add button
         addButton.hidden = YES;
     }
-    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"Golfers_VC disappeared");
 }
 
 #pragma mark - TableView methods
