@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *myImageView;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navBar;
 
 
 - (IBAction)skipHole:(id)sender;

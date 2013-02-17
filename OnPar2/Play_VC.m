@@ -22,7 +22,7 @@
     int currentGolfer;
 }
 
-@synthesize myImageView, myScrollView;
+@synthesize myImageView, myScrollView, navBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -212,10 +212,7 @@
             counter++;
         }
         
-        // Reverse array so options are in correct order
-        NSArray* reversedArray = [[options reverseObjectEnumerator] allObjects];
-        
-        sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:reversedArray];
+        sheet = [[ZActionSheet alloc] initWithTitle:@"Select A Golfer" cancelAction:cancel destructiveAction:nil otherActions:options];
         [sheet setTitle:@"Select A Golfer"];
         [sheet setCancelAction:cancel];
         sheet.identifier = @"Golfers";
@@ -235,6 +232,15 @@
     // Make golfer change here
     NSLog(@"Change golfer");
     currentGolfer = [object intValue];
+    
+    // Get new golfer's information
+    User *u = [golfers objectAtIndex:currentGolfer];
+    
+    // Set nav bar title
+    self.navBar.title = [[NSString alloc] initWithFormat:@"%@", u.name];
+    
+    // Use stage number to move set up screen
+    //u.stageInfo.stage
 }
 
 @end

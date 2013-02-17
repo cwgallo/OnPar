@@ -47,9 +47,20 @@
     
     [golferTableView reloadData];
     
+    if (golfers.count == 0)
+    {
+        // disable start button
+        [[[[self navigationController] navigationItem] rightBarButtonItem]setEnabled:NO];
+    }
+    else
+    {
+        // enable start button
+        [[[[self navigationController] navigationItem] rightBarButtonItem]setEnabled:YES];
+    }
     
     if (golfers.count == 4)
     {
+        // hide add button
         addButton.hidden = YES;
     }
     
@@ -136,7 +147,13 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 3, tableView.bounds.size.width-22, 18)];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"Maximum of 4";
+    
+    // change footer text
+    if (golfers.count == 0)
+        label.text = @"Add Some Golfers!";
+    else
+        label.text = @"Maximum of 4";
+        
     label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.75];
     label.backgroundColor = [UIColor clearColor];
     [myFooterView addSubview:label];

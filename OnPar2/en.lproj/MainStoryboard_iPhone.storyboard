@@ -401,6 +401,7 @@
                     <connections>
                         <outlet property="myImageView" destination="fR4-6i-HLQ" id="3LP-HK-ckZ"/>
                         <outlet property="myScrollView" destination="Q43-nh-Ztt" id="Bu3-fG-RHr"/>
+                        <outlet property="navBar" destination="5nO-NK-CUY" id="lWX-qf-D2M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtX-t6-36F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -624,6 +625,7 @@
                 <relationship kind="action" name="startShot:"/>
                 <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="myScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
         <class className="SLGlowingTextField" superclassName="UITextField">
