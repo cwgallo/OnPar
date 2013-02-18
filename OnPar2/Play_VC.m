@@ -129,10 +129,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    
-    NSError *error;
-    
     // set the picture for the golfer
     [self setHoleImageForUser: currentGolfer];
     
@@ -163,10 +159,10 @@
         }
     }
     
-    NSLog(@"CURRENT GOLFER: %@", currentGolfer);
-    NSLog(@"CURRENT ROUND: %@", currentRound);
-    NSLog(@"CURRENT HOLE: %@", currentHole);
-    NSLog(@"CURRENT SHOT: %@", currentShot);
+    //NSLog(@"CURRENT GOLFER: %@", currentGolfer);
+    //NSLog(@"CURRENT ROUND: %@", currentRound);
+    //NSLog(@"CURRENT HOLE: %@", currentHole);
+    //NSLog(@"CURRENT SHOT: %@", currentShot);
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
         NSLog(@"Stage START for golfer: %@", currentGolfer.name);
@@ -838,11 +834,11 @@
     
     selectedClubNumber = [pickerView selectedRowInComponent:CLUBNUMBER];
     
-    NSLog(@" %i %i selected", selectedClubType, selectedClubNumber);
+    //NSLog(@" %i %i selected", selectedClubType, selectedClubNumber);
     
     [self saveClubType: selectedClubType andNum: selectedClubNumber];
     
-    NSLog(@"Selected Club is: %i", selectedClub);
+    //NSLog(@"Selected Club is: %i", selectedClub);
     
     currentShot.club = [NSNumber numberWithInt: selectedClub];
     
@@ -994,7 +990,7 @@
 
 -(void)pickerDoneClicked
 {
-  	NSLog(@"Done Clicked");
+  	//NSLog(@"Done Clicked");
     [txtClub resignFirstResponder];
 }
 
