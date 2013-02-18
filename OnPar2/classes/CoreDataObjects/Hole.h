@@ -2,23 +2,36 @@
 //  Hole.h
 //  OnPar2
 //
-//  Created by Kevin R Benton on 2/14/13.
+//  Created by Kevin R Benton on 2/18/13.
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Round;
-@class Shot;
+@class Round, Shot;
 
 @interface Hole : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * distance;
+@property (nonatomic, retain) NSNumber * fairway_in_reg;
+@property (nonatomic, retain) NSNumber * firstRefLat;
+@property (nonatomic, retain) NSNumber * firstRefLong;
+@property (nonatomic, retain) NSNumber * firstRefX;
+@property (nonatomic, retain) NSNumber * firstRefY;
+@property (nonatomic, retain) NSNumber * green_in_reg;
 @property (nonatomic, retain) NSNumber * holeNumber;
 @property (nonatomic, retain) NSNumber * holeScore;
-@property (nonatomic, retain) NSNumber * fairway_in_reg;
-@property (nonatomic, retain) NSNumber * green_in_reg;
+@property (nonatomic, retain) NSNumber * par;
 @property (nonatomic, retain) NSNumber * putts;
+@property (nonatomic, retain) NSNumber * secondRefLat;
+@property (nonatomic, retain) NSNumber * secondRefLong;
+@property (nonatomic, retain) NSNumber * secondRefX;
+@property (nonatomic, retain) NSNumber * secondRefY;
+@property (nonatomic, retain) NSNumber * thirdRefLat;
+@property (nonatomic, retain) NSNumber * thirdRefLong;
+@property (nonatomic, retain) NSNumber * thirdRefX;
+@property (nonatomic, retain) NSNumber * thirdRefY;
 @property (nonatomic, retain) Round *round;
 @property (nonatomic, retain) NSSet *shots;
 @end

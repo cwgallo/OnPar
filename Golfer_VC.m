@@ -10,6 +10,7 @@
 
 @implementation GolferVC{
     NSMutableArray *golfers;
+    MBProgressHUD *HUD;
 }
 
 @synthesize golferTableView;
@@ -26,8 +27,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
-    NSLog(@"Golfers_VC appeared");
     
     [self showNavBar];
     
@@ -69,7 +68,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    NSLog(@"Golfers_VC disappeared");
 }
 
 #pragma mark - TableView methods
@@ -81,13 +79,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
- /*
-    // Number of rows is the number of time zones in the region for the specified section.
-    Golfer *golfer = [golfers objectAtIndex:section];
-    return [region.timeZoneWrappers count];
-   */
-   
-    NSLog(@"golfer count is %i", [golfers count]);
     return [golfers count];
 }
 
@@ -174,10 +165,113 @@
 - (IBAction)startRound:(id)sender {
     
     // create round
+    // 1. loop through all the golfers
+    // 2. start a round with the current time
+    // 3. call API to get reference points for their selected tee
     
-    // transition
-    [self performSegueWithIdentifier:@"settings2play" sender:self];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo: self.view animated: YES];
+    hud.labelText = @"Loading...";
     
+    int numberOfGolfers = golfers.count;
+    int count = 1;
+    
+    for (User *u in golfers) {
+        
+        // call the API to obtain the reference points for the holes
+        [[LRResty authenticatedClientWithUsername: API_USERNAME
+                                         password: API_PASSWORD
+          ]
+         get: [NSString stringWithFormat: @"%@%@%@%@%@", BASE_URL, @"holes/reference/", @1, @"/", u.tee]
+         parameters: nil
+         headers: [NSDictionary dictionaryWithObject: @"application/json"
+                                              forKey: @"Content-Type"
+                   ]
+         withBlock: ^(LRRestyResponse *response) {
+             // 1. decode the JSON
+             // 2. create a hole and fill the reference points
+             // 3. point the hole to the round
+             // 4. save the round
+             
+             if (response.status == 200) {
+                 
+                 id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+                 NSError *error;
+                 
+                 SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
+                 NSDictionary *jsonObject = [jsonParser objectWithData: response.responseData];
+                 NSArray *JSONholes = [jsonObject objectForKey: @"holes"];
+                 
+                 Round *r = [NSEntityDescription
+                             insertNewObjectForEntityForName: @"Round"
+                             inManagedObjectContext: [appDelegate managedObjectContext]];
+                 
+                 // the course ID can maybe change at a later time
+                 r.courseID = @1;
+                 r.userID = u.userID;
+                 r.teeID = u.tee;
+                 
+                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                 [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+                 
+                 NSString *dateString = [formatter stringFromDate: [NSDate date]];
+                 
+                 r.startTime  = dateString;
+                 
+                 for (NSDictionary *holeTop in JSONholes) {
+                     
+                     NSDictionary *hole = [holeTop objectForKey: @"hole"];
+                     
+                     Hole *h = [NSEntityDescription
+                                insertNewObjectForEntityForName: @"Hole"
+                                inManagedObjectContext: [appDelegate managedObjectContext]];
+                     
+                     h.holeNumber = [NSNumber numberWithInt: [[hole objectForKey: @"holeNumber"] intValue]];
+                     h.par = [NSNumber numberWithInt: [[hole objectForKey: @"par"] intValue]];
+                     h.distance = [NSNumber numberWithInt: [[hole objectForKey: @"distance"] intValue]];
+                     h.firstRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"firstRefLat"] doubleValue]];
+                     h.firstRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"firstRefLong"] doubleValue]];
+                     h.secondRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
+                     h.secondRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
+                     h.thirdRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"thirdRefLat"] doubleValue]];
+                     h.thirdRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"thirdRefLat"] doubleValue]];
+                     h.firstRefX = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefX"] intValue]];
+                     h.firstRefY = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefY"] intValue]];
+                     h.secondRefX = [NSNumber numberWithInt: [[hole objectForKey: @"secondRefX"] intValue]];
+                     h.secondRefY = [NSNumber numberWithInt: [[hole objectForKey: @"secondRefY"] intValue]];
+                     h.thirdRefX = [NSNumber numberWithInt: [[hole objectForKey: @"thirdRefX"] intValue]];
+                     h.thirdRefY = [NSNumber numberWithInt: [[hole objectForKey: @"thirdRefY"] intValue]];
+                     
+                     h.round = r;
+                     [r addHolesObject: h];
+                     
+                 }
+                 
+                 // save the round to the DB
+                 if (![[appDelegate managedObjectContext] save: &error]) {
+                     NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                 }
+             } else {
+                 
+                 AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"API error."];
+                 [alert applyCustomAlertAppearance];
+                 __weak AHAlertView *weakAlert = alert;
+                 [alert addButtonWithTitle:@"OK" block:^{
+                     weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                 }];
+                 [alert show];
+             }
+             
+             if (count == numberOfGolfers) {
+                 // hide spinner and transition
+                 [MBProgressHUD hideHUDForView: self.view animated: YES];
+                 
+                 // transition
+                 [self performSegueWithIdentifier:@"settings2play" sender:self];
+             }
+         }];
+        
+        count++;
+    }
 }
 
 - (IBAction)valueChanged:(id)sender {

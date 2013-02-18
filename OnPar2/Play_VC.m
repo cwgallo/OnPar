@@ -85,7 +85,7 @@
     NSArray *users = [[appDelegate managedObjectContext] executeFetchRequest: userFetch error: &error];
     
     // load the rounds from the database to see if there are any
-    // if some exists, do not create new rounds, just use the ones already in the DB
+    // there should always be some in the DB
     NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
     NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
                                              inManagedObjectContext: [appDelegate managedObjectContext]];
@@ -103,46 +103,7 @@
         
         // check to see if this is the current golfer
         if ([u.stageInfo.currentGolfer isEqualToNumber: [NSNumber numberWithBool: YES]]) {
-            NSLog(@"The current golfer is: %@", u.name);
             currentGolfer = u;
-        }
-        
-        if ([rounds count] == 0) {
-            // create a round for each user and store it in the same location
-            Round *r = [NSEntityDescription
-                        insertNewObjectForEntityForName: @"Round"
-                        inManagedObjectContext: [appDelegate managedObjectContext]];
-            
-            // the course ID can maybe change at a later time
-            r.courseID = @1;
-            r.userID = u.userID;
-            r.teeID = u.tee;
-            
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
-            
-            NSString *dateString = [formatter stringFromDate: [NSDate date]];
-            
-            r.startTime  = dateString;
-            
-            // create the first hole for every golfer
-            Hole *h = [NSEntityDescription
-                       insertNewObjectForEntityForName: @"Hole"
-                       inManagedObjectContext: [appDelegate managedObjectContext]];
-            
-            h.holeNumber = @1;
-            
-            // set relationships
-            h.round = r;
-            [r addHolesObject: h];
-            
-            // save the round and hole
-            if (![[appDelegate managedObjectContext] save: &error]) {
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-            } else {
-                // add the object to the rounds array
-                [rounds setObject: r forKey: u.userID];
-            }
         }
     }
     
@@ -158,6 +119,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
     // set the picture for the golfer
     [self setHoleImageForUser: currentGolfer];
     
@@ -172,6 +137,9 @@
     // set the current Round, Hole, and Shot
     currentRound = [rounds objectForKey: currentGolfer.userID];
     
+    currentHole = nil;
+    currentShot = nil;
+    
     for (Hole *h in currentRound.holes) {
         if ([currentGolfer.stageInfo.holeNumber isEqualToNumber: h.holeNumber]) {
             currentHole = h;
@@ -184,6 +152,11 @@
             break;
         }
     }
+    
+    NSLog(@"CURRENT GOLFER: %@", currentGolfer);
+    NSLog(@"CURRENT ROUND: %@", currentRound);
+    NSLog(@"CURRENT HOLE: %@", currentHole);
+    NSLog(@"CURRENT SHOT: %@", currentShot);
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
         NSLog(@"Stage START for golfer: %@", currentGolfer.name);
@@ -253,19 +226,6 @@
     // create a new hole to add to the hole object with the updated hole number
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     
-    // create the first hole for every golfer
-    Hole *h = [NSEntityDescription
-               insertNewObjectForEntityForName: @"Hole"
-               inManagedObjectContext: [appDelegate managedObjectContext]];
-    
-    h.holeNumber = currentGolfer.stageInfo.holeNumber;
-    
-    // set relationships
-    h.round = currentRound;
-    [currentRound addHolesObject: h];
-    
-    currentHole = h;
-    
     NSError *error;
     
     if (![[appDelegate managedObjectContext] save: &error]) {
@@ -289,18 +249,6 @@
         // do not advance to hole 19
         if (holeNumber + 1 != 19) {
             currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
-            
-            // create a new hole with the new hole number
-            Hole *h = [NSEntityDescription
-                       insertNewObjectForEntityForName: @"Hole"
-                       inManagedObjectContext: [appDelegate managedObjectContext]];
-            
-            h.holeNumber = currentGolfer.stageInfo.holeNumber;
-            
-            h.round = currentRound;
-            [currentRound addHolesObject: h];
-            
-            currentHole = h;
         } else {
             // if they finish hole 18, set them to stage done
             currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_DONE];
@@ -332,6 +280,25 @@
 
 - (IBAction)startShot:(id)sender
 {
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    
+    // check to see if the current shot was reached
+    // if there is no current shot, create one
+    if (currentShot == nil) {
+        Shot *s = [NSEntityDescription
+                   insertNewObjectForEntityForName: @"Shot"
+                   inManagedObjectContext: [appDelegate managedObjectContext]];
+        
+        s.shotNumber = currentGolfer.stageInfo.shotNumber;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        } else {
+            currentShot = s;
+        }
+    }
+    
     // alert to tell them to press OK at the location of the ball
     AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Start Shot" message:@"Press OK when at the ball's location for the start of the shot."];
     [alert applyCustomAlertAppearance];
@@ -339,18 +306,11 @@
     [alert addButtonWithTitle:@"OK" block:^{
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
-        Shot *s = [NSEntityDescription
-                   insertNewObjectForEntityForName: @"Shot"
-                   inManagedObjectContext: [appDelegate managedObjectContext]];
+        currentShot.startLatitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.latitude];
+        currentShot.startLongitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.longitude];
         
-        s.startLatitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.latitude];
-        s.startLongitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.longitude];
-        
-        s.shotNumber = currentGolfer.stageInfo.shotNumber;
-        
-        s.hole = currentHole;
-        [currentHole addShotsObject: s];
-        currentShot = s;
+        currentShot.hole = currentHole;
+        [currentHole addShotsObject: currentShot];
         
         // update the user's stage info to be at STAGE_CLUB_SELECT
         currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_CLUB_SELECT];
@@ -535,7 +495,6 @@
 - (void)changeGolfer:(id)object
 {
     // Make golfer change here
-    NSLog(@"Change golfer to %@", object);
     currentGolfer = object;
     
     for (NSNumber *key in golfers) {
@@ -575,8 +534,6 @@
     NSNumber *hole = u.stageInfo.holeNumber;
     
     NSString *filename = [NSString stringWithFormat:@"%@%@%@", @"hole", hole, @".png"];
-    
-    NSLog(@"Loading file: %@", filename);
     
     UIImage *image = [UIImage imageNamed:filename];
     
@@ -624,9 +581,6 @@
     if (newLocation.coordinate.latitude != self.lastLocation.coordinate.latitude &&
         newLocation.coordinate.longitude != self.lastLocation.coordinate.longitude) {
         self.lastLocation = newLocation;
-        NSLog(@"New location: %f, %f",
-              self.lastLocation.coordinate.latitude,
-              self.lastLocation.coordinate.longitude);
         [self.locationMgr stopUpdatingLocation];
     }
 }
@@ -637,7 +591,6 @@
 {
     // Get tap location within myImageView
     CGPoint location = [recognizer locationInView:self.myImageView];
-    NSLog(@"ImageView location tap x : %f, y : %f", location.x, location.y);
     
     // myImageView is 1/2 size of original image so multiply by 2 to get original pixel values
     location.x *= 2;
@@ -685,17 +638,15 @@
     // retrieve known points for this hole
     
     // TODO - these points are defined for hole 1 but should be found dynamically
-    XYPair *teeXY0 = [[XYPair alloc] initWithX:212 andY:696];
-    LLPair *teeLLDeg = [[LLPair alloc] initWithLat:33.478658 andLon:-88.733421];
+    XYPair *teeXY0 = [[XYPair alloc] initWithX: [currentHole.firstRefX doubleValue] andY: [currentHole.firstRefY doubleValue]];
+    LLPair *teeLLDeg = [[LLPair alloc] initWithLat: [currentHole.firstRefLat doubleValue] andLon: [currentHole.firstRefLong doubleValue]];
     LLPair *teeLLRad = [[LLPair alloc] initWithLLPair:[teeLLDeg deg2rad]];
     XYPair *teeLLRadFlat = [[XYPair alloc] initWithX:teeLLRad._lon andY:teeLLRad._lat];
-    NSLog(@"FlatTee is %@", teeLLRadFlat);
     
-    XYPair *centerXY0 = [[XYPair alloc] initWithX:193 andY:127];
-    LLPair *centerLLDeg = [[LLPair alloc] initWithLat:33.48124 andLon:-88.734538];
+    XYPair *centerXY0 = [[XYPair alloc] initWithX: [currentHole.thirdRefX doubleValue] andY: [currentHole.thirdRefY doubleValue]];
+    LLPair *centerLLDeg = [[LLPair alloc] initWithLat: [currentHole.thirdRefLat doubleValue] andLon: [currentHole.thirdRefLong doubleValue]];
     LLPair *centerLLRad = [[LLPair alloc] initWithLLPair:[centerLLDeg deg2rad]];
     XYPair *centerLLRadFlat = [[XYPair alloc] initWithX:centerLLRad._lon andY:centerLLRad._lat];
-    NSLog(@"FlatCenter is %@", centerLLRadFlat);
     
     XYPair *aimXY0 = [[XYPair alloc] initWithXYPair:aimXY];
     LLPair *aimLLDeg = [[LLPair alloc] init];
@@ -703,8 +654,6 @@
     
     // Get height of image
     double height = myImageView.bounds.size.height * 2; // times 2 bc it is only half size
-    
-    NSLog(@"Height of image is: %f", height);
     
     // 1st coordinate conversion
     XYPair *teeXY1 = [self convertXY0toXY1WithXYPair:teeXY0 andHeight:height];
@@ -716,23 +665,15 @@
     
     // 2nd coordinate conversion
     XYPair *teeXY2 = [self convertXY1toXY2WithXYPair:teeXY1 andAngle:rotation];
-    NSLog(@"TeeXY2 is %@", teeXY2);
     XYPair *centerXY2 = [self convertXY1toXY2WithXYPair:centerXY1 andAngle:rotation];
-    NSLog(@"CenterXY2 is %@", centerXY2);
     XYPair *aimXY2 = [self convertXY1toXY2WithXYPair:aimXY1 andAngle:rotation];
-    NSLog(@"AimXY2 is %@", aimXY2);
     
     // Get Flat Earth Scaling Factors
     XYPair *scaleFactors = [[XYPair alloc] initWithXYPair:[self getFlatEarthScaleUsingTeeXY:teeXY2 andTeeLLRadFlat:teeLLRadFlat andCenterXY:centerXY2 andCenterLLRadFlat:centerLLRadFlat]];
     
-    NSLog(@"Scaling factors are %@", scaleFactors);
-    
     // Get Aim LL
     aimLLRad = [self getAimLLUsingAimXY: (XYPair*)aimXY2 andCenterXY: (XYPair*)centerXY2 andCenterLLRadFlat: (XYPair*)centerLLRadFlat andScaleFactors: (XYPair*) scaleFactors];
     aimLLDeg = [aimLLRad rad2deg];
-    
-    NSLog(@"AimLLRad is %@", aimLLRad);
-    NSLog(@"AimLLDeg is %@", aimLLDeg);
     
     // calculate distances to display
     // from current location to aim point
@@ -783,15 +724,6 @@
     // Calculate angle
     double sinRotation = asin(sinRot);
     double cosRotation = acos(cosRot);
-    
-    // TESTING
-    NSLog(@"Angle of rotation derived... ");
-    NSLog(@"From SIN");
-    NSLog(@"\tDegrees: %f", sinRotation*180.0/M_PI);
-    NSLog(@"\tRadians: %f", sinRotation);
-    NSLog(@"From COS");
-    NSLog(@"\tDegrees: %f", cosRotation*180.0/M_PI);
-    NSLog(@"\tRadians: %f", cosRotation);
 	
     return sinRotation;
 }
@@ -854,8 +786,6 @@
     results._x = scaleX;
     results._y = scaleY;
     
-    NSLog(@"SFs are %@", results);
-    
     return results;
 }
 
@@ -864,9 +794,7 @@
 - (LLPair*)getAimLLUsingAimXY: (XYPair*)aimXY2 andCenterXY: (XYPair*)centerXY2 andCenterLLRadFlat: (XYPair*)centerLLRadFlat andScaleFactors: (XYPair*) scaleFactors{
     
     double aimLon = centerLLRadFlat._x + (aimXY2._x - centerXY2._x) * scaleFactors._x;
-    NSLog(@"Aim longitude is %.8f", aimLon);
     double aimLat = centerLLRadFlat._y + (aimXY2._y - centerXY2._y) * scaleFactors._y;
-    NSLog(@"Aim latitude is %.8f", aimLat);
     
     LLPair *results = [[LLPair alloc] init];
     results._lat = aimLat;

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2EAA462616D1E32400B63CD4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAA462516D1E32400B63CD4 /* CoreLocation.framework */; };
+		2EAA462916D27EFB00B63CD4 /* OnPar2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA462716D27EFB00B63CD4 /* OnPar2.xcdatamodeld */; };
+		2EAA462C16D27F1200B63CD4 /* Hole.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA462B16D27F1200B63CD4 /* Hole.m */; };
 		B611325516CB0F670032AD4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325416CB0F670032AD4B /* UIKit.framework */; };
 		B611325716CB0F670032AD4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325616CB0F670032AD4B /* Foundation.framework */; };
 		B611325916CB0F670032AD4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325816CB0F670032AD4B /* CoreGraphics.framework */; };
@@ -20,7 +22,6 @@
 		B611326D16CB0F670032AD4B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B611326C16CB0F670032AD4B /* Default-568h@2x.png */; };
 		B611327016CB0F670032AD4B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611326E16CB0F670032AD4B /* MainStoryboard_iPhone.storyboard */; };
 		B611327316CB0F670032AD4B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611327116CB0F670032AD4B /* MainStoryboard_iPad.storyboard */; };
-		B611327616CB0F670032AD4B /* OnPar2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B611327416CB0F670032AD4B /* OnPar2.xcdatamodeld */; };
 		B611327916CB0F670032AD4B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611327816CB0F670032AD4B /* MainViewController.m */; };
 		B611328416CB0F680032AD4B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611328316CB0F680032AD4B /* SenTestingKit.framework */; };
 		B611328516CB0F680032AD4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325416CB0F670032AD4B /* UIKit.framework */; };
@@ -34,7 +35,6 @@
 		B61132BD16CD2F200032AD4B /* Golfer_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132BC16CD2F200032AD4B /* Golfer_VC.m */; };
 		B61132C116CD33120032AD4B /* Golfer_Add_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132C016CD33120032AD4B /* Golfer_Add_VC.m */; };
 		B61132C516CD83160032AD4B /* Golfer_Registration_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132C416CD83160032AD4B /* Golfer_Registration_VC.m */; };
-		B611333316CD92B90032AD4B /* Hole.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CA16CD92B90032AD4B /* Hole.m */; };
 		B611333416CD92B90032AD4B /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CC16CD92B90032AD4B /* Round.m */; };
 		B611333516CD92B90032AD4B /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132CE16CD92B90032AD4B /* Shot.m */; };
 		B611333616CD92B90032AD4B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B61132D016CD92B90032AD4B /* User.m */; };
@@ -229,6 +229,9 @@
 
 /* Begin PBXFileReference section */
 		2EAA462516D1E32400B63CD4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2EAA462816D27EFB00B63CD4 /* OnPar2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnPar2.xcdatamodel; sourceTree = "<group>"; };
+		2EAA462A16D27F1200B63CD4 /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
+		2EAA462B16D27F1200B63CD4 /* Hole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hole.m; sourceTree = "<group>"; };
 		B611325116CB0F670032AD4B /* OnPar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnPar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B611325416CB0F670032AD4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B611325616CB0F670032AD4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -245,7 +248,6 @@
 		B611326C16CB0F670032AD4B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B611326F16CB0F670032AD4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B611327216CB0F670032AD4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		B611327516CB0F670032AD4B /* OnPar2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnPar2.xcdatamodel; sourceTree = "<group>"; };
 		B611327716CB0F670032AD4B /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		B611327816CB0F670032AD4B /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B611328216CB0F680032AD4B /* OnPar2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnPar2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,8 +266,6 @@
 		B61132C316CD83160032AD4B /* Golfer_Registration_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Golfer_Registration_VC.h; sourceTree = "<group>"; };
 		B61132C416CD83160032AD4B /* Golfer_Registration_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Golfer_Registration_VC.m; sourceTree = "<group>"; };
 		B61132C716CD92B90032AD4B /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		B61132C916CD92B90032AD4B /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
-		B61132CA16CD92B90032AD4B /* Hole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hole.m; sourceTree = "<group>"; };
 		B61132CB16CD92B90032AD4B /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
 		B61132CC16CD92B90032AD4B /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
 		B61132CD16CD92B90032AD4B /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
@@ -528,7 +528,7 @@
 				B61132BE16CD2F290032AD4B /* ViewControllers */,
 				B611326516CB0F670032AD4B /* AppDelegate.h */,
 				B611326616CB0F670032AD4B /* AppDelegate.m */,
-				B611327416CB0F670032AD4B /* OnPar2.xcdatamodeld */,
+				2EAA462716D27EFB00B63CD4 /* OnPar2.xcdatamodeld */,
 				B611325D16CB0F670032AD4B /* Supporting Files */,
 			);
 			path = OnPar2;
@@ -631,10 +631,10 @@
 		B61132C816CD92B90032AD4B /* CoreDataObjects */ = {
 			isa = PBXGroup;
 			children = (
+				2EAA462A16D27F1200B63CD4 /* Hole.h */,
+				2EAA462B16D27F1200B63CD4 /* Hole.m */,
 				B6E2419416D035BB00D9CA97 /* UserStageInfo.h */,
 				B6E2419516D035BB00D9CA97 /* UserStageInfo.m */,
-				B61132C916CD92B90032AD4B /* Hole.h */,
-				B61132CA16CD92B90032AD4B /* Hole.m */,
 				B61132CB16CD92B90032AD4B /* Round.h */,
 				B61132CC16CD92B90032AD4B /* Round.m */,
 				B61132CD16CD92B90032AD4B /* Shot.h */,
@@ -1155,12 +1155,10 @@
 			files = (
 				B611326316CB0F670032AD4B /* main.m in Sources */,
 				B611326716CB0F670032AD4B /* AppDelegate.m in Sources */,
-				B611327616CB0F670032AD4B /* OnPar2.xcdatamodeld in Sources */,
 				B611327916CB0F670032AD4B /* MainViewController.m in Sources */,
 				B61132BD16CD2F200032AD4B /* Golfer_VC.m in Sources */,
 				B61132C116CD33120032AD4B /* Golfer_Add_VC.m in Sources */,
 				B61132C516CD83160032AD4B /* Golfer_Registration_VC.m in Sources */,
-				B611333316CD92B90032AD4B /* Hole.m in Sources */,
 				B611333416CD92B90032AD4B /* Round.m in Sources */,
 				B611333516CD92B90032AD4B /* Shot.m in Sources */,
 				B611333616CD92B90032AD4B /* User.m in Sources */,
@@ -1227,6 +1225,8 @@
 				B6A54C7D16D0A462002B0107 /* DCRoundSwitchKnobLayer.m in Sources */,
 				B6A54C7F16D0A462002B0107 /* DCRoundSwitchOutlineLayer.m in Sources */,
 				B6A54C8116D0A462002B0107 /* DCRoundSwitchToggleLayer.m in Sources */,
+				2EAA462916D27EFB00B63CD4 /* OnPar2.xcdatamodeld in Sources */,
+				2EAA462C16D27F1200B63CD4 /* Hole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,12 +1451,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B611327416CB0F670032AD4B /* OnPar2.xcdatamodeld */ = {
+		2EAA462716D27EFB00B63CD4 /* OnPar2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B611327516CB0F670032AD4B /* OnPar2.xcdatamodel */,
+				2EAA462816D27EFB00B63CD4 /* OnPar2.xcdatamodel */,
 			);
-			currentVersion = B611327516CB0F670032AD4B /* OnPar2.xcdatamodel */;
+			currentVersion = 2EAA462816D27EFB00B63CD4 /* OnPar2.xcdatamodel */;
 			path = OnPar2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

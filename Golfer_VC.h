@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Config.h"
 
-@interface GolferVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface GolferVC : UIViewController<UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UITableView *golferTableView;
