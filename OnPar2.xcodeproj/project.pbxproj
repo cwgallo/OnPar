@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EAA462616D1E32400B63CD4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAA462516D1E32400B63CD4 /* CoreLocation.framework */; };
 		B611325516CB0F670032AD4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325416CB0F670032AD4B /* UIKit.framework */; };
 		B611325716CB0F670032AD4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325616CB0F670032AD4B /* Foundation.framework */; };
 		B611325916CB0F670032AD4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325816CB0F670032AD4B /* CoreGraphics.framework */; };
@@ -227,6 +228,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EAA462516D1E32400B63CD4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B611325116CB0F670032AD4B /* OnPar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnPar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B611325416CB0F670032AD4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B611325616CB0F670032AD4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -458,6 +460,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAA462616D1E32400B63CD4 /* CoreLocation.framework in Frameworks */,
 				B611336216CD92D40032AD4B /* SystemConfiguration.framework in Frameworks */,
 				B61132BA16CD2EF40032AD4B /* AudioToolbox.framework in Frameworks */,
 				B61132B816CD2EEB0032AD4B /* QuartzCore.framework in Frameworks */,
@@ -504,6 +507,7 @@
 		B611325316CB0F670032AD4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EAA462516D1E32400B63CD4 /* CoreLocation.framework */,
 				B611336116CD92D40032AD4B /* SystemConfiguration.framework */,
 				B61132B916CD2EF40032AD4B /* AudioToolbox.framework */,
 				B61132B716CD2EEB0032AD4B /* QuartzCore.framework */,

@@ -461,6 +461,10 @@
     // It is up to the User to decide when the end of the
     // round is.
     
+    // Going to a new page so updating location is no
+    // longer needed.
+    [self.locationMgr stopUpdatingLocation];
+    
     // Go to upload page
     [self performSegueWithIdentifier: @"play2upload" sender:self];
 }
@@ -476,6 +480,10 @@
         weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
     }];
     [alert addButtonWithTitle:@"Yes" block:^{
+        // Going to a new page so updating location is no
+        // longer needed.
+        [self.locationMgr stopUpdatingLocation];
+        
         // Delete everything
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         MainViewController *mvc = [[MainViewController alloc] init];
