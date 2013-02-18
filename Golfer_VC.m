@@ -273,7 +273,7 @@
                      [MBProgressHUD hideHUDForView: self.view animated: YES];
                      
                      // transition
-                     //[self performSegueWithIdentifier:@"settings2play" sender:self];
+                     [self performSegueWithIdentifier:@"settings2play" sender:self];
                  } else {
                      count++;
                  }
