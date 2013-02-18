@@ -141,9 +141,9 @@
             NSMutableArray *JSONholes = [[NSMutableArray alloc] init];
             
             for (Hole *h in r.holes) {
-                if (h.shots == nil && h.holeScore == nil && h.fairway_in_reg == nil &&
-                    h.green_in_reg == nil && h.putts == nil) {
+                if (h.putts == nil && h.holeScore == nil && h.shots.count == 0) {
                     // the User did not do anything on this hole. Skip it
+                    NSLog(@"Should skip this hole: %@", h.holeNumber);
                     continue;
                 }
                 
