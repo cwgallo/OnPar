@@ -55,7 +55,8 @@
 }
 
 - (IBAction)done:(id)sender {
-    // TODO - Find way to dismiss keyboard
+    // Dismiss keyboard
+    [emailAddressTextField resignFirstResponder];
     
     // proper algorithm steps
     // 1. Check to make sure all required fields are set.

@@ -8,7 +8,6 @@
 
 #import "Play_VC.h"
 #import "Config.h"
-#import "Math.h" // for aimGPS
 #import "MainViewController.h" // needed for deleteEverything
 
 @interface Play_VC ()
@@ -19,26 +18,19 @@
     NSMutableDictionary *golfers;
     NSMutableDictionary *rounds;
     
-    // for the club selection
-    NSArray *types;
-    NSArray *woods;
-    NSArray *hybrids;
-    NSArray *irons;
-    NSArray *wedges;
-    
     User *currentGolfer;
     Round *currentRound;
     Hole *currentHole;
     Shot *currentShot;
     
-    int clubSelection;
-    int clubType;
+    int selectedClubType;
+    int selectedClubNumber;
+    int selectedClub;
 }
 
-@synthesize myImageView, myScrollView, navBar;
+@synthesize myImageView, myScrollView, navBar, txtClub;
 @synthesize startButton, endButton, finishButton, skipButton;
-//@synthesize clubTypeSegment, clubPicker, clubSelectionTable;
-
+@synthesize clubType, woodNum, hybridNum, ironNum, wedgeType;
 @synthesize locationMgr = _locationMgr;
 @synthesize lastLocation = _lastLocation;
 
@@ -58,8 +50,26 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // for club selection
-    types = [[NSArray alloc] initWithObjects: @"Woods", @"Hybrids", @"Irons", @"Wedges", nil];
+    // Preparing Club Selection
+    [self populateClubArrays];
+    clubPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    clubPicker  .delegate = self;
+    clubPicker  .dataSource = self;
+    [clubPicker  setShowsSelectionIndicator:YES];
+    txtClub.inputView =  clubPicker;
+    
+    // Create done button in UIPickerView
+    UIToolbar*  mypickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
+    mypickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [mypickerToolbar sizeToFit];
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject:flexSpace];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDoneClicked)];
+    [barItems addObject:doneBtn];
+    [mypickerToolbar setItems:barItems animated:YES];
+    txtClub.inputAccessoryView = mypickerToolbar;
+    
     
     // location manager
     self.locationMgr = [[CLLocationManager alloc] init];
@@ -163,7 +173,6 @@
         // hide end button and show start
         endButton.hidden = YES;
         startButton.hidden = NO;
-        
         finishButton.hidden = NO;
         
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_CLUB_SELECT]]) {
@@ -172,18 +181,16 @@
         // hide end button and start
         endButton.hidden = YES;
         startButton.hidden = YES;
-        
         finishButton.hidden = YES;
         
         // manually call club select function
-        [self selectClub];
+        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(selectAClub:) userInfo:nil repeats:NO];
         
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_AIM]]) {
         NSLog(@"Stage AIM for golfer: %@", currentGolfer.name);
         // hide end button and start button
         endButton.hidden = YES;
         startButton.hidden = YES;
-        
         finishButton.hidden = YES;
         
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_END]]) {
@@ -191,7 +198,6 @@
         // show end button and hide start button
         endButton.hidden = NO;
         startButton.hidden = YES;
-        
         finishButton.hidden = YES;
         
     } else {
@@ -532,11 +538,9 @@
 - (void)setHoleImageForUser: (User *)u
 {
     NSNumber *hole = u.stageInfo.holeNumber;
-    
     NSString *filename = [NSString stringWithFormat:@"%@%@%@", @"hole", hole, @".png"];
     
     UIImage *image = [UIImage imageNamed:filename];
-    
     [myImageView setImage: image];
 }
 
@@ -801,6 +805,249 @@
     results._lon = aimLon;
     
     return results;
+}
+
+#pragma mark - Club Selection methods
+
+- (void)selectAClub:(id)sender
+{
+    [txtClub becomeFirstResponder];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
+{
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == CLUBTYPE)
+        return [clubType count];
+    else if (component == CLUBNUMBER && selectedClubType == 0)
+        return [woodNum count];
+    else if (component == CLUBNUMBER && selectedClubType == 1)
+        return [hybridNum count];
+    else if (component == CLUBNUMBER && selectedClubType == 2)
+        return [ironNum count];
+    else if (component == CLUBNUMBER && selectedClubType == 3)
+        return [wedgeType count];
+    else
+        return 0;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (component == CLUBTYPE)
+        return [clubType objectAtIndex:row];
+    else if (component == CLUBNUMBER && selectedClubType == 0)
+        return [woodNum objectAtIndex:row];
+    else if (component == CLUBNUMBER && selectedClubType == 1)
+        return [hybridNum objectAtIndex:row];
+    else if (component == CLUBNUMBER && selectedClubType == 2)
+        return [ironNum objectAtIndex:row];
+    else if (component == CLUBNUMBER && selectedClubType == 3)
+        return [wedgeType objectAtIndex:row];
+    else
+        return 0;
+    
+    
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    selectedClubType = [pickerView selectedRowInComponent:CLUBTYPE];
+    
+    if (component == CLUBTYPE && selectedClubType >= 0)
+    {
+        [pickerView reloadComponent:CLUBNUMBER];
+        [pickerView selectRow:0 inComponent:CLUBNUMBER animated:YES];
+    }
+    
+    selectedClubNumber = [pickerView selectedRowInComponent:CLUBNUMBER];
+    
+    NSLog(@" %i %i selected", selectedClubType, selectedClubNumber);
+    
+    [self saveClubType: selectedClubType andNum: selectedClubNumber];
+    
+    NSLog(@"Selected Club is: %i", selectedClub);
+}
+
+
+- (void) saveClubType:(int)type andNum:(int)num
+{
+    // CHANGE LABEL
+    switch (type)
+    {
+            // WOOD
+        case 0:
+            switch (num)
+        {
+                // DRIVER
+            case 0:
+                selectedClub = DRIVER;
+                break;
+                // 3
+            case 1:
+                selectedClub = THREE_WOOD;
+                break;
+                // 4
+            case 2:
+                selectedClub = FOUR_WOOD;
+                break;
+                // 5
+            case 3:
+                selectedClub = FIVE_WOOD;
+                break;
+                // 7
+            case 4:
+                selectedClub = SEVEN_WOOD;
+                break;
+                // 9
+            case 5:
+                selectedClub = NINE_WOOD;
+                break;
+        }
+            break;
+            
+            
+            // HYBRID
+        case 1:
+            switch (selectedClubNumber)
+        {
+                // 2
+            case 0:
+                selectedClub = TWO_HYBRID;
+                break;
+                // 3f
+            case 1:
+                selectedClub = THREE_HYBRID;
+                break;
+                // 4
+            case 2:
+                selectedClub = FOUR_HYBRID;
+                break;
+                // 5
+            case 3:
+                selectedClub = FIVE_HYBRID;
+                break;
+                // 6
+            case 4:
+                selectedClub = SIX_HYBRID;
+                break;
+        }
+            
+            break;
+            
+            // IRON
+        case 2:
+            switch (selectedClubNumber)
+        {
+                // 2
+            case 0:
+                selectedClub = TWO_IRON;
+                break;
+                // 3
+            case 1:
+                selectedClub = THREE_IRON;
+                break;
+                // 4
+            case 2:
+                selectedClub = FOUR_IRON;
+                break;
+                // 5
+            case 3:
+                selectedClub = FIVE_IRON;
+                break;
+                // 6
+            case 4:
+                selectedClub = SIX_IRON;
+                break;
+                // 7
+            case 5:
+                selectedClub = SEVEN_IRON;
+                break;
+                // 8
+            case 6:
+                selectedClub = EIGHT_IRON;
+                break;
+                // 9
+            case 7:
+                selectedClub = NINE_IRON;
+                break;
+        }
+            
+            break;
+            
+            // WEDGE
+        case 3:
+            switch (selectedClubNumber)
+        {
+            case 0:
+                selectedClub = AW;
+                break;
+            case 1:
+                selectedClub = HLW;
+                break;
+            case 2:
+                selectedClub = LW;
+                break;
+            case 3:
+                selectedClub = PW;
+                break;
+            case 4:
+                selectedClub = SW;
+                break;
+        }
+            
+            break;
+    }
+}
+
+-(void)pickerDoneClicked
+{
+  	NSLog(@"Done Clicked");
+    [txtClub resignFirstResponder];
+}
+
+- (void)populateClubArrays
+{
+    clubType = [[NSMutableArray alloc] init];
+    [clubType addObject:@" Wood "];
+    [clubType addObject:@" Hybrid "];
+    [clubType addObject:@" Iron "];
+    [clubType addObject:@" Wedge "];
+    
+    woodNum = [[NSMutableArray alloc] init];
+    [woodNum addObject:@" Driver "];
+    [woodNum addObject:@" 3 "];
+    [woodNum addObject:@" 4 "];
+    [woodNum addObject:@" 5 "];
+    [woodNum addObject:@" 7 "];
+    [woodNum addObject:@" 9 "];
+    
+    hybridNum = [[NSMutableArray alloc] init];
+    [hybridNum addObject:@" 2 "];
+    [hybridNum addObject:@" 3 "];
+    [hybridNum addObject:@" 4 "];
+    [hybridNum addObject:@" 5 "];
+    [hybridNum addObject:@" 6 "];
+    
+    ironNum = [[NSMutableArray alloc] init];
+    [ironNum addObject:@" 2 "];
+    [ironNum addObject:@" 3 "];
+    [ironNum addObject:@" 4 "];
+    [ironNum addObject:@" 5 "];
+    [ironNum addObject:@" 6 "];
+    [ironNum addObject:@" 7 "];
+    [ironNum addObject:@" 8 "];
+    [ironNum addObject:@" 9 "];
+    
+    wedgeType = [[NSMutableArray alloc] init];
+    [wedgeType addObject:@" Approach "];
+    [wedgeType addObject:@" High Lob "];
+    [wedgeType addObject:@" Lob "];
+    [wedgeType addObject:@" Pitching "];
+    [wedgeType addObject:@" Sand "];
 }
 
 

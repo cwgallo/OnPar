@@ -368,6 +368,13 @@
                                             <action selector="endShot:" destination="Bch-5h-vqj" eventType="touchUpInside" id="COM-sc-tX0"/>
                                         </connections>
                                     </button>
+                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfe-ai-sSd">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="RIT-7W-frs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3Ef-8c-Icp"/>
@@ -383,7 +390,9 @@
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="231" id="ZI0-qR-cgl"/>
                                     <constraint firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cmn-GX-yn5"/>
                                     <constraint firstAttribute="trailing" secondItem="Yqu-ki-FBe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fM6-AC-Bjy"/>
+                                    <constraint firstItem="Cfe-ai-sSd" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gWz-HV-LGN"/>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="i8D-IH-gjG"/>
+                                    <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="fR4-6i-HLQ" secondAttribute="centerY" type="default" id="jP0-A6-l0x"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qgR-tm-5aT"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="vZd-xi-Mwm"/>
                                 </constraints>
@@ -417,6 +426,7 @@
                         <outlet property="navBar" destination="5nO-NK-CUY" id="lWX-qf-D2M"/>
                         <outlet property="skipButton" destination="TLe-Ir-McU" id="0ck-LT-sKZ"/>
                         <outlet property="startButton" destination="RMs-du-XdE" id="2cA-xW-l3V"/>
+                        <outlet property="txtClub" destination="Cfe-ai-sSd" id="kh4-ok-8tt"/>
                         <segue destination="YBu-hs-YqR" kind="push" identifier="play2upload" id="cYd-eY-i0d"/>
                     </connections>
                 </viewController>
@@ -476,7 +486,7 @@
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="cwg27@cse.msstate.edu" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="SB5-1t-LvH">
+                            <label hidden="YES" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="cwg27@cse.msstate.edu" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="SB5-1t-LvH">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="6Ms-zR-h4G"/>
                                     <constraint firstAttribute="height" constant="50" id="D8v-yH-Elc"/>
@@ -791,6 +801,7 @@
                 <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="skipButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="txtClub" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="SLGlowingTextField" superclassName="UITextField">

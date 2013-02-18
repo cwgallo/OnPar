@@ -10,24 +10,33 @@
 #import "Config.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface Play_VC : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate, UITableViewDataSource>
+#define CLUBTYPE   0
+#define CLUBNUMBER 1
+
+@interface Play_VC : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+{
+    UIPickerView *clubPicker;
+}
+
+
+#pragma mark - View
 
 @property (strong, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *myImageView;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navBar;
-
-
-#pragma mark - Buttons
-
 @property (strong, nonatomic) IBOutlet UIButton *skipButton;
 @property (strong, nonatomic) IBOutlet UIButton *finishButton;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
+@property (strong, nonatomic) IBOutlet UITextField *txtClub;
 
-#pragma mark - core location
+
+
+#pragma mark - Core Location
 
 @property (nonatomic, retain) CLLocationManager *locationMgr;
 @property (nonatomic, retain) CLLocation *lastLocation;
+
 
 
 #pragma mark - Actions
@@ -39,14 +48,17 @@
 - (IBAction)startShot:(id)sender;
 - (IBAction)endShot:(id)sender;
 
+
+
 #pragma mark - Club Select
 
-/*@property (strong, nonatomic) IBOutlet UITableView *clubSelectionTable;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *clubTypeSegment;
-@property (strong, nonatomic) IBOutlet UIPickerView *clubPicker;
+@property(nonatomic, retain) NSMutableArray *clubType;
+@property(nonatomic, retain) NSMutableArray *woodNum;
+@property(nonatomic, retain) NSMutableArray *hybridNum;
+@property(nonatomic, retain) NSMutableArray *ironNum;
+@property(nonatomic, retain) NSMutableArray *wedgeType;
 
-- (IBAction)clubTypeChange:(id)sender;
-- (IBAction)clubPickChange:(id)sender;*/
+
 
 #pragma mark - Gesture
 - (IBAction)handleTap: (UIGestureRecognizer *)recognizer;
