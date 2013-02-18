@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Config.h"
 
-@interface Upload_Results : UIViewController <MBProgressHUDDelegate>
+@interface Upload_Results : UIViewController
 
 @property (strong, nonatomic) IBOutlet UINavigationItem *navBar;
 

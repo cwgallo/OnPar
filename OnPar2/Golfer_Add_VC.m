@@ -84,13 +84,10 @@
         if ([emailTest evaluateWithObject: self.emailAddressTextField.text]) {
             
             // check for reachability
-            // will be implemented later after bug fix
-            // or another way found
-            //Reachability *reach = [Reachability reachabilityWithHostname: BASE_URL];
+            Reachability *reach = [Reachability reachabilityWithHostname: HOSTNAME];
             
-            //if ([reach isReachable]) {
-            if (1) {
-                
+            if ([reach isReachable]) {
+    
                 // start progress spinner
                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo: self.view animated: YES];
                 hud.labelText = @"Loading...";
@@ -237,7 +234,7 @@
                  ];
                 
             } else {
-                // email validation failed
+                // internet reachablility failed
                 AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];
                 [alert applyCustomAlertAppearance];
                 __weak AHAlertView *weakAlert = alert;

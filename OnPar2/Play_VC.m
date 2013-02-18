@@ -839,22 +839,6 @@
     [self saveClubType: selectedClubType andNum: selectedClubNumber];
     
     //NSLog(@"Selected Club is: %i", selectedClub);
-    
-    currentShot.club = [NSNumber numberWithInt: selectedClub];
-    
-    // set User's stage to STAGE_AIM
-    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
-    
-    // save the club selection and user's stage to the DB
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    
-    NSError *error;
-    
-    if (![[appDelegate managedObjectContext] save: &error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-    [self viewWillAppear: NO];
 }
 
 
@@ -991,6 +975,27 @@
 -(void)pickerDoneClicked
 {
   	//NSLog(@"Done Clicked");
+
+    if (selectedClub != 0) {
+        currentShot.club = [NSNumber numberWithInt: selectedClub];
+    } else {
+        currentShot.club = [NSNumber numberWithInt: DRIVER];
+    }
+    
+    // set User's stage to STAGE_AIM
+    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+    
+    // save the club selection and user's stage to the DB
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    [self viewWillAppear: NO];
+    
     [txtClub resignFirstResponder];
 }
 
