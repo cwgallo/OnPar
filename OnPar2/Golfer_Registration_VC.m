@@ -58,9 +58,12 @@
 }
 
 - (IBAction)done:(id)sender {
-    // do stuff with info here
-    
-    // TODO - Find way to dismiss keyboard
+    // Dismiss keyboard(s)
+    [firstNameTextField resignFirstResponder];
+    [lastNameTextField resignFirstResponder];
+    [emailAddressTextField resignFirstResponder];
+    [membershipNumberTextField resignFirstResponder];
+    [nicknameTextField resignFirstResponder];
     
     // proper algorithm steps
     // 1. Check to make sure all required fields are set.
