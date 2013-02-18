@@ -544,33 +544,6 @@
     [myImageView setImage: image];
 }
 
-- (void) selectClub
-{
-    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Club Selection" message:@"\n\n\n\n"];
-    [alert applyCustomAlertAppearance];
-    __weak AHAlertView *weakAlert = alert;
-    [alert addButtonWithTitle:@"OK" block:^{
-        currentShot.club = [NSNumber numberWithInt: DRIVER];
-        weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
-    }];
-    //[alert addSubview: self.clubSelectionTable];
-    [alert show];
-    
-    // set User's stage to STAGE_AIM
-    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
-    
-    // save the club selection and user's stage to the DB
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    
-    NSError *error;
-    
-    if (![[appDelegate managedObjectContext] save: &error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-    [self viewWillAppear: NO];
-}
-
 
 #pragma mark - core location
 
@@ -870,6 +843,22 @@
     [self saveClubType: selectedClubType andNum: selectedClubNumber];
     
     NSLog(@"Selected Club is: %i", selectedClub);
+    
+    currentShot.club = [NSNumber numberWithInt: selectedClub];
+    
+    // set User's stage to STAGE_AIM
+    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+    
+    // save the club selection and user's stage to the DB
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    [self viewWillAppear: NO];
 }
 
 
