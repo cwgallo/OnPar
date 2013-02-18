@@ -42,11 +42,11 @@
         <attribute name="currentGolfer" attributeType="Boolean" syncable="YES"/>
         <attribute name="holeNumber" attributeType="Integer 32" minValueString="1" maxValueString="18" defaultValueString="1" syncable="YES"/>
         <attribute name="shotNumber" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
-        <attribute name="stage" attributeType="Integer 32" minValueString="0" maxValueString="3" defaultValueString="0" syncable="YES"/>
+        <attribute name="stage" attributeType="Integer 32" minValueString="0" maxValueString="4" defaultValueString="0" syncable="YES"/>
         <relationship name="user" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="stageInfo" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Hole" positionX="-6779" positionY="-7047" width="128" height="148"/>
+        <element name="Hole" positionX="-6779" positionY="-7047" width="128" height="165"/>
         <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
         <element name="User" positionX="-7056" positionY="-6840" width="128" height="163"/>

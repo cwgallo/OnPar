@@ -151,6 +151,7 @@
         [[appDelegate managedObjectContext] deleteObject: u];
     }
     
+    // clear the Round Table
     NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
     NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
                                              inManagedObjectContext: [appDelegate managedObjectContext]];

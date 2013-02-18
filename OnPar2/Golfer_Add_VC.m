@@ -274,19 +274,15 @@
     switch (self.teeSegment.selectedSegmentIndex) {
         case 0:
             tee = AGGIES;
-            NSLog(@"aggies");
             break;
         case 1:
             tee = MAROONS;
-            NSLog(@"maroons");
             break;
         case 2:
             tee = COWBELLS;
-            NSLog(@"cowbells");
             break;
         case 3:
             tee = BULLDOGS;
-            NSLog(@"bulldogs");
             break;
         default:
             break;

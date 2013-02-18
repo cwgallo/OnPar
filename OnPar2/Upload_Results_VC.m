@@ -13,6 +13,9 @@
 @end
 
 @implementation Upload_Results
+{
+    MBProgressHUD *HUD;
+}
 
 @synthesize golfer1Label, golfer1Switch;
 @synthesize golfer2Label, golfer2Switch;
@@ -93,6 +96,144 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)uploadResults:(id)sender {
+- (IBAction)uploadResults:(id)sender
+{
+    // send emails if any
+    
+    // create spinner
+    
+    // upload rounds from database
+    // algorithm steps
+    // 1. obtain all rounds in the database
+    // 2. loop through all rounds
+    //      1. make a JSON representation of the round
+    //      2. make the request
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:HUD];
+    
+	HUD.delegate = self;
+	HUD.labelText = @"Loading";
+    
+	[HUD showWhileExecuting:@selector(uploadRounds) onTarget:self withObject:nil animated:YES];
+    
 }
+
+- (void) uploadRounds
+{
+	// upload rounds from database
+    // algorithm steps
+    // 1. obtain all rounds in the database
+    // 2. loop through all rounds
+    //      1. make a JSON representation of the round
+    //      2. make the request
+    
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
+                                             inManagedObjectContext: [appDelegate managedObjectContext]];
+    [roundFetch setEntity: round];
+    NSArray *DBrounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
+    
+    NSLog(@"%@", DBrounds);
+    
+    // constructing the JSON will be half of the progress of the round
+    // the request will be the other half
+    for (Round *r in DBrounds) {
+        NSLog(@"Round for user with ID: %@", r.userID);
+        
+        // construct the JSON
+        NSMutableArray *JSONholes = [[NSMutableArray alloc] init];
+        
+        for (Hole *h in r.holes) {
+            NSMutableArray *JSONshots = [[NSMutableArray alloc] init];
+            
+            for (Shot *s in h.shots) {
+                NSMutableDictionary *shotLow = [[NSMutableDictionary alloc] init];
+                
+                [shotLow setObject: s.club ? s.club : [NSNull null] forKey: @"club"];
+                [shotLow setObject: s.shotNumber ? s.shotNumber : [NSNull null] forKey: @"shotNumber"];
+                [shotLow setObject: s.startLatitude ? s.startLatitude : [NSNull null] forKey: @"startLatitude"];
+                [shotLow setObject: s.startLongitude ? s.startLongitude : [NSNull null] forKey: @"startLongitude"];
+                [shotLow setObject: s.aimLatitude ? s.aimLatitude : [NSNull null] forKey: @"aimLatitude"];
+                [shotLow setObject: s.aimLongitude ? s.aimLongitude : [NSNull null] forKey: @"aimLongitude"];
+                [shotLow setObject: s.endLatitude ? s.endLatitude : [NSNull null] forKey: @"endLatitude"];
+                [shotLow setObject: s.endLongitude ? s.endLongitude : [NSNull null] forKey: @"endLongitude"];
+                
+                NSDictionary *shot = [[NSDictionary alloc] initWithObjectsAndKeys: shotLow, @"shot", nil];
+                
+                [JSONshots addObject: shot];
+            }
+            
+            NSMutableDictionary *holeLow = [[NSMutableDictionary alloc] init];
+            
+            [holeLow setObject: h.holeNumber ? h.holeNumber : [NSNull null] forKey: @"holeNumber"];
+            [holeLow setObject: h.holeScore ? h.holeScore : [NSNull null] forKey: @"holeScore"];
+            [holeLow setObject: h.fairway_in_reg ? h.fairway_in_reg : [NSNull null] forKey: @"FIR"];
+            [holeLow setObject: h.green_in_reg ? h.green_in_reg : [NSNull null] forKey: @"GIR"];
+            [holeLow setObject: h.putts ? h.putts : [NSNull null] forKey: @"putts"];
+            
+            [holeLow setObject: JSONshots forKey: @"shots"];
+            
+            NSDictionary *hole = [[NSDictionary alloc] initWithObjectsAndKeys: holeLow, @"hole", nil];
+            
+            [JSONholes addObject: hole];
+        }
+        
+        
+        NSMutableDictionary *courseLow = [[NSMutableDictionary alloc] init];
+        [courseLow setObject: r.courseID ? r.courseID : [NSNull null] forKey: @"id"];
+        
+        NSDictionary *course = [[NSDictionary alloc] initWithObjectsAndKeys: courseLow, @"course", nil];
+        
+        NSMutableDictionary *userLow = [[NSMutableDictionary alloc] init];
+        [userLow setObject: r.userID ? r.userID : [NSNull null] forKey: @"id"];
+        
+        NSDictionary *user = [[NSDictionary alloc] initWithObjectsAndKeys: userLow, @"user", nil];
+        
+        NSMutableDictionary *round = [[NSMutableDictionary alloc] init];
+        
+        [round setObject: r.teeID ? r.teeID : [NSNull null] forKey: @"teeID"];
+        [round setObject: r.totalScore ? r.totalScore : [NSNull null] forKey: @"totalScore"];
+        [round setObject: r.startTime ? r.startTime : [NSNull null] forKey: @"startTime"];
+        [round setObject: course forKey: @"course"];
+        [round setObject: user forKey: @"user"];
+        
+        [round setObject: JSONholes forKey: @"holes"];
+        
+        NSDictionary *roundTop = [[NSDictionary alloc] initWithObjectsAndKeys: round, @"round", nil];
+        
+        // construct the request
+        [[LRResty authenticatedClientWithUsername: API_USERNAME
+                                         password: API_PASSWORD
+          ]
+         post: [NSString stringWithFormat: @"%@%@", BASE_URL, @"rounds/"]
+         payload: [[SBJsonWriter alloc] stringWithObject: roundTop]
+         headers: [NSDictionary dictionaryWithObject: @"application/json"
+                                              forKey: @"Content-Type"
+                   ]
+         withBlock: ^(LRRestyResponse *r) {
+             if (r.status == 201) {
+                 // good upload
+                 // don't really need to do anything here I think
+                 NSLog(@"Success");
+             } else {
+                 // uh oh
+                 NSLog(@"%d", r.status);
+                 AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"Something went wrong."];
+                 [alert applyCustomAlertAppearance];
+                 __weak AHAlertView *weakAlert = alert;
+                 [alert addButtonWithTitle:@"OK" block:^{
+                     weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                 }];
+                 [alert show];
+             }
+         }
+         ];
+        
+    }
+}
+
 @end

@@ -10,7 +10,7 @@
 #import "Config.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface Play_VC : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate>
+@interface Play_VC : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *myImageView;
@@ -39,6 +39,14 @@
 - (IBAction)startShot:(id)sender;
 - (IBAction)endShot:(id)sender;
 
+#pragma mark - Club Select
+
+/*@property (strong, nonatomic) IBOutlet UITableView *clubSelectionTable;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *clubTypeSegment;
+@property (strong, nonatomic) IBOutlet UIPickerView *clubPicker;
+
+- (IBAction)clubTypeChange:(id)sender;
+- (IBAction)clubPickChange:(id)sender;*/
 
 #pragma mark - Gesture
 - (IBAction)handleTap: (UIGestureRecognizer *)recognizer;

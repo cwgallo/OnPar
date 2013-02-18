@@ -27,10 +27,17 @@
     NSArray *wedges;
     
     User *currentGolfer;
+    Round *currentRound;
+    Hole *currentHole;
+    Shot *currentShot;
+    
+    int clubSelection;
+    int clubType;
 }
 
 @synthesize myImageView, myScrollView, navBar;
 @synthesize startButton, endButton, finishButton, skipButton;
+//@synthesize clubTypeSegment, clubPicker, clubSelectionTable;
 
 @synthesize locationMgr = _locationMgr;
 @synthesize lastLocation = _lastLocation;
@@ -50,6 +57,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // for club selection
+    types = [[NSArray alloc] initWithObjects: @"Woods", @"Hybrids", @"Irons", @"Wedges", nil];
     
     // location manager
     self.locationMgr = [[CLLocationManager alloc] init];
@@ -136,6 +146,7 @@
         }
     }
     
+    
     // set correct hole image
     if (currentGolfer.nickname != nil)
         [navBar setTitle:currentGolfer.nickname];
@@ -158,6 +169,21 @@
         skipButton.hidden = NO;
     }
     
+    // set the current Round, Hole, and Shot
+    currentRound = [rounds objectForKey: currentGolfer.userID];
+    
+    for (Hole *h in currentRound.holes) {
+        if ([currentGolfer.stageInfo.holeNumber isEqualToNumber: h.holeNumber]) {
+            currentHole = h;
+            for (Shot *s in currentHole.shots) {
+                if ([currentGolfer.stageInfo.shotNumber isEqualToNumber: s.shotNumber]) {
+                    currentShot = s;
+                    break;
+                }
+            }
+            break;
+        }
+    }
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
         NSLog(@"Stage START for golfer: %@", currentGolfer.name);
@@ -165,8 +191,8 @@
         endButton.hidden = YES;
         startButton.hidden = NO;
         
-        // should still show finish unless they are in the middle of a shot
         finishButton.hidden = NO;
+        
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_CLUB_SELECT]]) {
         NSLog(@"Stage CLUB_SELECT for golfer: %@", currentGolfer.name);
         // there won't be any real change here since it's just another alert
@@ -174,8 +200,7 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         
-        // should still show finish unless they are in the middle of a shot
-        finishButton.hidden = NO;
+        finishButton.hidden = YES;
         
         // manually call club select function
         [self selectClub];
@@ -186,17 +211,23 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         
-        // hide the finish button
-        // can't finish the hole with half a shot
         finishButton.hidden = YES;
-    } else {
+        
+    } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_END]]) {
         NSLog(@"Stage END for golfer: %@", currentGolfer.name);
-        // stage STAGE_END
         // show end button and hide start button
         endButton.hidden = NO;
         startButton.hidden = YES;
         
-        // still hide finish
+        finishButton.hidden = YES;
+        
+    } else {
+        NSLog(@"Stage DONE for golfer: %@", currentGolfer.name);
+        // stage done
+        // dont shoe any buttons
+        startButton.hidden = YES;
+        endButton.hidden = YES;
+        skipButton.hidden = YES;
         finishButton.hidden = YES;
     }
 }
@@ -222,8 +253,6 @@
     // create a new hole to add to the hole object with the updated hole number
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     
-    Round *r = [rounds objectForKey: currentGolfer.userID];
-    
     // create the first hole for every golfer
     Hole *h = [NSEntityDescription
                insertNewObjectForEntityForName: @"Hole"
@@ -232,8 +261,10 @@
     h.holeNumber = currentGolfer.stageInfo.holeNumber;
     
     // set relationships
-    h.round = r;
-    [r addHolesObject: h];
+    h.round = currentRound;
+    [currentRound addHolesObject: h];
+    
+    currentHole = h;
     
     NSError *error;
     
@@ -251,25 +282,31 @@
     // update the User's holeNumber in the User's stageInfo
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
-        int holeNumber = [currentGolfer.stageInfo.holeNumber intValue];
-        currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
-        
-        // create a new hole to add to the hole object with the updated hole number
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
-        Round *r = [rounds objectForKey: currentGolfer.userID];
-        
-        // create the first hole for every golfer
-        Hole *h = [NSEntityDescription
-                   insertNewObjectForEntityForName: @"Hole"
-                   inManagedObjectContext: [appDelegate managedObjectContext]];
-        
-        h.holeNumber = currentGolfer.stageInfo.holeNumber;
-        
-        // set relationships
-        h.round = r;
-        [r addHolesObject: h];
-        
+        int holeNumber = [currentGolfer.stageInfo.holeNumber intValue];
+
+        // do not advance to hole 19
+        if (holeNumber + 1 != 19) {
+            currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
+            
+            // create a new hole with the new hole number
+            Hole *h = [NSEntityDescription
+                       insertNewObjectForEntityForName: @"Hole"
+                       inManagedObjectContext: [appDelegate managedObjectContext]];
+            
+            h.holeNumber = currentGolfer.stageInfo.holeNumber;
+            
+            h.round = currentRound;
+            [currentRound addHolesObject: h];
+            
+            currentHole = h;
+        } else {
+            // if they finish hole 18, set them to stage done
+            currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_DONE];
+        }
+
+        // create a new hole to add to the hole object with the updated hole number
         NSError *error;
         
         if (![[appDelegate managedObjectContext] save: &error]) {
@@ -300,8 +337,6 @@
     [alert applyCustomAlertAppearance];
     __weak AHAlertView *weakAlert = alert;
     [alert addButtonWithTitle:@"OK" block:^{
-        Round *r = [rounds objectForKey: currentGolfer.userID];
-        
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
         Shot *s = [NSEntityDescription
@@ -313,12 +348,9 @@
         
         s.shotNumber = currentGolfer.stageInfo.shotNumber;
         
-        for (Hole *h in r.holes) {
-            if ([h.holeNumber isEqualToNumber: currentGolfer.stageInfo.holeNumber]) {
-                s.hole = h;
-                [h addShotsObject: s];
-            }
-        }
+        s.hole = currentHole;
+        [currentHole addShotsObject: s];
+        currentShot = s;
         
         // update the user's stage info to be at STAGE_CLUB_SELECT
         currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_CLUB_SELECT];
@@ -341,6 +373,55 @@
 
 - (IBAction)endShot:(id)sender
 {
+    // collect the end lat and long of the shot
+    // make sure all the fields of the shot are there
+    // save shot to DB
+    // update user's shotNumber
+    // set User's stage to stage_start
+    
+    currentShot.endLatitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.latitude];
+    currentShot.endLongitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.longitude];
+    
+    if (currentShot.startLatitude == nil || currentShot.startLongitude == nil ||
+        currentShot.aimLatitude == nil || currentShot.aimLongitude == nil ||
+        currentShot.endLatitude == nil || currentShot.endLongitude == nil ||
+        currentShot.club == nil || currentShot.shotNumber == nil) {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"Some field is not set."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
+    } else {
+        currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
+        int shotNumber = [currentGolfer.stageInfo.shotNumber intValue];
+        currentGolfer.stageInfo.shotNumber = [NSNumber numberWithInt: shotNumber + 1];
+        
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"End Shot" message:@"Press OK when at the ball's location for the end of the shot."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            currentShot.startLatitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.latitude];
+            currentShot.startLongitude = [NSNumber numberWithDouble: self.lastLocation.coordinate.longitude];
+            
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
+        
+        // make sure the shot is relationed to the hole
+        currentShot.hole = currentHole;
+        [currentHole addShotsObject: currentShot];
+        
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        
+        NSError *error;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+    
     [self viewWillAppear: NO];
 }
 
@@ -374,9 +455,11 @@
 
 - (void)uploadResults
 {
-    // Check to see if all users have finished
-    
-    // Display alert if not all finished
+    // Does not matter if all user's have finished the round
+    // sometimes a User might leave early, the group may only
+    // play nine holes, etc.
+    // It is up to the User to decide when the end of the
+    // round is.
     
     // Go to upload page
     [self performSegueWithIdentifier: @"play2upload" sender:self];
@@ -385,14 +468,23 @@
 - (void)discardResults
 {
     // TODO - Display alert
-    
-    // TODO - Delete everything
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    MainViewController *mvc = [[MainViewController alloc] init];
-    [mvc deleteEverything:appDelegate];
-    
-    // Return to main page
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Discard Round" message:@"Are you sure you wish to discard the results?"];
+    [alert applyCustomAlertAppearance];
+    __weak AHAlertView *weakAlert = alert;
+    [alert setCancelButtonTitle:@"No" block:^{
+        // do nothing
+        weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+    }];
+    [alert addButtonWithTitle:@"Yes" block:^{
+        // Delete everything
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        MainViewController *mvc = [[MainViewController alloc] init];
+        [mvc deleteEverything:appDelegate];
+        
+        // Return to main page
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }];
+    [alert show];
 }
 
 
@@ -485,36 +577,31 @@
 
 - (void) selectClub
 {
-    Round *r = [rounds objectForKey: currentGolfer.userID];
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Club Selection" message:@"\n\n\n\n"];
+    [alert applyCustomAlertAppearance];
+    __weak AHAlertView *weakAlert = alert;
+    [alert addButtonWithTitle:@"OK" block:^{
+        currentShot.club = [NSNumber numberWithInt: DRIVER];
+        weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+    }];
+    //[alert addSubview: self.clubSelectionTable];
+    [alert show];
     
-    for (Hole *h in r.holes) {
-        if ([h.holeNumber isEqualToNumber: currentGolfer.stageInfo.holeNumber]) {
-            for (Shot *s in h.shots) {
-                if ([s.shotNumber isEqualToNumber: currentGolfer.stageInfo.shotNumber]) {
-                    // set club here
-                    s.club = [NSNumber numberWithInt: DRIVER];
-                    
-                    // set User's stage to STAGE_AIM
-                    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
-                    
-                    // save the club selection and user's stage to the DB
-                    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-                    
-                    NSError *error;
-                    
-                    if (![[appDelegate managedObjectContext] save: &error]) {
-                        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                    }
-                    
-                    break;
-                }
-            }
-            break;
-        }
+    // set User's stage to STAGE_AIM
+    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_AIM];
+    
+    // save the club selection and user's stage to the DB
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     
     [self viewWillAppear: NO];
 }
+
 
 #pragma mark - core location
 
@@ -550,7 +637,37 @@
     
     XYPair *aim = [[XYPair alloc] initWithX:location.x andY:location.y];
     
-    [self calculateAimLLWithAimXY:aim];
+    LLPair *llpair = [self calculateAimLLWithAimXY:aim];
+    
+    // set the User's curent shot aim lat/long
+    if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_AIM]]) {
+        // set aim lat/long here
+        currentShot.aimLatitude = [NSNumber numberWithDouble: llpair._lat];
+        currentShot.aimLongitude = [NSNumber numberWithDouble: llpair._lon];
+        
+        // set User's stage to STAGE_AIM
+        currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
+        
+        // save the club selection and user's stage to the DB
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        
+        NSError *error;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+        
+        [self viewWillAppear: NO];
+    } else {
+        // tell the User to start the shot before aiming
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"You must start the shot before aiming."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
+    }
 }
 
 #pragma mark - Calculate Aim LL
@@ -614,7 +731,9 @@
     // from aim point to center of green
     // from current location to green
     
-    return aimLLRad;
+    // changing to return the lat/long degress
+    //return aimLLRad;
+    return aimLLDeg;
 }
 
 
@@ -744,6 +863,7 @@
     LLPair *results = [[LLPair alloc] init];
     results._lat = aimLat;
     results._lon = aimLon;
+    
     return results;
 }
 
