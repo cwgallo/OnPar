@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -391,11 +391,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3Ef-8c-Icp"/>
-                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="baseline" secondItem="RMs-du-XdE" secondAttribute="baseline" type="default" id="3rz-ru-tX8"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" type="default" id="6mv-VM-tCH"/>
                                     <constraint firstAttribute="bottom" secondItem="RMs-du-XdE" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="7Td-dX-2zN"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="bottom" secondItem="TLe-Ir-McU" secondAttribute="bottom" type="default" id="9Hf-Vq-KFL"/>
-                                    <constraint firstItem="RMs-du-XdE" firstAttribute="baseline" secondItem="IuZ-ne-GCp" secondAttribute="baseline" type="default" id="A9j-7S-qxE"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ABj-n6-eaA"/>
                                     <constraint firstAttribute="bottom" secondItem="IuZ-ne-GCp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="DEz-ZU-vUm"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="Gp8-Gf-pvb"/>
@@ -407,13 +405,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Yqu-ki-FBe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fM6-AC-Bjy"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gWz-HV-LGN"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="go3-8D-mp3"/>
-                                    <constraint firstItem="Yqu-ki-FBe" firstAttribute="baseline" secondItem="TLe-Ir-McU" secondAttribute="baseline" type="default" id="hZ6-EH-KKj"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="fR4-6i-HLQ" secondAttribute="centerY" type="default" id="jP0-A6-l0x"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lgL-Mn-TZu"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="trailing" secondItem="RMs-du-XdE" secondAttribute="trailing" type="default" id="q3w-2w-SUF"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qgR-tm-5aT"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="txa-vc-ssB"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="baseline" secondItem="cmj-ru-1ch" secondAttribute="baseline" type="default" id="uZl-dX-DiO"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="vZd-xi-Mwm"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="trailing" secondItem="RMs-du-XdE" secondAttribute="trailing" type="default" id="xoz-i7-UKw"/>
                                 </constraints>

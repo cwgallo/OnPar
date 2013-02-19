@@ -26,6 +26,7 @@
 	SEL action;
 	id <NSObject> object;
 }
+
 @property (retain) NSString *title;
 @property (assign) id <NSObject> target;
 @property (assign) SEL action;

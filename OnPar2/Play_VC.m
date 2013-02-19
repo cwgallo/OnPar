@@ -65,6 +65,18 @@
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     [barItems addObject:flexSpace];
+    
+    // TODO - add club selection label
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 216, 23)];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"Club Selection";
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    UIBarButtonItem *barLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
+    [barItems addObject:barLabel];
+    
+    
+    
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDoneClicked)];
     [barItems addObject:doneBtn];
     [mypickerToolbar setItems:barItems animated:YES];
