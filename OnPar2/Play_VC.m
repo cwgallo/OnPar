@@ -341,13 +341,8 @@
         }
         
         // AHAlertView to capture FIR, and number of putts
-        AHAlertView *prompt = [[AHAlertView alloc] initWithTitle:@"Finish Hole" message:@"Input Information."];
-        [prompt setAlertViewStyle:AHAlertViewStyleEndShot];
-        [prompt applyCustomAlertAppearance];
-        [prompt addButtonWithTitle:@"OK" block:^{
-            NSLog(@"OK pressed");
-        }];
-        [prompt show];
+        
+        [self performSegueWithIdentifier:@"play2finish" sender:self];
         
         //[self viewWillAppear: NO];
         

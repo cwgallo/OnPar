@@ -16,7 +16,7 @@
 
 @implementation MainViewController
 
-@synthesize continueButton;
+@synthesize btnStart, btnNew, btnContinue;
 
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -39,6 +39,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // hide all buttons
+    btnContinue.hidden = YES;
+    btnNew.hidden = YES;
+    btnStart.hidden = YES;
+    
     // Used to hide navbar when view appears
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     // end
@@ -65,9 +70,10 @@
     }
     
     if ([golfers count] > 0) {
-        continueButton.hidden = NO;
+        btnNew.hidden = NO;
+        btnContinue.hidden = NO;
     } else {
-        continueButton.hidden = YES;
+        btnStart.hidden = NO;
     }
     
     // Part of hiding navbar
@@ -133,10 +139,14 @@
 {
     // either a new round or deleting the current info and
     // start a new round(s)
-    
+    [self performSegueWithIdentifier:@"main2options" sender:self];
+}
+
+- (IBAction)newButton:(id)sender
+{
     [self deleteEverything: (id)[[UIApplication sharedApplication] delegate]];
     
-    [self performSegueWithIdentifier:@"main2options" sender:self];
+    [self startButton:self];
 }
 
 - (IBAction)continueRound:(id)sender
