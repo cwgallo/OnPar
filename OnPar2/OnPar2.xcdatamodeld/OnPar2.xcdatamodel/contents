@@ -42,6 +42,9 @@
         <attribute name="startLongitude" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <relationship name="hole" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Hole" inverseName="shots" inverseEntity="Hole" syncable="YES"/>
     </entity>
+    <entity name="SystemInfo" representedClassName="SystemInfo" syncable="YES">
+        <attribute name="registerEmail" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="memberID" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,5 +68,6 @@
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
         <element name="User" positionX="-7056" positionY="-6840" width="128" height="163"/>
         <element name="UserStageInfo" positionX="-6797" positionY="-6714" width="128" height="118"/>
+        <element name="SystemInfo" positionX="-6572" positionY="-6723" width="128" height="58"/>
     </elements>
 </model>

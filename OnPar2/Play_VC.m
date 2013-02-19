@@ -29,7 +29,7 @@
 }
 
 @synthesize myImageView, myScrollView, navBar, txtClub;
-@synthesize startButton, endButton, finishButton, skipButton;
+@synthesize startButton, endButton, finishButton, skipButton, doneButton;
 @synthesize clubType, woodNum, hybridNum, ironNum, wedgeType;
 @synthesize locationMgr = _locationMgr;
 @synthesize lastLocation = _lastLocation;
@@ -170,6 +170,7 @@
         endButton.hidden = YES;
         startButton.hidden = NO;
         finishButton.hidden = NO;
+        doneButton.hidden = YES;
         
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_CLUB_SELECT]]) {
         NSLog(@"Stage CLUB_SELECT for golfer: %@", currentGolfer.name);
@@ -178,6 +179,7 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         finishButton.hidden = YES;
+        doneButton.hidden = YES;
         
         // manually call club select function
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(selectAClub:) userInfo:nil repeats:NO];
@@ -188,6 +190,7 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         finishButton.hidden = YES;
+        doneButton.hidden = NO;
         
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_END]]) {
         NSLog(@"Stage END for golfer: %@", currentGolfer.name);
@@ -195,6 +198,7 @@
         endButton.hidden = NO;
         startButton.hidden = YES;
         finishButton.hidden = YES;
+        doneButton.hidden = YES;
         
     } else {
         NSLog(@"Stage DONE for golfer: %@", currentGolfer.name);
@@ -204,6 +208,7 @@
         endButton.hidden = YES;
         skipButton.hidden = YES;
         finishButton.hidden = YES;
+        doneButton.hidden = YES;
     }
 }
 
@@ -382,6 +387,20 @@
         if (![[appDelegate managedObjectContext] save: &error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
+    }
+    
+    [self viewWillAppear: NO];
+}
+
+- (IBAction)doneAim:(id)sender {
+    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
+    
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    if (![[appDelegate managedObjectContext] save: &error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     
     [self viewWillAppear: NO];
@@ -579,8 +598,11 @@
         currentShot.aimLatitude = [NSNumber numberWithDouble: llpair._lat];
         currentShot.aimLongitude = [NSNumber numberWithDouble: llpair._lon];
         
+        NSLog(@"Shot lat: %@", currentShot.aimLatitude);
+        NSLog(@"Shot long: %@", currentShot.aimLongitude);
+        
         // set User's stage to STAGE_AIM
-        currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
+        //currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
         
         // save the club selection and user's stage to the DB
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];

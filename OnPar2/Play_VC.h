@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
 @property (strong, nonatomic) IBOutlet UITextField *txtClub;
 
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 
 #pragma mark - Core Location
@@ -47,6 +48,7 @@
 - (IBAction)finishHole:(id)sender;
 - (IBAction)startShot:(id)sender;
 - (IBAction)endShot:(id)sender;
+- (IBAction)doneAim:(id)sender;
 
 
 

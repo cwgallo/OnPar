@@ -18,6 +18,7 @@
 #import "Hole.h"
 #import "Shot.h"
 #import "UserStageInfo.h"
+#import "SystemInfo.h"
 
 // AHAlertView
 #import "AHAlertView.h"

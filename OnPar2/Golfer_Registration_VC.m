@@ -37,6 +37,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // see if there is an email to register
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    NSFetchRequest *systemInfoFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *si = [NSEntityDescription entityForName: @"SystemInfo"
+                                            inManagedObjectContext: [appDelegate managedObjectContext]];
+    [systemInfoFetch setEntity: si];
+    NSArray *DBsi = [[appDelegate managedObjectContext] executeFetchRequest: systemInfoFetch error: &error];
+    
+    for (SystemInfo *si in DBsi) {
+        self.emailAddressTextField.text = si.registerEmail;
+        [[appDelegate managedObjectContext] deleteObject: si];
+    }
+    
     // initialize tee to AGGIES so 0 will not get passed in
     tee = AGGIES;
 }

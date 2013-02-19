@@ -218,7 +218,24 @@
                          }];
                          [alert addButtonWithTitle:@"Register" block:^{
                              // segue to register page with email filled in
-                             weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             //weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                             // obtain the app delegate
+                             id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+                             
+                             // create an error object
+                             NSError *error;
+                             
+                             SystemInfo *si = [NSEntityDescription
+                                               insertNewObjectForEntityForName: @"SystemInfo"
+                                               inManagedObjectContext: [appDelegate managedObjectContext]];
+                             
+                             si.registerEmail = self.emailAddressTextField.text;
+                             
+                             if (![[appDelegate managedObjectContext] save: &error]) {
+                                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                             }
+                             
+                             [self performSegueWithIdentifier:@"register" sender:self];
                          }];
                          [alert show];
                      } else if (r.status >= 500) {
@@ -260,8 +277,8 @@
         [alert applyCustomAlertAppearance];
         __weak AHAlertView *weakAlert = alert;
         [alert addButtonWithTitle:@"OK" block:^{
-                                    weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
-                                }];
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
         [alert show];
     }
 }
@@ -284,19 +301,6 @@
             break;
         default:
             break;
-    }
-}
-
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if([title isEqualToString:@"Register"])
-    {
-        NSLog(@"Register was selected.");
-        // Find out how to segue to registration page
-        // and dynamically fill in the email field
-        
     }
 }
 
