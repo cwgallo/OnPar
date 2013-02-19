@@ -266,8 +266,8 @@
                      [alert show];
                  }
                  
-                 NSLog(@"Count: %d", count);
-                 NSLog(@"numberOfGolers: %d", numberOfGolfers);
+                 //NSLog(@"Count: %d", count);
+                 //NSLog(@"numberOfGolers: %d", numberOfGolfers);
                  if (count == numberOfGolfers) {
                      // hide spinner and transition
                      [MBProgressHUD hideHUDForView: self.view animated: YES];

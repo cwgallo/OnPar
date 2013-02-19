@@ -23,6 +23,8 @@
     Hole *currentHole;
     Shot *currentShot;
     
+    CLLocation *centerOfGreen;
+    
     int selectedClubType;
     int selectedClubNumber;
     int selectedClub;
@@ -31,6 +33,8 @@
 @synthesize myImageView, myScrollView, navBar, txtClub;
 @synthesize startButton, endButton, finishButton, skipButton, doneButton;
 @synthesize clubType, woodNum, hybridNum, ironNum, wedgeType;
+@synthesize holeLabel, parLabel, stageLabel, distanceToGreeLabel;
+
 @synthesize locationMgr = _locationMgr;
 @synthesize lastLocation = _lastLocation;
 
@@ -129,6 +133,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // don't hide the nav bar
+    self.navigationController.navigationBarHidden = NO;
+    
     // set the picture for the golfer
     [self setHoleImageForUser: currentGolfer];
     
@@ -159,6 +166,11 @@
         }
     }
     
+    centerOfGreen = [[CLLocation alloc] initWithLatitude: [currentHole.thirdRefLat doubleValue] longitude: [currentHole.thirdRefLong doubleValue]];
+    
+    self.parLabel.text = [NSString stringWithFormat: @"%@", currentHole.par];
+    self.holeLabel.text = [NSString stringWithFormat: @"%@", currentHole.holeNumber];
+    
     //NSLog(@"CURRENT GOLFER: %@", currentGolfer);
     //NSLog(@"CURRENT ROUND: %@", currentRound);
     //NSLog(@"CURRENT HOLE: %@", currentHole);
@@ -172,6 +184,8 @@
         finishButton.hidden = NO;
         doneButton.hidden = YES;
         
+        self.stageLabel.text = @"Start shot";
+        
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_CLUB_SELECT]]) {
         NSLog(@"Stage CLUB_SELECT for golfer: %@", currentGolfer.name);
         // there won't be any real change here since it's just another alert
@@ -180,6 +194,8 @@
         startButton.hidden = YES;
         finishButton.hidden = YES;
         doneButton.hidden = YES;
+        
+        self.stageLabel.text = @"Select club";
         
         // manually call club select function
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(selectAClub:) userInfo:nil repeats:NO];
@@ -192,6 +208,8 @@
         finishButton.hidden = YES;
         doneButton.hidden = NO;
         
+        self.stageLabel.text = @"Aim";
+        
     } else if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_END]]) {
         NSLog(@"Stage END for golfer: %@", currentGolfer.name);
         // show end button and hide start button
@@ -199,6 +217,8 @@
         startButton.hidden = YES;
         finishButton.hidden = YES;
         doneButton.hidden = YES;
+        
+        self.stageLabel.text = @"End shot";
         
     } else {
         NSLog(@"Stage DONE for golfer: %@", currentGolfer.name);
@@ -209,6 +229,8 @@
         skipButton.hidden = YES;
         finishButton.hidden = YES;
         doneButton.hidden = YES;
+        
+        self.stageLabel.text = @"Finished";
     }
 }
 
@@ -251,8 +273,8 @@
         currentShot = nil;
     }
     
-    NSLog(@"CURRENT SHOT: %@", currentShot);
-    NSLog(@"CURRENT HOLE: %@", currentHole);
+    //NSLog(@"CURRENT SHOT: %@", currentShot);
+    //NSLog(@"CURRENT HOLE: %@", currentHole);
     
     if (![[appDelegate managedObjectContext] save: &error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -594,6 +616,16 @@
         self.lastLocation = newLocation;
         [self.locationMgr stopUpdatingLocation];
     }
+    
+    // update distance to center of green
+    CLLocationDistance distance = [self.lastLocation distanceFromLocation: centerOfGreen];
+    
+    // display the results
+    if (distance < 999.00) {
+        self.distanceToGreeLabel.text = [NSString stringWithFormat: @"%1.2f", distance * METERS_TO_YARDS];
+    } else {
+        self.distanceToGreeLabel.text = @">999";
+    }
 }
 
 #pragma mark - Gestures
@@ -617,8 +649,8 @@
         currentShot.aimLatitude = [NSNumber numberWithDouble: llpair._lat];
         currentShot.aimLongitude = [NSNumber numberWithDouble: llpair._lon];
         
-        NSLog(@"Shot lat: %@", currentShot.aimLatitude);
-        NSLog(@"Shot long: %@", currentShot.aimLongitude);
+        //NSLog(@"Shot lat: %@", currentShot.aimLatitude);
+        //NSLog(@"Shot long: %@", currentShot.aimLongitude);
         
         // set User's stage to STAGE_AIM
         //currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];

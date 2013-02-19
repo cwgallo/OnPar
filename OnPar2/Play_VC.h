@@ -32,12 +32,17 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *holeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *parLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *stageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceToGreeLabel;
 
 #pragma mark - Core Location
 
 @property (nonatomic, retain) CLLocationManager *locationMgr;
 @property (nonatomic, retain) CLLocation *lastLocation;
-
 
 
 #pragma mark - Actions

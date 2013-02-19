@@ -7,6 +7,7 @@
 //
 
 #import "Upload_Results_VC.h"
+#import "MainViewController.h" // needed for deleteEverything
 
 @interface Upload_Results ()
 
@@ -239,6 +240,12 @@
              ];
             
         }
+        
+        // delete all info in the DB and then segue back to main
+        MainViewController *mvc = [[MainViewController alloc] init];
+        [mvc deleteEverything:appDelegate];
+        
+        [self performSegueWithIdentifier: @"play2main" sender: self];
     } else {
         // internet reachablility failed
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];

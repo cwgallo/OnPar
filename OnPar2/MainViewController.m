@@ -16,6 +16,8 @@
 
 @implementation MainViewController
 
+@synthesize continueButton;
+
 @synthesize managedObjectContext = _managedObjectContext;
 
 - (void)viewDidLoad
@@ -29,12 +31,40 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // pull information from the database
+    // if there is any, show the continue button
+    // and give them the choice to continue the started round
+    
+    // obtain count of Users in the DB
+    NSMutableArray *golfers = [[NSMutableArray alloc] init];
+    
+    // load golfers that are in database
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    
+    NSError *error;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
+                                              inManagedObjectContext: [appDelegate managedObjectContext]];
+    [fetchRequest setEntity: entity];
+    NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
+    for (User *u in fetchedObjects) {
+        [golfers addObject: u];
+    }
+    
+    if ([golfers count] > 0) {
+        continueButton.hidden = NO;
+    } else {
+        continueButton.hidden = YES;
+    }
+    
     [self hideNavBar];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
     // Dispose of any resources that can be recreated.
 }
 
@@ -87,54 +117,20 @@
 
 - (IBAction)startButton:(id)sender
 {
-    // obtain count of Users in the DB
-    NSMutableArray *golfers = [[NSMutableArray alloc] init];
+    // either a new round or deleting the current info and
+    // start a new round(s)
     
-    // load golfers that are in database
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    [self deleteEverything: (id)[[UIApplication sharedApplication] delegate]];
     
-    NSError *error;
+    [self performSegueWithIdentifier:@"main2options" sender:self];
+}
+
+- (IBAction)continueRound:(id)sender
+{
+    // segue straight to the Play_VC
+    // should be able to determine everything from the DB
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
-                                              inManagedObjectContext: [appDelegate managedObjectContext]];
-    [fetchRequest setEntity: entity];
-    NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
-    for (User *u in fetchedObjects) {
-        [golfers addObject: u];
-    }
-    
-    // if there are no golfers, go straight to add golfers page
-    // if there are golfers, give option to continue round
-    if ([golfers count] > 0) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Round started" message:@"Do you wish to continue?"];
-        [alert applyCustomAlertAppearance];
-        [alert setCancelButtonTitle:@"No"
-                              block:^{
-                                  // delete everything
-                                  [self deleteEverything: appDelegate];
-                                  // start new game
-                                  [self performSegueWithIdentifier:@"main2options" sender:self];
-                              }];
-        [alert addButtonWithTitle:@"Yes" block:^{
-            
-            // this feature doesn't exist yet. Sorry
-            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Sorry" message:@"This feature is not yet implemented. Sorry."];
-            [alert applyCustomAlertAppearance];
-            __weak AHAlertView *weakAlert = alert;
-            [alert addButtonWithTitle:@"Ok"
-                                  block:^{
-                                      weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
-                                  }];
-            [alert show];
-            
-            // don't advance
-            // [self performSegueWithIdentifier:@"main2options" sender:self];
-        }];
-        [alert show];
-    } else {
-        [self performSegueWithIdentifier:@"main2options" sender:self];
-    }
+    [self performSegueWithIdentifier:@"main2play" sender:self];
 }
 
 - (void)deleteEverything: (id)appDelegate
