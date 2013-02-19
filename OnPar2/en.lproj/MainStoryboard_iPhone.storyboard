@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -212,7 +212,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="golfer" textLabel="dMP-KF-xMN" detailTextLabel="lOT-E0-ojs" style="IBUITableViewCellStyleSubtitle" id="BgY-4K-8GA">
-                                        <rect key="frame" x="0.0" y="46" width="280" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="280" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="240" height="43"/>
@@ -366,7 +366,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMs-du-XdE">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="feu-lt-UfB"/>
+                                            <constraint firstAttribute="height" constant="22" id="d1o-kB-DSG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Start">
@@ -394,9 +394,6 @@
                                         </connections>
                                     </button>
                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfe-ai-sSd">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="gEp-zm-fU6"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -449,57 +446,81 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Yards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ols-Co-jgE">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="zmk-32-uqN"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erA-kt-bOW">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Yards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-YL-kDL">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="RMs-du-XdE" firstAttribute="top" secondItem="cmj-ru-1ch" secondAttribute="top" type="default" id="0PV-AH-Op2"/>
                                     <constraint firstItem="mGD-TP-uBD" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="0f2-Wh-HUH"/>
-                                    <constraint firstItem="fVo-GW-RPF" firstAttribute="baseline" secondItem="Aez-gZ-nQG" secondAttribute="baseline" type="default" id="2Qe-Dn-iqT"/>
+                                    <constraint firstItem="fVo-GW-RPF" firstAttribute="baseline" secondItem="028-E1-nlP" secondAttribute="baseline" type="default" id="0vW-Pp-jD6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ols-Co-jgE" secondAttribute="trailing" constant="255" id="1Rf-dJ-rn8"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="baseline" secondItem="RMs-du-XdE" secondAttribute="baseline" type="default" id="4Uz-6g-gP0"/>
                                     <constraint firstItem="mGD-TP-uBD" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5jj-co-MW0"/>
-                                    <constraint firstItem="wwH-v2-4Bx" firstAttribute="top" secondItem="oaK-8U-eWQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ac9-5q-bw4"/>
-                                    <constraint firstAttribute="bottom" secondItem="RMs-du-XdE" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Ae6-Aa-G6V"/>
+                                    <constraint firstAttribute="trailing" secondItem="mGD-TP-uBD" secondAttribute="trailing" constant="252" id="6gR-kG-3Zh"/>
+                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="baseline" secondItem="RMs-du-XdE" secondAttribute="baseline" type="default" id="8Os-fR-DyF"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="B9Q-nZ-xNY"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="leading" secondItem="fVo-GW-RPF" secondAttribute="leading" type="default" id="DY7-Cp-EbA"/>
+                                    <constraint firstItem="wwH-v2-4Bx" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="341" id="BQd-uX-SK7"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="baseline" secondItem="IuZ-ne-GCp" secondAttribute="baseline" type="default" id="F1c-qm-Ozn"/>
+                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="F2v-MU-JJP"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="40" id="FOe-w2-xGK"/>
-                                    <constraint firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="GcN-UC-3eT"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="IuZ-ne-GCp" secondAttribute="leading" type="default" id="IGY-bM-BHo"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="top" secondItem="RMs-du-XdE" secondAttribute="top" type="default" id="IQx-nS-VpW"/>
                                     <constraint firstItem="wwH-v2-4Bx" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ISn-b5-dAS"/>
+                                    <constraint firstItem="oaK-8U-eWQ" firstAttribute="baseline" secondItem="Aez-gZ-nQG" secondAttribute="baseline" type="default" id="J15-dn-jb5"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="JNM-08-43T"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="214" id="Jcq-3F-Mk5"/>
                                     <constraint firstItem="fVo-GW-RPF" firstAttribute="leading" secondItem="Yqu-ki-FBe" secondAttribute="leading" type="default" id="Jdf-da-GRn"/>
-                                    <constraint firstItem="Aez-gZ-nQG" firstAttribute="baseline" secondItem="oaK-8U-eWQ" secondAttribute="baseline" type="default" id="LLU-SZ-8Rk"/>
-                                    <constraint firstItem="Aez-gZ-nQG" firstAttribute="leading" secondItem="oaK-8U-eWQ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MIH-Cs-qzm"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="trailing" secondItem="fVo-GW-RPF" secondAttribute="trailing" type="default" id="OSl-4h-tBd"/>
+                                    <constraint firstAttribute="trailing" secondItem="fR4-6i-HLQ" secondAttribute="trailing" constant="73" id="K1k-Ac-gp7"/>
+                                    <constraint firstItem="oaK-8U-eWQ" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="317" id="LTv-dd-XFH"/>
+                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="73" id="LcM-m3-bB9"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="RMs-du-XdE" secondAttribute="leading" type="default" id="M0M-Ug-kld"/>
+                                    <constraint firstItem="RMs-du-XdE" firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" type="default" id="N8c-PN-KFQ"/>
+                                    <constraint firstItem="028-E1-nlP" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="69" id="Or6-DQ-umV"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="baseline" secondItem="mGD-TP-uBD" secondAttribute="baseline" type="default" id="QDi-gh-xfk"/>
-                                    <constraint firstItem="fR4-6i-HLQ" firstAttribute="leading" secondItem="ols-Co-jgE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RKM-d3-J4I"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="trailing" secondItem="mGD-TP-uBD" secondAttribute="trailing" type="default" id="RKe-Jl-2H4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cfe-ai-sSd" secondAttribute="trailing" constant="280" id="SC3-QT-rCr"/>
+                                    <constraint firstItem="fVo-GW-RPF" firstAttribute="trailing" secondItem="RMs-du-XdE" secondAttribute="trailing" type="default" id="TZO-0w-Lmg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aez-gZ-nQG" secondAttribute="trailing" constant="200" id="TnO-XN-z8g"/>
                                     <constraint firstItem="oaK-8U-eWQ" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UH1-2O-jxZ"/>
-                                    <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="YfS-OH-grw"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" type="default" id="bJP-Af-Vs9"/>
-                                    <constraint firstItem="028-E1-nlP" firstAttribute="leading" secondItem="wwH-v2-4Bx" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="dfG-oV-ouA"/>
+                                    <constraint firstAttribute="bottom" secondItem="fR4-6i-HLQ" secondAttribute="bottom" constant="30" id="Uim-n0-T0n"/>
+                                    <constraint firstItem="Sfd-YL-kDL" firstAttribute="baseline" secondItem="erA-kt-bOW" secondAttribute="baseline" type="default" id="V2A-LR-ZdH"/>
+                                    <constraint firstItem="Sfd-YL-kDL" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="54" id="Y5G-aH-WJx"/>
+                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" type="default" id="YcV-Tu-ahb"/>
+                                    <constraint firstItem="Aez-gZ-nQG" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="78" id="a5S-Ne-9Kh"/>
+                                    <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="adl-sO-eHG"/>
+                                    <constraint firstAttribute="trailing" secondItem="oaK-8U-eWQ" secondAttribute="trailing" constant="250" id="d60-n8-lph"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="bottom" secondItem="RMs-du-XdE" secondAttribute="bottom" type="default" id="dh8-mA-AUq"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gWz-HV-LGN"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="trailing" secondItem="fVo-GW-RPF" secondAttribute="trailing" type="default" id="gX4-Ig-YnD"/>
+                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="bottom" secondItem="RMs-du-XdE" secondAttribute="bottom" type="default" id="gku-8n-EoJ"/>
                                     <constraint firstItem="ols-Co-jgE" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hzb-5D-8Kg"/>
-                                    <constraint firstItem="028-E1-nlP" firstAttribute="baseline" secondItem="wwH-v2-4Bx" secondAttribute="baseline" type="default" id="iBF-MO-WrN"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="fR4-6i-HLQ" secondAttribute="centerY" type="default" id="jP0-A6-l0x"/>
-                                    <constraint firstItem="RMs-du-XdE" firstAttribute="trailing" secondItem="IuZ-ne-GCp" secondAttribute="trailing" type="default" id="jaO-fA-xhf"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="leading" secondItem="RMs-du-XdE" secondAttribute="leading" type="default" id="lTm-S3-FmV"/>
+                                    <constraint firstItem="erA-kt-bOW" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="365" id="kWC-6Y-zL7"/>
+                                    <constraint firstAttribute="trailing" secondItem="wwH-v2-4Bx" secondAttribute="trailing" constant="259" id="ma9-mB-HDp"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="leading" secondItem="TLe-Ir-McU" secondAttribute="leading" type="default" id="n0G-ey-R3G"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="230" id="nl8-ad-46L"/>
+                                    <constraint firstAttribute="trailing" secondItem="028-E1-nlP" secondAttribute="trailing" constant="209" id="nzZ-Zf-jpn"/>
                                     <constraint firstAttribute="trailing" secondItem="TLe-Ir-McU" secondAttribute="trailing" constant="21" id="pwZ-hg-m0V"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="qga-Kg-6UE"/>
+                                    <constraint firstItem="cmj-ru-1ch" firstAttribute="top" secondItem="RMs-du-XdE" secondAttribute="top" type="default" id="pyZ-Xq-WkS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sfd-YL-kDL" secondAttribute="trailing" constant="221" id="qw0-FT-lzC"/>
+                                    <constraint firstItem="erA-kt-bOW" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rqv-7J-JS8"/>
                                     <constraint firstItem="Yqu-ki-FBe" firstAttribute="trailing" secondItem="TLe-Ir-McU" secondAttribute="trailing" type="default" id="s7j-HB-wf7"/>
-                                    <constraint firstItem="oaK-8U-eWQ" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="341" id="slL-qs-SZf"/>
+                                    <constraint firstItem="fVo-GW-RPF" firstAttribute="leading" secondItem="IuZ-ne-GCp" secondAttribute="leading" type="default" id="sEh-ba-Oop"/>
+                                    <constraint firstItem="028-E1-nlP" firstAttribute="baseline" secondItem="wwH-v2-4Bx" secondAttribute="baseline" type="default" id="smK-xB-dJf"/>
                                     <constraint firstItem="ols-Co-jgE" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="60" id="uHP-vG-h1l"/>
-                                    <constraint firstAttribute="bottom" secondItem="IuZ-ne-GCp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="uaG-Qb-6Gg"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="centerX" secondItem="Q43-nh-Ztt" secondAttribute="centerX" type="default" id="vZd-xi-Mwm"/>
+                                    <constraint firstAttribute="trailing" secondItem="erA-kt-bOW" secondAttribute="trailing" constant="258" id="yuQ-fh-7Wf"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -528,6 +549,7 @@
                         <outlet property="doneButton" destination="IuZ-ne-GCp" id="hXO-RV-jRw"/>
                         <outlet property="endButton" destination="cmj-ru-1ch" id="gmy-Wx-GXx"/>
                         <outlet property="finishButton" destination="Yqu-ki-FBe" id="XTc-mc-jH0"/>
+                        <outlet property="holeDistanceLabel" destination="erA-kt-bOW" id="g7l-fm-Hkv"/>
                         <outlet property="holeLabel" destination="Aez-gZ-nQG" id="GyQ-z4-bgl"/>
                         <outlet property="myImageView" destination="fR4-6i-HLQ" id="3LP-HK-ckZ"/>
                         <outlet property="myScrollView" destination="Q43-nh-Ztt" id="Bu3-fG-RHr"/>
@@ -847,6 +869,106 @@
         <image name="hole1.png" width="350" height="800"/>
         <image name="logo2.png" width="497" height="203"/>
     </resources>
+    <classes>
+        <class className="DCRoundSwitch" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCRoundSwitch.h"/>
+        </class>
+        <class className="GolferVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>
+            <relationships>
+                <relationship kind="action" name="startRound:"/>
+                <relationship kind="action" name="valueChanged:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="golferTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="holeNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="holeStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="myView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Add_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Add_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="teeChanged:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="Golfer_Registration_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Golfer_Registration_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="teeChanged:"/>
+                <relationship kind="outlet" name="emailAddressTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="membershipNumberTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="nicknameTextField" candidateClass="SLGlowingTextField"/>
+                <relationship kind="outlet" name="teeSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="continueRound:"/>
+                <relationship kind="action" name="startButton:"/>
+                <relationship kind="outlet" name="continueButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="Play_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Play_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="doneAim:"/>
+                <relationship kind="action" name="endGame:"/>
+                <relationship kind="action" name="endShot:"/>
+                <relationship kind="action" name="finishHole:"/>
+                <relationship kind="action" name="handleTap:" candidateClass="UIGestureRecognizer"/>
+                <relationship kind="action" name="selectGolfer:"/>
+                <relationship kind="action" name="skipHole:"/>
+                <relationship kind="action" name="startShot:"/>
+                <relationship kind="outlet" name="distanceToGreeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="endButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="holeDistanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="holeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="myScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="parLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="skipButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="txtClub" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SLGlowingTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="Upload_Results" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Upload_Results.h"/>
+            <relationships>
+                <relationship kind="action" name="uploadResults:"/>
+                <relationship kind="outlet" name="golfer1Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer1Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer2Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer2Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer3Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer3Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="golfer4Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="golfer4Switch" candidateClass="DCRoundSwitch"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

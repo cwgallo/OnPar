@@ -33,7 +33,7 @@
 @synthesize myImageView, myScrollView, navBar, txtClub;
 @synthesize startButton, endButton, finishButton, skipButton, doneButton;
 @synthesize clubType, woodNum, hybridNum, ironNum, wedgeType;
-@synthesize holeLabel, parLabel, stageLabel, distanceToGreeLabel;
+@synthesize holeLabel, parLabel, stageLabel, distanceToGreeLabel, holeDistanceLabel;
 
 @synthesize locationMgr = _locationMgr;
 @synthesize lastLocation = _lastLocation;
@@ -185,6 +185,7 @@
     
     self.parLabel.text = [NSString stringWithFormat: @"%@", currentHole.par];
     self.holeLabel.text = [NSString stringWithFormat: @"%@", currentHole.holeNumber];
+    self.holeDistanceLabel.text = [NSString stringWithFormat: @"%@", currentHole.distance];
     
     //NSLog(@"CURRENT GOLFER: %@", currentGolfer);
     //NSLog(@"CURRENT ROUND: %@", currentRound);

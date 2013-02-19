@@ -29,15 +29,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
 @property (strong, nonatomic) IBOutlet UITextField *txtClub;
-
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *holeLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *parLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *stageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToGreeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *holeDistanceLabel;
 
 #pragma mark - Core Location
 

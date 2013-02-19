@@ -90,8 +90,11 @@ typedef void (^AHAnimationBlock)();
 @property (nonatomic, strong) UITextField *secureTextField;
 
 // NEW
+// DONUT
+// these need new names
 @property (nonatomic, strong) UISwitch *mySwitch;
 @property (nonatomic, strong) UILabel *switchLabel;
+// these are good
 @property (nonatomic, strong) UITextField *puttTextField;
 @property (nonatomic, strong) UILabel *puttLabel;
 // END
@@ -786,7 +789,7 @@ typedef void (^AHAnimationBlock)();
             self.plainTextField.enabled = NO;
             self.plainTextField.hidden = YES;
             //self.plainTextField.frame = CGRectMake(self.bounds.size.width - 100, 75, 80, 25);
-//            self.plainTextField.keyboardType = UIKeyboardTypeNumberPad;
+            //self.plainTextField.keyboardType = UIKeyboardTypeNumberPad;
             
             self.puttTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 75, 80, 25)];
             [self.puttTextField setBackgroundColor:[UIColor whiteColor]];
@@ -828,6 +831,7 @@ typedef void (^AHAnimationBlock)();
         {
             self.secureTextField.hidden = YES;
             
+            // DONUT
             
             self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 105, 50, 25)];
             
