@@ -446,17 +446,19 @@
 }
 
 - (IBAction)doneAim:(id)sender {
-    currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
-    
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    
-    NSError *error;
-    
-    if (![[appDelegate managedObjectContext] save: &error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    if (currentShot.aimLatitude != nil && currentShot.aimLongitude != nil) {
+        currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
+        
+        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        
+        NSError *error;
+        
+        if (![[appDelegate managedObjectContext] save: &error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+        
+        [self viewWillAppear: NO];
     }
-    
-    [self viewWillAppear: NO];
 }
 
 
