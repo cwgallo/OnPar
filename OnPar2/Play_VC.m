@@ -320,7 +320,7 @@
     // update the User's holeNumber in the User's stageInfo
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
-        id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+        /*id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
         int holeNumber = [currentGolfer.stageInfo.holeNumber intValue];
 
@@ -338,16 +338,7 @@
         
         if (![[appDelegate managedObjectContext] save: &error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-        
-        // AHAlertView to capture FIR, and number of putts
-        AHAlertView *prompt = [[AHAlertView alloc] initWithTitle:@"Finish Hole" message:@"Input Information."];
-        [prompt setAlertViewStyle:AHAlertViewStyleEndShot];
-        [prompt applyCustomAlertAppearance];
-        [prompt addButtonWithTitle:@"OK" block:^{
-            NSLog(@"OK pressed");
-        }];
-        [prompt show];
+        }*/
         
         //[self viewWillAppear: NO];
         
