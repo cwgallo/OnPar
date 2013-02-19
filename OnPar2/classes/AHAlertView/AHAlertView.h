@@ -29,6 +29,8 @@ typedef enum {
     AHAlertViewStyleSecureTextInput,
     AHAlertViewStylePlainTextInput,
     AHAlertViewStyleLoginAndPasswordInput,
+    // NEW
+    AHAlertViewStyleEndShot,
 } AHAlertViewStyle;
 
 typedef enum {

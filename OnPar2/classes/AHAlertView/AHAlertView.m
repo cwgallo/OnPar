@@ -88,6 +88,14 @@ typedef void (^AHAnimationBlock)();
 @property (nonatomic, strong) UILabel *messageLabel;
 @property (nonatomic, strong) UITextField *plainTextField;
 @property (nonatomic, strong) UITextField *secureTextField;
+
+// NEW
+@property (nonatomic, strong) UISwitch *mySwitch;
+@property (nonatomic, strong) UILabel *switchLabel;
+@property (nonatomic, strong) UITextField *puttTextField;
+@property (nonatomic, strong) UILabel *puttLabel;
+// END
+
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UIButton *destructiveButton;
 @property (nonatomic, strong) NSMutableArray *otherButtons;
@@ -290,7 +298,14 @@ typedef void (^AHAnimationBlock)();
 			if(textFieldIndex == 0)
 				return self.secureTextField;
 			break;
-
+        
+        // NEW
+        case AHAlertViewStyleEndShot:
+            if(textFieldIndex == 0)
+                return self.plainTextField;
+            break;
+        // END
+            
 		default:
 			break;
 	}
@@ -302,7 +317,7 @@ typedef void (^AHAnimationBlock)();
 		NSException *rangeException = [NSException exceptionWithName:NSRangeException reason:exceptionReason userInfo:nil];
 		[rangeException raise];
 	}
-	
+    
 	return nil;
 }
 
@@ -547,7 +562,11 @@ typedef void (^AHAnimationBlock)();
 	}
 
 	// As we're appearing, the first text field should become active.
-	[[self textFieldAtIndex:0 throws:NO] becomeFirstResponder];
+    //NEW
+    if (self.alertViewStyle != AHAlertViewStyleEndShot)
+        [[self textFieldAtIndex:0 throws:NO] becomeFirstResponder];
+    else
+        [[self puttTextField] becomeFirstResponder];
 }
 
 - (void)performDismissalAnimation
@@ -733,11 +752,13 @@ typedef void (^AHAnimationBlock)();
 // Internal utility to create or destroy text fields based on current alert view style
 - (void)ensureTextFieldsForCurrentAlertStyle
 {
+    NSLog(@"ensureText");
+    
 	BOOL wantsPlainTextField = (self.alertViewStyle == AHAlertViewStylePlainTextInput ||
-								self.alertViewStyle == AHAlertViewStyleLoginAndPasswordInput);
+								self.alertViewStyle == AHAlertViewStyleLoginAndPasswordInput || self.alertViewStyle == AHAlertViewStyleEndShot);
 	BOOL wantsSecureTextField = (self.alertViewStyle == AHAlertViewStyleSecureTextInput ||
-								 self.alertViewStyle == AHAlertViewStyleLoginAndPasswordInput);
-
+								 self.alertViewStyle == AHAlertViewStyleLoginAndPasswordInput || self.alertViewStyle ==  AHAlertViewStyleEndShot);
+    
 	if(!wantsPlainTextField)
 	{
 		[self.plainTextField removeFromSuperview];
@@ -747,11 +768,42 @@ typedef void (^AHAnimationBlock)();
 	{
 		self.plainTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 		self.plainTextField.backgroundColor = [UIColor whiteColor];
+        
+        if (self.alertViewStyle != AHAlertViewStyleEndShot)
 		self.plainTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
+        
 		self.plainTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
 		self.plainTextField.returnKeyType = UIReturnKeyNext;
 		self.plainTextField.borderStyle = UITextBorderStyleLine;
 		self.plainTextField.placeholder = @"Username";
+        
+        //NEW
+        if (self.alertViewStyle == AHAlertViewStyleEndShot)
+        {
+            
+            // DONUT
+            
+            self.plainTextField.enabled = NO;
+            self.plainTextField.hidden = YES;
+            //self.plainTextField.frame = CGRectMake(self.bounds.size.width - 100, 75, 80, 25);
+//            self.plainTextField.keyboardType = UIKeyboardTypeNumberPad;
+            
+            self.puttTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 75, 80, 25)];
+            [self.puttTextField setBackgroundColor:[UIColor whiteColor]];
+            [self.puttTextField setBorderStyle:UITextBorderStyleRoundedRect];
+            self.puttTextField.keyboardType = UIKeyboardTypeNumberPad;
+            self.puttTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
+            
+            self.puttLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width - self.frame.size.width + 20, 75, 150, 25)];
+            
+            [self.puttLabel setText:@"Number of Putts"];
+            [self.puttLabel setTextColor:[UIColor whiteColor]];
+            [self.puttLabel setBackgroundColor:[UIColor clearColor]];
+            
+            [self addSubview:self.puttTextField];
+            [self addSubview:self.puttLabel];
+        }
+        
 		[self addSubview:self.plainTextField];
 	}
 
@@ -762,7 +814,7 @@ typedef void (^AHAnimationBlock)();
 	}
 	else if(wantsSecureTextField && !self.secureTextField)
 	{
-		self.secureTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+        self.secureTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 		self.secureTextField.backgroundColor = [UIColor whiteColor];
 		self.secureTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
 		self.secureTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -770,9 +822,57 @@ typedef void (^AHAnimationBlock)();
 		self.secureTextField.borderStyle = UITextBorderStyleLine;
 		self.secureTextField.placeholder = @"Password";
 		self.secureTextField.secureTextEntry = YES;
+
+        // NEW
+        if (self.alertViewStyle == AHAlertViewStyleEndShot)
+        {
+            self.secureTextField.hidden = YES;
+            
+            
+            self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 105, 50, 25)];
+            
+            self.switchLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width - self.frame.size.width + 20, 105, 150, 25)];
+            [self.switchLabel setText:@"Fairway In Reg"];
+            [self.switchLabel setTextColor:[UIColor whiteColor]];
+            [self.switchLabel setBackgroundColor:[UIColor clearColor]];
+
+            [self addSubview:self.switchLabel];
+            [self addSubview:self.mySwitch];
+        }
+        // END
+        
 		[self addSubview:self.secureTextField];
-	}
+    }
+    
+    
+            /*
+        // NEW
+        BOOL wantsSwitch = (self.alertViewStyle == AHAlertViewStyleEndShot);
+        //
+        
+        if (!wantsSwitch)
+        {
+            [self.mySwitch removeFromSuperview];
+            self.mySwitch = nil;
+        }
+        else if (wantsSwitch && !self.mySwitch)
+        {
+            self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+            //self.secureTextField.backgroundColor = [UIColor whiteColor];
+            //self.secureTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
+            //self.secureTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            //self.secureTextField.returnKeyType = UIReturnKeyNext;
+            //self.secureTextField.borderStyle = UITextBorderStyleLine;
+            //self.secureTextField.placeholder = @"Password";
+            //self.secureTextField.secureTextEntry = YES;
+            NSLog(@"Added switch subview");
+            [self addSubview:self.mySwitch];
+        }
+             */
+        //}
+        // END
 }
+
 
 - (CGRect)layoutTextFieldsWithinRect:(CGRect)boundingRect
 {

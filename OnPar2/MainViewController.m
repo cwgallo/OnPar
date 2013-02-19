@@ -29,8 +29,20 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Used to show navbar when other view loads
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+    // end
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Used to hide navbar when view appears
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    // end
+    
     // pull information from the database
     // if there is any, show the continue button
     // and give them the choice to continue the started round
@@ -58,7 +70,9 @@
         continueButton.hidden = YES;
     }
     
-    [self hideNavBar];
+    // Part of hiding navbar
+    [super viewWillAppear:animated];
+    // end
 }
 
 - (void)didReceiveMemoryWarning

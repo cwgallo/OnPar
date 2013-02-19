@@ -146,7 +146,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // don't hide the nav bar
-    self.navigationController.navigationBarHidden = NO;
+    [NSTimer scheduledTimerWithTimeInterval:0.20 target:self selector:@selector(showNavBar) userInfo:nil repeats:NO];
+    
+//    self.navigationController.navigationBarHidden = NO;
+    //[[[self navigationController] navigationBar] setHidden:NO];
     
     // set the picture for the golfer
     [self setHoleImageForUser: currentGolfer];
@@ -331,6 +334,15 @@
         }];
         [alert show];
     }
+    
+    // AHAlertView to capture FIR, and number of putts
+    AHAlertView *prompt = [[AHAlertView alloc] initWithTitle:@"finish hole stuff" message:@"putts, etc."];
+    [prompt setAlertViewStyle:AHAlertViewStyleEndShot];
+    [prompt applyCustomAlertAppearance];
+    [prompt addButtonWithTitle:@"OK" block:^{
+        NSLog(@"OK pressed");
+    }];
+    [prompt show];
     
     [self viewWillAppear: NO];
 }
@@ -1135,5 +1147,9 @@
     [wedgeType addObject:@" Sand "];
 }
 
+- (void)showNavBar
+{
+    [[[self navigationController] navigationBar] setHidden:NO];
+}
 
 @end

@@ -16,6 +16,7 @@
 @synthesize golferTableView;
 @synthesize holeStepper;
 @synthesize addButton;
+@synthesize myView;
 
 - (void)viewDidLoad
 {
@@ -28,7 +29,11 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    [self showNavBar];
+    // delay before showing navbar
+    //[NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showNavBar) userInfo:nil repeats:NO];
+    //[self showNavBar];
+    
+    
     
     golfers = [[NSMutableArray alloc] init];
     
@@ -64,10 +69,6 @@
         // hide add button
         addButton.hidden = YES;
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
 }
 
 #pragma mark - TableView methods

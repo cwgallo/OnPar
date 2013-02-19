@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *golferTableView;
 @property (strong, nonatomic) IBOutlet UIStepper *holeStepper;
 @property (strong, nonatomic) IBOutlet UILabel *holeNumberLabel;
+@property (strong, nonatomic) IBOutlet UIView *myView;
 
 - (IBAction)startRound:(id)sender;
 - (IBAction)valueChanged:(id)sender;
