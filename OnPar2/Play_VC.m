@@ -317,12 +317,15 @@
             currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_DONE];
         }
 
-        // create a new hole to add to the hole object with the updated hole number
+        // save the user's updated information
         NSError *error;
         
         if (![[appDelegate managedObjectContext] save: &error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
+        
+        // segue to the scoring VC
+        //[self performSegueWithIdentifier: @"play2score" sender: self];
         
     } else {
         // tell the User to finish the hole

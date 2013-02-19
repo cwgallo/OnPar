@@ -212,7 +212,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="golfer" textLabel="dMP-KF-xMN" detailTextLabel="lOT-E0-ojs" style="IBUITableViewCellStyleSubtitle" id="BgY-4K-8GA">
-                                        <rect key="frame" x="0.0" y="46" width="280" height="45"/>
+                                        <rect key="frame" x="0.0" y="46" width="280" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="240" height="43"/>
@@ -465,7 +465,6 @@
                                     <constraint firstItem="wwH-v2-4Bx" firstAttribute="top" secondItem="oaK-8U-eWQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ac9-5q-bw4"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="B9Q-nZ-xNY"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="trailing" secondItem="fVo-GW-RPF" secondAttribute="trailing" type="default" id="C4V-zQ-wcd"/>
-                                    <constraint firstItem="IuZ-ne-GCp" firstAttribute="baseline" secondItem="cmj-ru-1ch" secondAttribute="baseline" type="default" id="CnW-Uw-nFR"/>
                                     <constraint firstItem="IuZ-ne-GCp" firstAttribute="leading" secondItem="fVo-GW-RPF" secondAttribute="leading" type="default" id="DY7-Cp-EbA"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="40" id="FOe-w2-xGK"/>
                                     <constraint firstItem="cmj-ru-1ch" firstAttribute="leading" secondItem="IuZ-ne-GCp" secondAttribute="leading" type="default" id="IGY-bM-BHo"/>
@@ -478,14 +477,12 @@
                                     <constraint firstItem="Aez-gZ-nQG" firstAttribute="leading" secondItem="oaK-8U-eWQ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MIH-Cs-qzm"/>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="trailing" secondItem="cmj-ru-1ch" secondAttribute="trailing" type="default" id="NPn-ga-7Ym"/>
                                     <constraint firstItem="TLe-Ir-McU" firstAttribute="baseline" secondItem="mGD-TP-uBD" secondAttribute="baseline" type="default" id="QDi-gh-xfk"/>
-                                    <constraint firstItem="RMs-du-XdE" firstAttribute="baseline" secondItem="IuZ-ne-GCp" secondAttribute="baseline" type="default" id="Qwn-ao-G3W"/>
                                     <constraint firstItem="fR4-6i-HLQ" firstAttribute="leading" secondItem="ols-Co-jgE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RKM-d3-J4I"/>
                                     <constraint firstItem="uxP-N5-gh4" firstAttribute="trailing" secondItem="mGD-TP-uBD" secondAttribute="trailing" type="default" id="RKe-Jl-2H4"/>
                                     <constraint firstItem="oaK-8U-eWQ" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UH1-2O-jxZ"/>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" type="default" id="V2D-bp-SPU"/>
                                     <constraint firstItem="RMs-du-XdE" firstAttribute="top" secondItem="Q43-nh-Ztt" secondAttribute="top" constant="374" id="XP8-Vc-Pen"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="centerY" secondItem="Q43-nh-Ztt" secondAttribute="centerY" type="default" id="YfS-OH-grw"/>
-                                    <constraint firstItem="RMs-du-XdE" firstAttribute="baseline" secondItem="cmj-ru-1ch" secondAttribute="baseline" type="default" id="ZEg-zP-hDJ"/>
                                     <constraint firstItem="028-E1-nlP" firstAttribute="leading" secondItem="wwH-v2-4Bx" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="dfG-oV-ouA"/>
                                     <constraint firstAttribute="bottom" secondItem="cmj-ru-1ch" secondAttribute="bottom" constant="64" id="dyH-WV-vtN"/>
                                     <constraint firstItem="Cfe-ai-sSd" firstAttribute="leading" secondItem="Q43-nh-Ztt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gWz-HV-LGN"/>
