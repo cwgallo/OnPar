@@ -223,7 +223,17 @@
 
 - (IBAction)skipHole:(id)sender
 {
-    // if there is a current shot, discard it
+    // delete the shots in the current hole
+    // if they skip the hole, there is no reason
+    // to keep the shots that have already been made
+    // go ahead and clear the hole info too
+    
+    currentHole.shots = [[NSSet alloc] init];
+    currentHole.putts = nil;
+    currentHole.holeScore = nil;
+    currentHole.fairway_in_reg = nil;
+    currentHole.green_in_reg = nil;
+    
     // update the holeNumber and stage of the User's stage info
     currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
     
@@ -234,6 +244,15 @@
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     
     NSError *error;
+    
+    // delete the current shot
+    if (currentShot != nil) {
+        [[appDelegate managedObjectContext] deleteObject: currentShot];
+        currentShot = nil;
+    }
+    
+    NSLog(@"CURRENT SHOT: %@", currentShot);
+    NSLog(@"CURRENT HOLE: %@", currentHole);
     
     if (![[appDelegate managedObjectContext] save: &error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
