@@ -98,6 +98,7 @@
 
 - (IBAction)uploadResults:(id)sender
 {
+    NSLog(@"Upload results");
     // send emails if any
     
     // create spinner
@@ -245,7 +246,7 @@
         MainViewController *mvc = [[MainViewController alloc] init];
         [mvc deleteEverything:appDelegate];
         
-        [self performSegueWithIdentifier: @"play2main" sender: self];
+        [[self navigationController] popToRootViewControllerAnimated: YES];
     } else {
         // internet reachablility failed
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];

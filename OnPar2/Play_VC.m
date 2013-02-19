@@ -156,11 +156,11 @@
     
     // check to see what hole the golfer is on
     // if 18, hide the skip button
-    if ([currentGolfer.stageInfo.holeNumber isEqualToNumber: [NSNumber numberWithInt: 18]]) {
+    /*if ([currentGolfer.stageInfo.holeNumber isEqualToNumber: [NSNumber numberWithInt: 18]]) {
         skipButton.hidden = YES;
     } else {
         skipButton.hidden = NO;
-    }
+    }*/
     
     // set the current Round, Hole, and Shot
     currentRound = [rounds objectForKey: currentGolfer.userID];
@@ -199,6 +199,7 @@
         startButton.hidden = NO;
         finishButton.hidden = NO;
         doneButton.hidden = YES;
+        skipButton.hidden = NO;
         
         self.stageLabel.text = @"Start shot";
         
@@ -210,6 +211,7 @@
         startButton.hidden = YES;
         finishButton.hidden = YES;
         doneButton.hidden = YES;
+        skipButton.hidden = YES;
         
         self.stageLabel.text = @"Select club";
         
@@ -222,6 +224,7 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         finishButton.hidden = YES;
+        skipButton.hidden = YES;
         
         // hide the done button until there has been an aim made
         // the button will be shown in the aim function
@@ -236,6 +239,7 @@
         startButton.hidden = YES;
         finishButton.hidden = YES;
         doneButton.hidden = YES;
+        skipButton.hidden = YES;
         
         self.stageLabel.text = @"End shot";
         
@@ -279,7 +283,14 @@
     currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
     
     int hole = [currentGolfer.stageInfo.holeNumber intValue];
-    currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: hole + 1];
+    
+    // do not advance to hole 19
+    if (hole + 1 != 19) {
+        currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: hole + 1];
+    } else {
+        // if they finish hole 18, set them to stage done
+        currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: 1];
+    }
     
     // create a new hole to add to the hole object with the updated hole number
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
@@ -318,7 +329,8 @@
             currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
         } else {
             // if they finish hole 18, set them to stage done
-            currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_DONE];
+            currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
+            currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: 1];
         }
 
         // save the user's updated information
@@ -327,6 +339,17 @@
         if (![[appDelegate managedObjectContext] save: &error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
+        
+        // AHAlertView to capture FIR, and number of putts
+        AHAlertView *prompt = [[AHAlertView alloc] initWithTitle:@"Finish Hole" message:@"Input Information."];
+        [prompt setAlertViewStyle:AHAlertViewStyleEndShot];
+        [prompt applyCustomAlertAppearance];
+        [prompt addButtonWithTitle:@"OK" block:^{
+            NSLog(@"OK pressed");
+        }];
+        [prompt show];
+        
+        //[self viewWillAppear: NO];
         
         // segue to the scoring VC
         //[self performSegueWithIdentifier: @"play2score" sender: self];
@@ -341,15 +364,6 @@
         }];
         [alert show];
     }
-    
-    // AHAlertView to capture FIR, and number of putts
-    AHAlertView *prompt = [[AHAlertView alloc] initWithTitle:@"finish hole stuff" message:@"putts, etc."];
-    [prompt setAlertViewStyle:AHAlertViewStyleEndShot];
-    [prompt applyCustomAlertAppearance];
-    [prompt addButtonWithTitle:@"OK" block:^{
-        NSLog(@"OK pressed");
-    }];
-    [prompt show];
     
     [self viewWillAppear: NO];
 }

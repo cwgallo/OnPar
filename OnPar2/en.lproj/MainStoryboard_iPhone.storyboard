@@ -560,7 +560,6 @@
                         <outlet property="startButton" destination="RMs-du-XdE" id="2cA-xW-l3V"/>
                         <outlet property="txtClub" destination="Cfe-ai-sSd" id="kh4-ok-8tt"/>
                         <segue destination="YBu-hs-YqR" kind="push" identifier="play2upload" id="cYd-eY-i0d"/>
-                        <segue destination="2" kind="push" identifier="play2main" id="TPw-td-qwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtX-t6-36F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -975,7 +974,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TPw-td-qwF"/>
         <segue reference="SvY-8F-zxY"/>
     </inferredMetricsTieBreakers>
 </document>

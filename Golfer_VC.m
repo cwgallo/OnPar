@@ -183,6 +183,15 @@
         
         for (User *u in golfers) {
             
+            id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+            NSError *error;
+            
+            u.stageInfo.holeNumber = [NSNumber numberWithInt:[[NSNumber numberWithDouble: self.holeStepper.value] intValue]];
+            
+            if (![[appDelegate managedObjectContext] save: &error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+            
             // call the API to obtain the reference points for the holes
             [[LRResty authenticatedClientWithUsername: API_USERNAME
                                              password: API_PASSWORD
