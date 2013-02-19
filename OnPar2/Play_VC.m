@@ -218,7 +218,10 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         finishButton.hidden = YES;
-        doneButton.hidden = NO;
+        
+        // hide the done button until there has been an aim made
+        // the button will be shown in the aim function
+        doneButton.hidden = YES;
         
         self.stageLabel.text = @"Aim";
         
@@ -686,7 +689,9 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
         
-        [self viewWillAppear: NO];
+        // instead of transitioning, show the done button
+        self.doneButton.hidden = NO;
+        //[self viewWillAppear: NO];
     } else {
         // tell the User to start the shot before aiming
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"You must start the shot before aiming."];
