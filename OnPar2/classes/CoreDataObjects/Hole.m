@@ -28,10 +28,6 @@
 @dynamic secondRefLong;
 @dynamic secondRefX;
 @dynamic secondRefY;
-@dynamic thirdRefLat;
-@dynamic thirdRefLong;
-@dynamic thirdRefX;
-@dynamic thirdRefY;
 @dynamic round;
 @dynamic shots;
 

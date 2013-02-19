@@ -15,5 +15,4 @@
     #import <QuartzCore/QuartzCore.h>
     #import <AddressBook/AddressBook.h>
     #import <AudioToolbox/AudioToolbox.h>
-    #import <CoreLocation/CoreLocation.h>
 #endif

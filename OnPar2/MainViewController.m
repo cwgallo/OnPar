@@ -16,7 +16,7 @@
 
 @implementation MainViewController
 
-@synthesize btnContinue, btnNew, btnStart;
+@synthesize continueButton;
 
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -39,12 +39,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // hide all buttons
-    btnNew.hidden = YES;
-    btnStart.hidden = YES;
-    btnContinue.hidden = YES;
-    
-    
     // Used to hide navbar when view appears
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     // end
@@ -71,10 +65,9 @@
     }
     
     if ([golfers count] > 0) {
-        btnNew.hidden = NO;
-        btnContinue.hidden = NO;
+        continueButton.hidden = NO;
     } else {
-        btnStart.hidden = NO;
+        continueButton.hidden = YES;
     }
     
     // Part of hiding navbar
@@ -89,22 +82,59 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Flipside View Controller
+/*
+- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.flipsidePopoverController dismissPopoverAnimated:YES];
+        self.flipsidePopoverController = nil;
+    }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.flipsidePopoverController = nil;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showAlternate"]) {
+        [[segue destinationViewController] setDelegate:self];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
+            self.flipsidePopoverController = popoverController;
+            popoverController.delegate = self;
+        }
+    }
+}
+
+- (IBAction)togglePopover:(id)sender
+{
+    if (self.flipsidePopoverController) {
+        [self.flipsidePopoverController dismissPopoverAnimated:YES];
+        self.flipsidePopoverController = nil;
+    } else {
+        [self performSegueWithIdentifier:@"showAlternate" sender:sender];
+    }
+}
+ */
 
 - (void)hideNavBar
 {
     self.navigationController.navigationBar.hidden = YES;
 }
 
-- (IBAction)newButton:(id)sender
-{
-    [self deleteEverything: (id)[[UIApplication sharedApplication] delegate]];
-    [self startButton:self];
-}
 
 - (IBAction)startButton:(id)sender
 {
     // either a new round or deleting the current info and
     // start a new round(s)
+    
+    [self deleteEverything: (id)[[UIApplication sharedApplication] delegate]];
     
     [self performSegueWithIdentifier:@"main2options" sender:self];
 }

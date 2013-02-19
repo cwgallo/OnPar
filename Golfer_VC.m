@@ -247,14 +247,10 @@
                          h.firstRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"firstRefLong"] doubleValue]];
                          h.secondRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
                          h.secondRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
-                         h.thirdRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"thirdRefLat"] doubleValue]];
-                         h.thirdRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"thirdRefLat"] doubleValue]];
                          h.firstRefX = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefX"] intValue]];
                          h.firstRefY = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefY"] intValue]];
                          h.secondRefX = [NSNumber numberWithInt: [[hole objectForKey: @"secondRefX"] intValue]];
                          h.secondRefY = [NSNumber numberWithInt: [[hole objectForKey: @"secondRefY"] intValue]];
-                         h.thirdRefX = [NSNumber numberWithInt: [[hole objectForKey: @"thirdRefX"] intValue]];
-                         h.thirdRefY = [NSNumber numberWithInt: [[hole objectForKey: @"thirdRefY"] intValue]];
                          
                          h.round = r;
                          [r addHolesObject: h];

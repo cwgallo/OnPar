@@ -28,10 +28,6 @@
 @property (nonatomic, retain) NSNumber * secondRefLong;
 @property (nonatomic, retain) NSNumber * secondRefX;
 @property (nonatomic, retain) NSNumber * secondRefY;
-@property (nonatomic, retain) NSNumber * thirdRefLat;
-@property (nonatomic, retain) NSNumber * thirdRefLong;
-@property (nonatomic, retain) NSNumber * thirdRefX;
-@property (nonatomic, retain) NSNumber * thirdRefY;
 @property (nonatomic, retain) Round *round;
 @property (nonatomic, retain) NSSet *shots;
 @end

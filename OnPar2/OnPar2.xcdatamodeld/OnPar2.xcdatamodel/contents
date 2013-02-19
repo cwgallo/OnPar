@@ -16,10 +16,6 @@
         <attribute name="secondRefLong" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="secondRefX" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="secondRefY" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="thirdRefLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="thirdRefLong" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="thirdRefX" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="thirdRefY" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="round" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Round" inverseName="holes" inverseEntity="Round" syncable="YES"/>
         <relationship name="shots" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Shot" inverseName="hole" inverseEntity="Shot" syncable="YES"/>
     </entity>
@@ -63,7 +59,7 @@
         <relationship name="user" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="stageInfo" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Hole" positionX="-6795" positionY="-7173" width="128" height="358"/>
+        <element name="Hole" positionX="-6795" positionY="-7173" width="128" height="298"/>
         <element name="Round" positionX="-7038" positionY="-7047" width="128" height="133"/>
         <element name="Shot" positionX="-6545" positionY="-7047" width="128" height="178"/>
         <element name="User" positionX="-7056" positionY="-6840" width="128" height="163"/>

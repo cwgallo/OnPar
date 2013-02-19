@@ -181,7 +181,7 @@
         }
     }
     
-    centerOfGreen = [[CLLocation alloc] initWithLatitude: [currentHole.thirdRefLat doubleValue] longitude: [currentHole.thirdRefLong doubleValue]];
+    centerOfGreen = [[CLLocation alloc] initWithLatitude: [currentHole.secondRefLat doubleValue] longitude: [currentHole.secondRefLong doubleValue]];
     
     self.parLabel.text = [NSString stringWithFormat: @"%@", currentHole.par];
     self.holeLabel.text = [NSString stringWithFormat: @"%@", currentHole.holeNumber];
@@ -746,8 +746,8 @@
     LLPair *teeLLRad = [[LLPair alloc] initWithLLPair:[teeLLDeg deg2rad]];
     XYPair *teeLLRadFlat = [[XYPair alloc] initWithX:teeLLRad._lon andY:teeLLRad._lat];
     
-    XYPair *centerXY0 = [[XYPair alloc] initWithX: [currentHole.thirdRefX doubleValue] andY: [currentHole.thirdRefY doubleValue]];
-    LLPair *centerLLDeg = [[LLPair alloc] initWithLat: [currentHole.thirdRefLat doubleValue] andLon: [currentHole.thirdRefLong doubleValue]];
+    XYPair *centerXY0 = [[XYPair alloc] initWithX: [currentHole.secondRefX doubleValue] andY: [currentHole.secondRefY doubleValue]];
+    LLPair *centerLLDeg = [[LLPair alloc] initWithLat: [currentHole.secondRefLat doubleValue] andLon: [currentHole.secondRefLong doubleValue]];
     LLPair *centerLLRad = [[LLPair alloc] initWithLLPair:[centerLLDeg deg2rad]];
     XYPair *centerLLRadFlat = [[XYPair alloc] initWithX:centerLLRad._lon andY:centerLLRad._lat];
     
