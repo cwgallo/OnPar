@@ -9,9 +9,12 @@
 @interface MainViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet UIButton *btnContinue;
+@property (strong, nonatomic) IBOutlet UIButton *btnNew;
+@property (strong, nonatomic) IBOutlet UIButton *btnStart;
 
 - (IBAction)startButton:(id)sender;
+- (IBAction)newButton:(id)sender;
 - (IBAction)continueRound:(id)sender;
 
 - (void)deleteEverything:(id)appDelegate;

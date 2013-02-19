@@ -23,7 +23,6 @@
 		B611326B16CB0F670032AD4B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B611326A16CB0F670032AD4B /* Default@2x.png */; };
 		B611326D16CB0F670032AD4B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B611326C16CB0F670032AD4B /* Default-568h@2x.png */; };
 		B611327016CB0F670032AD4B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611326E16CB0F670032AD4B /* MainStoryboard_iPhone.storyboard */; };
-		B611327316CB0F670032AD4B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B611327116CB0F670032AD4B /* MainStoryboard_iPad.storyboard */; };
 		B611327916CB0F670032AD4B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611327816CB0F670032AD4B /* MainViewController.m */; };
 		B611328416CB0F680032AD4B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611328316CB0F680032AD4B /* SenTestingKit.framework */; };
 		B611328516CB0F680032AD4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325416CB0F670032AD4B /* UIKit.framework */; };
@@ -250,7 +249,6 @@
 		B611326A16CB0F670032AD4B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B611326C16CB0F670032AD4B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B611326F16CB0F670032AD4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		B611327216CB0F670032AD4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B611327716CB0F670032AD4B /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		B611327816CB0F670032AD4B /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B611328216CB0F680032AD4B /* OnPar2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnPar2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -602,7 +600,6 @@
 			isa = PBXGroup;
 			children = (
 				B611326E16CB0F670032AD4B /* MainStoryboard_iPhone.storyboard */,
-				B611327116CB0F670032AD4B /* MainStoryboard_iPad.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1028,7 +1025,6 @@
 				B611326B16CB0F670032AD4B /* Default@2x.png in Resources */,
 				B611326D16CB0F670032AD4B /* Default-568h@2x.png in Resources */,
 				B611327016CB0F670032AD4B /* MainStoryboard_iPhone.storyboard in Resources */,
-				B611327316CB0F670032AD4B /* MainStoryboard_iPad.storyboard in Resources */,
 				B611329D16CD272A0032AD4B /* MSState.png in Resources */,
 				B611336E16CDEBE40032AD4B /* logo2.png in Resources */,
 				B6E2417716CFFEA100D9CA97 /* custom-button-normal.png in Resources */,
@@ -1289,14 +1285,6 @@
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		B611327116CB0F670032AD4B /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B611327216CB0F670032AD4B /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		B611328D16CB0F680032AD4B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1373,6 +1361,7 @@
 				GCC_PREFIX_HEADER = "OnPar2/OnPar2-Prefix.pch";
 				INFOPLIST_FILE = "OnPar2/OnPar2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1384,6 +1373,7 @@
 				GCC_PREFIX_HEADER = "OnPar2/OnPar2-Prefix.pch";
 				INFOPLIST_FILE = "OnPar2/OnPar2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
