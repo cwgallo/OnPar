@@ -458,6 +458,14 @@
         }
         
         [self viewWillAppear: NO];
+    } else {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Select Aim" message:@"You must aim before continuing."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
     }
 }
 
