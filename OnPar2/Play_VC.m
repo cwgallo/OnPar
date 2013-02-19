@@ -221,7 +221,10 @@
         endButton.hidden = YES;
         startButton.hidden = YES;
         finishButton.hidden = YES;
-        doneButton.hidden = NO;
+        
+        // hide the done button until there has been an aim made
+        // the button will be shown in the aim function
+        doneButton.hidden = YES;
         
         self.stageLabel.text = @"Aim";
         
@@ -317,12 +320,15 @@
             currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_DONE];
         }
 
-        // create a new hole to add to the hole object with the updated hole number
+        // save the user's updated information
         NSError *error;
         
         if (![[appDelegate managedObjectContext] save: &error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
+        
+        // segue to the scoring VC
+        //[self performSegueWithIdentifier: @"play2score" sender: self];
         
     } else {
         // tell the User to finish the hole
@@ -698,7 +704,9 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
         
-        [self viewWillAppear: NO];
+        // instead of transitioning, show the done button
+        self.doneButton.hidden = NO;
+        //[self viewWillAppear: NO];
     } else {
         // tell the User to start the shot before aiming
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"You must start the shot before aiming."];
