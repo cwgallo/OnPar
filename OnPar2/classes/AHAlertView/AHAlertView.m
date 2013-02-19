@@ -89,16 +89,6 @@ typedef void (^AHAnimationBlock)();
 @property (nonatomic, strong) UITextField *plainTextField;
 @property (nonatomic, strong) UITextField *secureTextField;
 
-// NEW
-// DONUT
-// these need new names
-@property (nonatomic, strong) UISwitch *mySwitch;
-@property (nonatomic, strong) UILabel *switchLabel;
-// these are good
-@property (nonatomic, strong) UITextField *puttTextField;
-@property (nonatomic, strong) UILabel *puttLabel;
-// END
-
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UIButton *destructiveButton;
 @property (nonatomic, strong) NSMutableArray *otherButtons;
@@ -780,33 +770,6 @@ typedef void (^AHAnimationBlock)();
 		self.plainTextField.borderStyle = UITextBorderStyleLine;
 		self.plainTextField.placeholder = @"Username";
         
-        //NEW
-        if (self.alertViewStyle == AHAlertViewStyleEndShot)
-        {
-            
-            // DONUT
-            
-            self.plainTextField.enabled = NO;
-            self.plainTextField.hidden = YES;
-            //self.plainTextField.frame = CGRectMake(self.bounds.size.width - 100, 75, 80, 25);
-            //self.plainTextField.keyboardType = UIKeyboardTypeNumberPad;
-            
-            self.puttTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 75, 80, 25)];
-            [self.puttTextField setBackgroundColor:[UIColor whiteColor]];
-            [self.puttTextField setBorderStyle:UITextBorderStyleRoundedRect];
-            self.puttTextField.keyboardType = UIKeyboardTypeNumberPad;
-            self.puttTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
-            
-            self.puttLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width - self.frame.size.width + 20, 75, 150, 25)];
-            
-            [self.puttLabel setText:@"Number of Putts"];
-            [self.puttLabel setTextColor:[UIColor whiteColor]];
-            [self.puttLabel setBackgroundColor:[UIColor clearColor]];
-            
-            [self addSubview:self.puttTextField];
-            [self addSubview:self.puttLabel];
-        }
-        
 		[self addSubview:self.plainTextField];
 	}
 
@@ -825,56 +788,9 @@ typedef void (^AHAnimationBlock)();
 		self.secureTextField.borderStyle = UITextBorderStyleLine;
 		self.secureTextField.placeholder = @"Password";
 		self.secureTextField.secureTextEntry = YES;
-
-        // NEW
-        if (self.alertViewStyle == AHAlertViewStyleEndShot)
-        {
-            self.secureTextField.hidden = YES;
-            
-            // DONUT
-            
-            self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, 105, 50, 25)];
-            
-            self.switchLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width - self.frame.size.width + 20, 105, 150, 25)];
-            [self.switchLabel setText:@"Fairway In Reg"];
-            [self.switchLabel setTextColor:[UIColor whiteColor]];
-            [self.switchLabel setBackgroundColor:[UIColor clearColor]];
-
-            [self addSubview:self.switchLabel];
-            [self addSubview:self.mySwitch];
-        }
-        // END
         
 		[self addSubview:self.secureTextField];
     }
-    
-    
-            /*
-        // NEW
-        BOOL wantsSwitch = (self.alertViewStyle == AHAlertViewStyleEndShot);
-        //
-        
-        if (!wantsSwitch)
-        {
-            [self.mySwitch removeFromSuperview];
-            self.mySwitch = nil;
-        }
-        else if (wantsSwitch && !self.mySwitch)
-        {
-            self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-            //self.secureTextField.backgroundColor = [UIColor whiteColor];
-            //self.secureTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
-            //self.secureTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            //self.secureTextField.returnKeyType = UIReturnKeyNext;
-            //self.secureTextField.borderStyle = UITextBorderStyleLine;
-            //self.secureTextField.placeholder = @"Password";
-            //self.secureTextField.secureTextEntry = YES;
-            NSLog(@"Added switch subview");
-            [self addSubview:self.mySwitch];
-        }
-             */
-        //}
-        // END
 }
 
 
