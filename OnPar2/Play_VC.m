@@ -89,9 +89,14 @@
     
     // location manager
     self.locationMgr = [[CLLocationManager alloc] init];
+    
     self.locationMgr.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationMgr.delegate = self;
     
+    // the app has to have services enabled to function
+    // so check if they are enabled
+    // if not alert them to turn it on and send them back a page
+
     // just constantly track satelite location
     [self.locationMgr startUpdatingLocation];
     
@@ -651,6 +656,28 @@
     } else {
         self.distanceToGreeLabel.text = @">999";
     }
+}
+
+- (void) locationManager: (CLLocationManager *) manager didFailWithError: (NSError *) error
+{
+    if (error.code == 1) {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Location Error" message:@"Location services must be enabled for this application. This includes the addition of a GPS module for iPod touches."];
+        [alert applyCustomAlertAppearance];
+        __weak AHAlertView *weakAlert = alert;
+        [alert addButtonWithTitle:@"OK" block:^{
+            [self.locationMgr stopUpdatingLocation];
+            
+            // go back a VC
+            [[self navigationController] popViewControllerAnimated:YES];
+            
+            weakAlert.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
+    } else {
+        NSLog(@"Receieved Core Location error %@", error);
+        NSLog(@"%ld", (long)error.code);
+    }
+    [self.locationMgr stopUpdatingLocation];
 }
 
 #pragma mark - Gestures
