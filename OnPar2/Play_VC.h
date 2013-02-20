@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "Config.h"
-#import <CoreLocation/CoreLocation.h>
+//#import <UIKit/UIKit.h>
+//#import "Config.h"
+//#import <CoreLocation/CoreLocation.h>
 
 #define CLUBTYPE   0
 #define CLUBNUMBER 1

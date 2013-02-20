@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Chad Galloway. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "Config.h"
+//#import <UIKit/UIKit.h>
+//#import "Config.h"
 
 @interface GolferVC : UIViewController<UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate>
 
