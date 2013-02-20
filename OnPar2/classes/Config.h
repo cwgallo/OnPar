@@ -26,9 +26,6 @@
 // DCRoundSwitch
 #import "DCRoundSwitch.h"
 
-// JASidePanels
-#import "JASidePanelController.h"
-
 // LRResty
 #import "LRResty.h"
 
@@ -49,20 +46,10 @@
 // SLGlowingTextField
 #import "SLGlowingTextField.h"
 
-// SSCheckBoxView
-#import "SSCheckBoxView.h"
-
 // TPKeyboardAvoiding
 #import "TPKeyboardAvoidingScrollView.h"
 
 // ZPopoverController
-#import "ZAction.h"
-#import "ZActionSheet.h"
-#import "ZAlertView.h"
-#import "ZFloatingManager.h"
-#import "ZFloatingObject.h"
-#import "ZFloatingRepresentative.h"
-#import "ZPopoverController.h"
-
+#import "ZPopover.h"
 
 #endif
