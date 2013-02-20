@@ -246,7 +246,7 @@
                          h.firstRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"firstRefLat"] doubleValue]];
                          h.firstRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"firstRefLong"] doubleValue]];
                          h.secondRefLat = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
-                         h.secondRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLat"] doubleValue]];
+                         h.secondRefLong = [NSNumber numberWithDouble: [[hole objectForKey: @"secondRefLong"] doubleValue]];
                          h.firstRefX = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefX"] intValue]];
                          h.firstRefY = [NSNumber numberWithInt: [[hole objectForKey: @"firstRefY"] intValue]];
                          h.secondRefX = [NSNumber numberWithInt: [[hole objectForKey: @"secondRefX"] intValue]];

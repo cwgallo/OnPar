@@ -738,21 +738,21 @@
     // retrieve known points for this hole
     
     // TODO - these points are defined for hole 1 but should be found dynamically
-    NSLog(@"First Tee X: %@ \nFirst Tee Y: %@", currentHole.firstRefX, currentHole.firstRefY);
+    //NSLog(@"First Tee X: %@ \nFirst Tee Y: %@", currentHole.firstRefX, currentHole.firstRefY);
     XYPair *teeXY0 = [[XYPair alloc] initWithX: [currentHole.firstRefX doubleValue] andY: [currentHole.firstRefY doubleValue]];
-    NSLog(@"First Tee Lat: %@ \nFirst Tee Long: %@", currentHole.firstRefLat, currentHole.firstRefLong);
+    //NSLog(@"First Tee Lat: %@ \nFirst Tee Long: %@", currentHole.firstRefLat, currentHole.firstRefLong);
     LLPair *teeLLDeg = [[LLPair alloc] initWithLat: [currentHole.firstRefLat doubleValue] andLon: [currentHole.firstRefLong doubleValue]];
     LLPair *teeLLRad = [[LLPair alloc] initWithLLPair:[teeLLDeg deg2rad]];
     XYPair *teeLLRadFlat = [[XYPair alloc] initWithX:teeLLRad._lon andY:teeLLRad._lat];
-    NSLog(@"FlatTee is %@", teeLLRadFlat);
+    //NSLog(@"FlatTee is %@", teeLLRadFlat);
     
-    NSLog(@"Second Tee X: %@ \nSecond Tee Y: %@", currentHole.secondRefX, currentHole.secondRefY);
+    //NSLog(@"Second Tee X: %@ \nSecond Tee Y: %@", currentHole.secondRefX, currentHole.secondRefY);
     XYPair *centerXY0 = [[XYPair alloc] initWithX: [currentHole.secondRefX doubleValue] andY: [currentHole.secondRefY doubleValue]];
-    NSLog(@"Second Tee Lat: %@ \nSecond Tee Long: %@", currentHole.secondRefLat, currentHole.secondRefLong);
+    //NSLog(@"Second Tee Lat: %@ \nSecond Tee Long: %@", currentHole.secondRefLat, currentHole.secondRefLong);
     LLPair *centerLLDeg = [[LLPair alloc] initWithLat: [currentHole.secondRefLat doubleValue] andLon: [currentHole.secondRefLong doubleValue]];
     LLPair *centerLLRad = [[LLPair alloc] initWithLLPair:[centerLLDeg deg2rad]];
     XYPair *centerLLRadFlat = [[XYPair alloc] initWithX:centerLLRad._lon andY:centerLLRad._lat];
-    NSLog(@"FlatCenter is %@", centerLLRadFlat);
+    //NSLog(@"FlatCenter is %@", centerLLRadFlat);
     
     XYPair *aimXY0 = [[XYPair alloc] initWithXYPair:aimXY];
     LLPair *aimLLDeg = [[LLPair alloc] init];
@@ -760,7 +760,7 @@
     
     // Get height of image
     double height = myImageView.bounds.size.height * 2; // times 2 bc it is only half size
-    NSLog(@"Height of image is: %f", height);
+    ///NSLog(@"Height of image is: %f", height);
     
     // 1st coordinate conversion
     XYPair *teeXY1 = [self convertXY0toXY1WithXYPair:teeXY0 andHeight:height];
@@ -772,22 +772,22 @@
     
     // 2nd coordinate conversion
     XYPair *teeXY2 = [self convertXY1toXY2WithXYPair:teeXY1 andAngle:rotation];
-    NSLog(@"TeeXY2 is %@", teeXY2);
+    //NSLog(@"TeeXY2 is %@", teeXY2);
     XYPair *centerXY2 = [self convertXY1toXY2WithXYPair:centerXY1 andAngle:rotation];
-    NSLog(@"CenterXY2 is %@", centerXY2);
+    //NSLog(@"CenterXY2 is %@", centerXY2);
     XYPair *aimXY2 = [self convertXY1toXY2WithXYPair:aimXY1 andAngle:rotation];
-    NSLog(@"AimXY2 is %@", aimXY2);
+    //NSLog(@"AimXY2 is %@", aimXY2);
     
     // Get Flat Earth Scaling Factors
     XYPair *scaleFactors = [[XYPair alloc] initWithXYPair:[self getFlatEarthScaleUsingTeeXY:teeXY2 andTeeLLRadFlat:teeLLRadFlat andCenterXY:centerXY2 andCenterLLRadFlat:centerLLRadFlat]];
     
-    NSLog(@"Scaling factors are %@", scaleFactors);
+    //NSLog(@"Scaling factors are %@", scaleFactors);
     
     // Get Aim LL
     aimLLRad = [self getAimLLUsingAimXY: (XYPair*)aimXY2 andCenterXY: (XYPair*)centerXY2 andCenterLLRadFlat: (XYPair*)centerLLRadFlat andScaleFactors: (XYPair*) scaleFactors];
     aimLLDeg = [aimLLRad rad2deg];
     
-    NSLog(@"AimLLRad is %@", aimLLRad);
+    //NSLog(@"AimLLRad is %@", aimLLRad);
     NSLog(@"AimLLDeg is %@", aimLLDeg);
     
     // calculate distances to display
@@ -841,13 +841,13 @@
     double cosRotation = acos(cosRot);
     
     // TESTING
-    NSLog(@"Angle of rotation derived... ");
+    /*NSLog(@"Angle of rotation derived... ");
     NSLog(@"From SIN");
     NSLog(@"\tDegrees: %f", sinRotation*180.0/M_PI);
     NSLog(@"\tRadians: %f", sinRotation);
     NSLog(@"From COS");
     NSLog(@"\tDegrees: %f", cosRotation*180.0/M_PI);
-    NSLog(@"\tRadians: %f", cosRotation);
+    NSLog(@"\tRadians: %f", cosRotation);*/
 	
     return sinRotation;
 }
@@ -910,7 +910,7 @@
     results._x = scaleX;
     results._y = scaleY;
     
-    NSLog(@"SFs are %@", results);
+    //NSLog(@"SFs are %@", results);
     
     return results;
 }
@@ -920,9 +920,9 @@
 - (LLPair*)getAimLLUsingAimXY: (XYPair*)aimXY2 andCenterXY: (XYPair*)centerXY2 andCenterLLRadFlat: (XYPair*)centerLLRadFlat andScaleFactors: (XYPair*) scaleFactors{
     
     double aimLon = centerLLRadFlat._x + (aimXY2._x - centerXY2._x) * scaleFactors._x;
-    NSLog(@"Aim longitude is %.8f", aimLon);
+    //NSLog(@"Aim longitude is %.8f", aimLon);
     double aimLat = centerLLRadFlat._y + (aimXY2._y - centerXY2._y) * scaleFactors._y;
-    NSLog(@"Aim latitude is %.8f", aimLat);
+    //NSLog(@"Aim latitude is %.8f", aimLat);
     
     LLPair *results = [[LLPair alloc] init];
     results._lat = aimLat;
