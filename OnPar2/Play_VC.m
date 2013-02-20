@@ -661,7 +661,7 @@
 - (void) locationManager: (CLLocationManager *) manager didFailWithError: (NSError *) error
 {
     if (error.code == 1) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Location Error" message:@"Location services must be enabled for this application. This includes the addition of a GPS module for iPod touches."];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Location Error" message:@"Location services must be enabled for this application. This includes the addition of a GPS module for iPod touches. Location services can be edited in Settings."];
         [alert applyCustomAlertAppearance];
         __weak AHAlertView *weakAlert = alert;
         [alert addButtonWithTitle:@"OK" block:^{
