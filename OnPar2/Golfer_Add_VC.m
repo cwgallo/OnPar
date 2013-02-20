@@ -34,6 +34,8 @@
     
 	// Do any additional setup after loading the view.
     
+    self.emailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    
     // initialize tee to AGGIES so 0 will not get passed in
     tee = AGGIES;
 }

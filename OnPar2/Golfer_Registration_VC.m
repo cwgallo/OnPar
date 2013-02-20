@@ -36,6 +36,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.emailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
     
     // see if there is an email to register
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
