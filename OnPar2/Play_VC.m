@@ -704,9 +704,6 @@
         //NSLog(@"Shot lat: %@", currentShot.aimLatitude);
         //NSLog(@"Shot long: %@", currentShot.aimLongitude);
         
-        // set User's stage to STAGE_AIM
-        //currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_END];
-        
         // save the club selection and user's stage to the DB
         id appDelegate = (id)[[UIApplication sharedApplication] delegate];
         
@@ -718,7 +715,6 @@
         
         // instead of transitioning, show the done button
         self.doneButton.hidden = NO;
-        //[self viewWillAppear: NO];
     } else {
         // tell the User to start the shot before aiming
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Error" message:@"You must start the shot before aiming."];
@@ -841,13 +837,13 @@
     double cosRotation = acos(cosRot);
     
     // TESTING
-    /*NSLog(@"Angle of rotation derived... ");
+    NSLog(@"Angle of rotation derived... ");
     NSLog(@"From SIN");
     NSLog(@"\tDegrees: %f", sinRotation*180.0/M_PI);
     NSLog(@"\tRadians: %f", sinRotation);
     NSLog(@"From COS");
     NSLog(@"\tDegrees: %f", cosRotation*180.0/M_PI);
-    NSLog(@"\tRadians: %f", cosRotation);*/
+    NSLog(@"\tRadians: %f", cosRotation);
 	
     return sinRotation;
 }
