@@ -755,8 +755,6 @@ typedef void (^AHAnimationBlock)();
 // Internal utility to create or destroy text fields based on current alert view style
 - (void)ensureTextFieldsForCurrentAlertStyle
 {
-    NSLog(@"ensureText");
-    
 	BOOL wantsPlainTextField = (self.alertViewStyle == AHAlertViewStylePlainTextInput ||
 								self.alertViewStyle == AHAlertViewStyleLoginAndPasswordInput || self.alertViewStyle == AHAlertViewStyleEndShot);
 	BOOL wantsSecureTextField = (self.alertViewStyle == AHAlertViewStyleSecureTextInput ||
