@@ -234,6 +234,18 @@
                  if (count == numberOfRounds) {
                      // hide spinner and transition
                      [MBProgressHUD hideHUDForView: self.view animated: YES];
+                     
+                     // aler the user that it's done then delete everything and go to main page
+                     AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Success" message:@"Your rounds have been uploaded successfully."];
+                     [alert applyCustomAlertAppearance];
+                     [alert addButtonWithTitle:@"OK" block:^{
+                         // delete all info in the DB and then segue back to main
+                         MainViewController *mvc = [[MainViewController alloc] init];
+                         [mvc deleteEverything:appDelegate];
+                         
+                         [[self navigationController] popToRootViewControllerAnimated: YES];
+                     }];
+                     [alert show];
                  } else {
                      count++;
                  }
@@ -241,12 +253,6 @@
              ];
             
         }
-        
-        // delete all info in the DB and then segue back to main
-        MainViewController *mvc = [[MainViewController alloc] init];
-        [mvc deleteEverything:appDelegate];
-        
-        [[self navigationController] popToRootViewControllerAnimated: YES];
     } else {
         // internet reachablility failed
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Connection Error" message:@"You must be connected to the Wi-Fi at the club house for this action."];
