@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xGg-w1-63a">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -581,30 +581,16 @@
             </objects>
             <point key="canvasLocation" x="897" y="116"/>
         </scene>
-        <!--View Controller - Finish Hole-->
+        <!--FinishVC - Finish Hole-->
         <scene sceneID="Vbx-y8-0gc">
             <objects>
-                <viewController id="ZqN-eE-ga6" sceneMemberID="viewController">
+                <viewController id="ZqN-eE-ga6" customClass="Finish_VC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="deu-s4-nTT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skV-vA-gpf">
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qY6-HR-ZoO" customClass="SLGlowingTextField">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="DN0-lF-ySL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8vv-FI-dvj" customClass="SLGlowingTextField">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="lix-yE-mKR"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Putts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4Z-MB-IBr">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -621,29 +607,53 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0uD-yb-y06"/>
-                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-0B-XEM"/>
-                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="14x-Qj-nDk"/>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-0B-XEM">
+                                        <connections>
+                                            <action selector="puttChange:" destination="ZqN-eE-ga6" eventType="valueChanged" id="ufj-3z-dSP"/>
+                                        </connections>
+                                    </stepper>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="14x-Qj-nDk">
+                                        <connections>
+                                            <action selector="scoreChange:" destination="ZqN-eE-ga6" eventType="valueChanged" id="Owf-DC-RLK"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uP-bm-VdW">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="qFh-gh-Nx6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNA-ex-P2v">
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="c4Z-MB-IBr" firstAttribute="centerX" secondItem="lNA-ex-P2v" secondAttribute="centerX" type="default" id="3OI-Fp-tJM"/>
                                     <constraint firstItem="Uvo-rV-0SU" firstAttribute="top" secondItem="0uD-yb-y06" secondAttribute="top" type="default" id="5qD-F9-8Qg"/>
-                                    <constraint firstItem="8vv-FI-dvj" firstAttribute="centerX" secondItem="5Vr-ik-RSg" secondAttribute="centerX" type="default" id="7Ex-Mc-m93"/>
-                                    <constraint firstItem="8vv-FI-dvj" firstAttribute="top" secondItem="5Vr-ik-RSg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DPs-t0-LNy"/>
-                                    <constraint firstItem="Uvo-rV-0SU" firstAttribute="leading" secondItem="5Vr-ik-RSg" secondAttribute="leading" type="default" id="E72-g1-pm5"/>
-                                    <constraint firstAttribute="bottom" secondItem="Uvo-rV-0SU" secondAttribute="bottom" constant="185" id="M70-9m-xzj"/>
-                                    <constraint firstAttribute="trailing" secondItem="qY6-HR-ZoO" secondAttribute="trailing" constant="30" id="MSs-Ta-tkj"/>
+                                    <constraint firstItem="i4g-0B-XEM" firstAttribute="leading" secondItem="lNA-ex-P2v" secondAttribute="leading" type="default" id="6vN-fI-AEE"/>
+                                    <constraint firstItem="lNA-ex-P2v" firstAttribute="top" secondItem="1uP-bm-VdW" secondAttribute="top" type="default" id="9tX-nQ-d6f"/>
+                                    <constraint firstItem="c4Z-MB-IBr" firstAttribute="trailing" secondItem="0uD-yb-y06" secondAttribute="trailing" type="default" id="BG5-gI-L1g"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="leading" secondItem="14x-Qj-nDk" secondAttribute="leading" type="default" id="F4u-76-w8C"/>
+                                    <constraint firstItem="c4Z-MB-IBr" firstAttribute="baseline" secondItem="5Vr-ik-RSg" secondAttribute="baseline" type="default" id="GhH-Ay-Vyd"/>
                                     <constraint firstItem="0uD-yb-y06" firstAttribute="leading" secondItem="skV-vA-gpf" secondAttribute="leading" constant="186" id="RYl-r5-cO9"/>
-                                    <constraint firstItem="8vv-FI-dvj" firstAttribute="centerX" secondItem="14x-Qj-nDk" secondAttribute="centerX" type="default" id="Tx9-KU-9ut"/>
-                                    <constraint firstItem="8vv-FI-dvj" firstAttribute="leading" secondItem="skV-vA-gpf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xkf-3a-WK3"/>
-                                    <constraint firstItem="c4Z-MB-IBr" firstAttribute="trailing" secondItem="0uD-yb-y06" secondAttribute="trailing" type="default" id="YSr-Ew-lku"/>
-                                    <constraint firstItem="5Vr-ik-RSg" firstAttribute="top" secondItem="skV-vA-gpf" secondAttribute="top" constant="57" id="bcd-6X-4gh"/>
+                                    <constraint firstItem="Uvo-rV-0SU" firstAttribute="leading" secondItem="skV-vA-gpf" secondAttribute="leading" constant="46" id="TBO-zY-m1K"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="baseline" secondItem="lNA-ex-P2v" secondAttribute="baseline" type="default" id="XRd-es-1MA"/>
+                                    <constraint firstItem="5Vr-ik-RSg" firstAttribute="top" secondItem="skV-vA-gpf" secondAttribute="top" constant="62" id="a3w-6k-wJQ"/>
                                     <constraint firstItem="Uvo-rV-0SU" firstAttribute="bottom" secondItem="0uD-yb-y06" secondAttribute="bottom" type="default" id="czG-a2-7x7"/>
-                                    <constraint firstItem="8vv-FI-dvj" firstAttribute="baseline" secondItem="qY6-HR-ZoO" secondAttribute="baseline" type="default" id="gGd-vG-6Jj"/>
-                                    <constraint firstItem="i4g-0B-XEM" firstAttribute="trailing" secondItem="qY6-HR-ZoO" secondAttribute="trailing" type="default" id="jWv-Rq-GjF"/>
-                                    <constraint firstItem="14x-Qj-nDk" firstAttribute="top" secondItem="8vv-FI-dvj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mq0-wH-QG6"/>
-                                    <constraint firstItem="c4Z-MB-IBr" firstAttribute="centerX" secondItem="i4g-0B-XEM" secondAttribute="centerX" type="default" id="sB4-aj-G0S"/>
+                                    <constraint firstItem="i4g-0B-XEM" firstAttribute="trailing" secondItem="lNA-ex-P2v" secondAttribute="trailing" type="default" id="d6C-4O-e6G"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uvo-rV-0SU" secondAttribute="bottom" constant="185" id="hcc-z9-Ayf"/>
+                                    <constraint firstAttribute="trailing" secondItem="lNA-ex-P2v" secondAttribute="trailing" constant="30" id="m9V-6q-8Fz"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="centerX" secondItem="5Vr-ik-RSg" secondAttribute="centerX" type="default" id="o8l-rc-t5H"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="top" secondItem="skV-vA-gpf" secondAttribute="top" constant="86" id="pqV-YF-6vB"/>
+                                    <constraint firstItem="14x-Qj-nDk" firstAttribute="top" secondItem="1uP-bm-VdW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="r7d-R4-4MT"/>
                                     <constraint firstItem="Uvo-rV-0SU" firstAttribute="top" secondItem="skV-vA-gpf" secondAttribute="top" constant="204" id="sXZ-c2-Tlm"/>
-                                    <constraint firstItem="5Vr-ik-RSg" firstAttribute="baseline" secondItem="c4Z-MB-IBr" secondAttribute="baseline" type="default" id="xRw-fr-kFt"/>
-                                    <constraint firstItem="i4g-0B-XEM" firstAttribute="top" secondItem="qY6-HR-ZoO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="yme-92-UVG"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="leading" secondItem="skV-vA-gpf" secondAttribute="leading" constant="22" id="sja-ah-NNl"/>
+                                    <constraint firstItem="i4g-0B-XEM" firstAttribute="top" secondItem="lNA-ex-P2v" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="u4B-QL-iUw"/>
+                                    <constraint firstItem="1uP-bm-VdW" firstAttribute="trailing" secondItem="14x-Qj-nDk" secondAttribute="trailing" type="default" id="whf-P6-J1k"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -657,12 +667,20 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Finish Hole" id="6fK-og-LrN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="moV-Ze-9Oq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="moV-Ze-9Oq">
+                            <connections>
+                                <action selector="save:" destination="ZqN-eE-ga6" id="Ev6-Ye-mRb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="Bch-5h-vqj" kind="push" identifier="finish2play" id="8b9-L7-duF"/>
+                        <outlet property="lblPutts" destination="lNA-ex-P2v" id="BcO-qJ-35i"/>
+                        <outlet property="lblScore" destination="1uP-bm-VdW" id="OZ9-MK-H8i"/>
+                        <outlet property="stepPutts" destination="i4g-0B-XEM" id="qRZ-SD-lgZ"/>
+                        <outlet property="stepScore" destination="14x-Qj-nDk" id="Qfs-QF-Ct6"/>
+                        <outlet property="switchFIR" destination="0uD-yb-y06" id="iNK-oS-QAc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9O-Oz-Q3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -969,6 +987,19 @@
     <classes>
         <class className="DCRoundSwitch" superclassName="UIControl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCRoundSwitch.h"/>
+        </class>
+        <class className="Finish_VC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Finish_VC.h"/>
+            <relationships>
+                <relationship kind="action" name="puttChange:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="action" name="scoreChange:"/>
+                <relationship kind="outlet" name="lblPutts" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblScore" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepPutts" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="stepScore" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="switchFIR" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="GolferVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GolferVC.h"/>

@@ -320,30 +320,9 @@
     // update the User's holeNumber in the User's stageInfo
     
     if ([currentGolfer.stageInfo.stage isEqualToNumber: [NSNumber numberWithInt: STAGE_START]]) {
-        /*id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-        
-        int holeNumber = [currentGolfer.stageInfo.holeNumber intValue];
-
-        // do not advance to hole 19
-        if (holeNumber + 1 != 19) {
-            currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: holeNumber + 1];
-        } else {
-            // if they finish hole 18, set them to stage done
-            currentGolfer.stageInfo.stage = [NSNumber numberWithInt: STAGE_START];
-            currentGolfer.stageInfo.holeNumber = [NSNumber numberWithInt: 1];
-        }
-
-        // save the user's updated information
-        NSError *error;
-        
-        if (![[appDelegate managedObjectContext] save: &error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }*/
-        
-        //[self viewWillAppear: NO];
         
         // segue to the scoring VC
-        //[self performSegueWithIdentifier: @"play2score" sender: self];
+        [self performSegueWithIdentifier: @"play2finish" sender: self];
         
     } else {
         // tell the User to finish the hole

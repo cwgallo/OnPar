@@ -12,6 +12,7 @@
 		2EAA462C16D27F1200B63CD4 /* Hole.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA462B16D27F1200B63CD4 /* Hole.m */; };
 		2EAA462F16D310BC00B63CD4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA462E16D310BC00B63CD4 /* SystemInfo.m */; };
 		2EAA463116D4151C00B63CD4 /* hole18.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EAA463016D4151C00B63CD4 /* hole18.png */; };
+		2EBF803A16D433A300369EB1 /* Finish_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBF803916D433A300369EB1 /* Finish_VC.m */; };
 		B611325516CB0F670032AD4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325416CB0F670032AD4B /* UIKit.framework */; };
 		B611325716CB0F670032AD4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325616CB0F670032AD4B /* Foundation.framework */; };
 		B611325916CB0F670032AD4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611325816CB0F670032AD4B /* CoreGraphics.framework */; };
@@ -234,6 +235,8 @@
 		2EAA462D16D310BC00B63CD4 /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		2EAA462E16D310BC00B63CD4 /* SystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
 		2EAA463016D4151C00B63CD4 /* hole18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole18.png; sourceTree = "<group>"; };
+		2EBF803816D433A300369EB1 /* Finish_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finish_VC.h; sourceTree = "<group>"; };
+		2EBF803916D433A300369EB1 /* Finish_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finish_VC.m; sourceTree = "<group>"; };
 		B611325116CB0F670032AD4B /* OnPar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnPar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B611325416CB0F670032AD4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B611325616CB0F670032AD4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -580,8 +583,10 @@
 		B61132BE16CD2F290032AD4B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6E2419016D02F2B00D9CA97 /* Play_VC.h */,
+				2EBF803816D433A300369EB1 /* Finish_VC.h */,
+				2EBF803916D433A300369EB1 /* Finish_VC.m */,
 				B6E2419116D02F2B00D9CA97 /* Play_VC.m */,
+				B6E2419016D02F2B00D9CA97 /* Play_VC.h */,
 				B611327716CB0F670032AD4B /* MainViewController.h */,
 				B611327816CB0F670032AD4B /* MainViewController.m */,
 				B61132BB16CD2F200032AD4B /* Golfer_VC.h */,
@@ -1227,6 +1232,7 @@
 				2EAA462916D27EFB00B63CD4 /* OnPar2.xcdatamodeld in Sources */,
 				2EAA462C16D27F1200B63CD4 /* Hole.m in Sources */,
 				2EAA462F16D310BC00B63CD4 /* SystemInfo.m in Sources */,
+				2EBF803A16D433A300369EB1 /* Finish_VC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
