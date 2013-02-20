@@ -515,9 +515,11 @@
     
     // Going to a new page so updating location is no
     // longer needed.
+    //NSLog(@"Stop updating location");
     [self.locationMgr stopUpdatingLocation];
     
     // Go to upload page
+    //NSLog(@"Preparing segue");
     [self performSegueWithIdentifier: @"play2upload" sender:self];
 }
 

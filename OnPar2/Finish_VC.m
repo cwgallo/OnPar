@@ -109,7 +109,7 @@
     
     int parGIR = [currentHole.par intValue] - 2;
     
-    if (scoreGIR == parGIR) {
+    if (scoreGIR <= parGIR) {
         currentHole.green_in_reg = [NSNumber numberWithBool: YES];
     } else {
         currentHole.green_in_reg = [NSNumber numberWithBool: NO];

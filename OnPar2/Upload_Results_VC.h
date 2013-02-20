@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UINavigationItem *navBar;
 
 #pragma mark - Labels
-@property (strong, nonatomic) IBOutlet UILabel *golfer1Label;
+/*@property (strong, nonatomic) IBOutlet UILabel *golfer1Label;
 @property (strong, nonatomic) IBOutlet UILabel *golfer2Label;
 @property (strong, nonatomic) IBOutlet UILabel *golfer3Label;
 @property (strong, nonatomic) IBOutlet UILabel *golfer4Label;
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) IBOutlet DCRoundSwitch *golfer1Switch;
 @property (strong, nonatomic) IBOutlet DCRoundSwitch *golfer2Switch;
 @property (strong, nonatomic) IBOutlet DCRoundSwitch *golfer3Switch;
-@property (strong, nonatomic) IBOutlet DCRoundSwitch *golfer4Switch;
+@property (strong, nonatomic) IBOutlet DCRoundSwitch *golfer4Switch;*/
 
 #pragma mark - Actions
 - (IBAction)uploadResults:(id)sender;
