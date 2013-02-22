@@ -52,24 +52,18 @@
     // if there is any, show the continue button
     // and give them the choice to continue the started round
     
-    // obtain count of Users in the DB
-    NSMutableArray *golfers = [[NSMutableArray alloc] init];
-    
-    // load golfers that are in database
+    // load rounds that are in database
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     
     NSError *error;
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName: @"User"
+    NSFetchRequest *roundFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *round = [NSEntityDescription entityForName: @"Round"
                                               inManagedObjectContext: [appDelegate managedObjectContext]];
-    [fetchRequest setEntity: entity];
-    NSArray *fetchedObjects = [[appDelegate managedObjectContext] executeFetchRequest: fetchRequest error: &error];
-    for (User *u in fetchedObjects) {
-        [golfers addObject: u];
-    }
+    [roundFetch setEntity: round];
+    NSArray *rounds = [[appDelegate managedObjectContext] executeFetchRequest: roundFetch error: &error];
     
-    if ([golfers count] > 0) {
+    if ([rounds count] > 0) {
         btnNew.hidden = NO;
         btnContinue.hidden = NO;
     } else {
@@ -139,14 +133,19 @@
 {
     // either a new round or deleting the current info and
     // start a new round(s)
-    [self performSegueWithIdentifier:@"main2options" sender:self];
+    
+    // just to make sure there is no stale information in the DB
+    // delete everything just to be sure - can't hurt
+    
+    //[self performSegueWithIdentifier:@"main2options" sender:self];
+    [self newButton: self];
 }
 
 - (IBAction)newButton:(id)sender
 {
     [self deleteEverything: (id)[[UIApplication sharedApplication] delegate]];
     
-    [self startButton:self];
+    [self performSegueWithIdentifier:@"main2options" sender:self];
 }
 
 - (IBAction)continueRound:(id)sender
